@@ -31,5 +31,11 @@
 		<color name="hell_grau_icons">#fafafa</color>
 
 		<color name="hell_grau_tabellenzellen">#e9e9e9</color>
+
+
+	<!-- Farbe ROT -->
+		<!-- Verwenung für Fehlermeldungen -->
+
+		<color name="standard_rot">#ff5614</color>
 		
 </resources>

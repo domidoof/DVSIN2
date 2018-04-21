@@ -14,6 +14,17 @@ import android.widget.TextView;
 
 public class BuchenScreen2 extends AppCompatActivity {
 
+	// TEST -- FUNKTION Buchen -- //
+
+		int button_vorwaerts_voll;
+		int button_vorwaerts_transparent;
+		
+	
+		int kapazitaet_uebergeben;
+		int aktuelle_kapazitaet;
+
+	// ENDE TEST 	
+
 
     // TextView Menüstruktur und Schiffangaben
 
@@ -132,7 +143,7 @@ public class BuchenScreen2 extends AppCompatActivity {
         Button eingabeAnzahl20Container = (Button) findViewById(R.id.icon_eingabe_kleiner_container);
         Button eingabeAnzahl40Container = (Button) findViewById(R.id.icon_eingabe_grosser_container);
 
-        // Inhalt: Püfen ob kleines oder großes Schiff übergeben wurde
+        // Inhalt: Prüfen ob kleines oder großes Schiff übergeben wurde
 
                 String text_kleines_schiff = new String("Kleines Schiff");
                 String text_grosses_schiff = new String("Großes Schiff");
@@ -151,7 +162,15 @@ public class BuchenScreen2 extends AppCompatActivity {
             schifftyp_k_o_g.setText(R.string.schiff_klein_1);
             schiff_beschreibung.setText(R.string.text_schiff_klein);
             ladekapazitaet_zahl.setText("8");
-            formel_restwert.setText("8");
+            
+			// Aktuelle Kapazität berechnen
+			
+			// Statt 2 später mit Attribut "Platzbedarf" Klasse "Schiffstyp" rechnen
+
+			kapazitaet_uebergeben = 8;
+			aktuelle_kapazitaet = kapazitaet_uebergeben - (aktuelleBuchung.getContainerZahlKlein() + 2*(aktuelleBuchung.getContainerZahlGross())); 
+		
+			formel_restwert.setText(Integer.toString(aktuelle_kapazitaet));
 
         }
             // Großes Schiff vorhanden?
@@ -161,7 +180,11 @@ public class BuchenScreen2 extends AppCompatActivity {
             schifftyp_k_o_g.setText(R.string.schiff_groß_1);
             schiff_beschreibung.setText(R.string.text_schiff_groß);
             ladekapazitaet_zahl.setText("20");
-            formel_restwert.setText("20");
+            
+			kapazitaet_uebergeben = 20;
+			aktuelle_kapazitaet = kapazitaet_uebergeben - (aktuelleBuchung.getContainerZahlKlein() + 2*(aktuelleBuchung.getContainerZahlGross())); 
+		
+			formel_restwert.setText(Integer.toString(aktuelle_kapazitaet));
         }
 
         ///// Aktuelle Containerzahl setzen
@@ -214,7 +237,12 @@ public class BuchenScreen2 extends AppCompatActivity {
 
                 aktuelleBuchung.setContainerart(1);
 
-                intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+                Bundle wertesammlung = new Bundle();
+
+                wertesammlung.putParcelable("aktuelleBuchungKEY", aktuelleBuchung);
+                wertesammlung.putInt("aktuelle_kapazitaetKEY",aktuelle_kapazitaet);
+
+                intent.putExtras(wertesammlung);
 
                 startActivity(intent);
             }
@@ -234,7 +262,12 @@ public class BuchenScreen2 extends AppCompatActivity {
 
                 aktuelleBuchung.setContainerart(2);
 
-                intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+                Bundle wertesammlung = new Bundle();
+
+                wertesammlung.putParcelable("aktuelleBuchungKEY", aktuelleBuchung);
+                wertesammlung.putInt("aktuelle_kapazitaetKEY",aktuelle_kapazitaet);
+
+                intent.putExtras(wertesammlung);
 
                 startActivity(intent);
             }
@@ -248,6 +281,15 @@ public class BuchenScreen2 extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+			
+			if(button_vorwaerts_transparent == 1){
+			
+			return;
+			
+			}
+			
+			if(button_vorwaerts_voll == 1){
+			
 
                 Intent intent = new Intent(BuchenScreen2.this, BuchenScreen4.class);
 
@@ -255,10 +297,46 @@ public class BuchenScreen2 extends AppCompatActivity {
 
                 startActivity(intent);
             }
+			}
 
         });
 
+        // --- //
 
+        // Nuller (0) nicht anzeigen
 
+        if(aktuelleBuchung.containerZahlKlein == 0){
+            icon_eingabe_kleiner_container.setText("-");
+        }
+
+        if(aktuelleBuchung.containerZahlGross == 0){
+            icon_eingabe_grosser_container.setText("-");
+        }
+
+        // --- //
+
+		// Keine Container gewählt > transparenter Pfeil
+
+		if(aktuelleBuchung.containerZahlKlein == 0 && aktuelleBuchung.containerZahlGross == 0){
+
+		vorwaerts.setImageResource(R.drawable.icon_button_yes_transparent);
+		
+		button_vorwaerts_transparent = 1;
+		button_vorwaerts_voll = 0;
+				
+		}
+
+        // Container gewählt > normaler Pfeil
+		
+		if(aktuelleBuchung.containerZahlKlein != 0 || aktuelleBuchung.containerZahlGross != 0){
+		
+				
+		vorwaerts.setImageResource(R.drawable.icon_button_yes);
+		
+		button_vorwaerts_transparent = 0;
+		button_vorwaerts_voll = 1;
+				
+		}
+		
     }
 }
