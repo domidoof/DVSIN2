@@ -1,15 +1,24 @@
 package com.example.adrian.dvsin;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class BuchenScreen2_1 extends AppCompatActivity {
 
@@ -17,6 +26,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
     // Test Buchen
 
     int containerart_zahl;
+	
 
     // TextView Elemente
 
@@ -31,7 +41,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
         setContentView(R.layout.activity_buchen_screen_2_1_containeranzahl);
 
 
-        zurueck =(TextView) findViewById(R.id.zurueck);
+        zurueck = (TextView) findViewById(R.id.zurueck);
         eingabeaufforderung_1 = (TextView) findViewById(R.id.eingabeaufforderung_1);
         eingabeaufforderung_2 = (TextView) findViewById(R.id.eingabeaufforderung_2);
         eingabeaufforderung_3 = (TextView) findViewById(R.id.eingabeaufforderung_3);
@@ -52,16 +62,41 @@ public class BuchenScreen2_1 extends AppCompatActivity {
         eingabefeld_container.setTypeface(font_roboto_thin);
 
 
-
         // INHALT Activity wählen --- //
 
         // Inhalt: Aktuelle Buchungseigenschaften von letzter Aktivity holen
 
-        final Buchung aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
+        final Buchung aktuelleBuchung = (Buchung) getIntent().getExtras().getParcelable("aktuelleBuchungKEY");
 
         ImageView aktueller_container = (ImageView) findViewById(R.id.aktueller_container);
 
         final EditText aktuelle_eingabe = (EditText) findViewById(R.id.eingabefeld_container);
+
+
+
+        //--- TEST Kapazität Schiff festlegen ---//
+
+        String text_kleines_schiff = new String("Kleines Schiff");
+        String text_grosses_schiff = new String("Großes Schiff");
+
+        String uebergebener_schiffstyps = new String(aktuelleBuchung.getSchifftyp());
+
+        int kapazitaetMAX = 0;
+
+        if (text_kleines_schiff.equals(uebergebener_schiffstyps)){
+
+            kapazitaetMAX = 8;
+
+        }
+
+        if (text_grosses_schiff.equals(uebergebener_schiffstyps)){
+
+            kapazitaetMAX = 20;
+
+        }
+
+        // ### //
+
 
 
         // Großer oder Kleiner Container soll gestzt werden
@@ -69,7 +104,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
         // Kleiner Container
 
 
-        if(aktuelleBuchung.getContainerart()==1){
+        if (aktuelleBuchung.getContainerart() == 1) {
 
             container_nummer.setText(R.string.container_nummer_20);
 
@@ -80,20 +115,22 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
         // Großer Container
 
-        if(aktuelleBuchung.getContainerart()==2){
+        if (aktuelleBuchung.getContainerart() == 2) {
 
             container_nummer.setText(R.string.container_nummer_40);
+
             aktueller_container.setImageResource(R.drawable.icon_schiffscontainer40_gross_v1_weiss);
 
             containerart_zahl = 2;
         }
 
 
-    //BUTTONS
+        //BUTTONS
 
         // BUTTON zurück (links oben) aktivieren
 
-        Button zurueck = (Button) findViewById(R.id.zurueck);
+        final Button zurueck = (Button) findViewById(R.id.zurueck);
+        final int finalKapazitaetMAX = kapazitaetMAX;
         zurueck.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -101,25 +138,164 @@ public class BuchenScreen2_1 extends AppCompatActivity {
                 Intent intent = new Intent(BuchenScreen2_1.this, BuchenScreen2.class);
 
                 int aktuelle_eingabe_speicher;
+                int aktuelle_kapazitaet = getIntent().getExtras().getInt("aktuelle_kapazitaetKEY");
+                int zwischenwert;
 
-                if(containerart_zahl == 1){
+                eingabeaufforderung_1.setText(Integer.toString(aktuelle_kapazitaet));
+                eingabeaufforderung_2.setText(Integer.toString(finalKapazitaetMAX));
 
-                    aktuelle_eingabe_speicher = Integer.parseInt(aktuelle_eingabe.getText().toString());
-                    aktuelleBuchung.setContainerZahlKlein(aktuelle_eingabe_speicher);
+
+                if (aktuelle_eingabe.getText().toString().isEmpty()) {
 
                 }
 
-                if(containerart_zahl == 2){
+                else {
 
-                        aktuelle_eingabe_speicher = Integer.parseInt(aktuelle_eingabe.getText().toString());
-                        aktuelleBuchung.setContainerZahlGross(aktuelle_eingabe_speicher);
+
+                    aktuelle_eingabe_speicher = Integer.parseInt(aktuelle_eingabe.getText().toString());
+
+                    if (containerart_zahl == 1) {
+
+                        zwischenwert = aktuelle_kapazitaet - aktuelle_eingabe_speicher;
+
+                        if(zwischenwert >= 0 || aktuelle_eingabe_speicher <= finalKapazitaetMAX && aktuelle_kapazitaet >= aktuelle_eingabe_speicher){
+
+                        aktuelleBuchung.setContainerZahlKlein(aktuelle_eingabe_speicher);
+
+                        }
+
+                        else {
+
+                            LayoutInflater layoutInflater
+                                    = (LayoutInflater) getBaseContext()
+                                    .getSystemService(LAYOUT_INFLATER_SERVICE);
+                            View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
+                            final PopupWindow popupWindow = new PopupWindow(
+                                    popupView,
+                                    ViewGroup.LayoutParams.MATCH_PARENT,
+                                    ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                            // TEST
+
+                            popupWindow.setTouchable(true);
+                            popupWindow.setFocusable(false);
+                            popupWindow.setOutsideTouchable(true);
+
+                            popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+                            popupWindow.showAtLocation(zurueck,0,0, 50);
+
+                            TextView fehlertext_ueberschift, fehlertext_erklaerung_v1_teil_1, fehlertext_erklaerung_v1_teil_2;
+
+                            fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift);
+                            fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
+                            fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
+
+                            fehlertext_ueberschift.setTypeface(font_roboto_medium);
+                            fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
+                            fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
+
+                            return;
+
+                        }
                     }
+
+                    if (containerart_zahl == 2) {
+
+                        zwischenwert = aktuelle_kapazitaet - 2*aktuelle_eingabe_speicher;
+
+                        if(zwischenwert >= 0 || 2*aktuelle_eingabe_speicher <= finalKapazitaetMAX && aktuelle_kapazitaet >= 2*aktuelle_eingabe_speicher ){
+
+                            aktuelleBuchung.setContainerZahlGross(aktuelle_eingabe_speicher);
+
+                        }
+
+                        else {
+
+                            LayoutInflater layoutInflater
+                                    = (LayoutInflater) getBaseContext()
+                                    .getSystemService(LAYOUT_INFLATER_SERVICE);
+                            View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
+                            final PopupWindow popupWindow = new PopupWindow(
+                                    popupView,
+                                    ViewGroup.LayoutParams.MATCH_PARENT,
+                                    ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                            // TEST
+
+                            popupWindow.setTouchable(true);
+                            popupWindow.setFocusable(false);
+                            popupWindow.setOutsideTouchable(true);
+
+                            popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+                            popupWindow.showAtLocation(zurueck,0,0, 50);
+
+                            TextView fehlertext_ueberschift, fehlertext_erklaerung_v1_teil_1, fehlertext_erklaerung_v1_teil_2;
+
+                            fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift);
+                            fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
+                            fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
+
+                            fehlertext_ueberschift.setTypeface(font_roboto_medium);
+                            fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
+                            fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
+
+                            return;
+
+                        }
+                    }
+                }
+
 
                 intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
 
                 startActivity(intent);
+
             }
         });
 
+        final ImageButton vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
+        vorwaerts.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                LayoutInflater layoutInflater
+                        = (LayoutInflater) getBaseContext()
+                        .getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
+                final PopupWindow popupWindow = new PopupWindow(
+                        popupView,
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                // TEST
+
+                popupWindow.setTouchable(true);
+                popupWindow.setFocusable(false);
+                popupWindow.setOutsideTouchable(true);
+
+                popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+                popupWindow.showAtLocation(vorwaerts,0,0, 50);
+
+                TextView fehlertext_ueberschift, fehlertext_erklaerung_v1_teil_1, fehlertext_erklaerung_v1_teil_2;
+
+                fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift);
+                fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
+                fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
+
+                fehlertext_ueberschift.setTypeface(font_roboto_medium);
+                fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
+                fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
+
+
+
+            }
+        });
+
+
     }
+
 }
