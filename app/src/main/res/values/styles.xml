@@ -13,7 +13,7 @@
 
     <!-- Style für mögliches PopUp-Menü -->
 
-    <style name="AppTheme.PopUpUser">
+    <style name="AppTheme.PopUpTheme">
 
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
@@ -152,6 +152,43 @@
         <item name="android:textSize">18dp</item>
 
     </style>
+
+    <!-- EINGABE Containeranzahl -->
+
+    <style name="menuetext_gross_roter_hintergrund">
+
+        <!-- TEXT -->
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/hell_organge_schrift</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+       <!--  <item name="android:paddingLeft">20dp</item> -->
+        <item name="android:paddingRight">5dp</item>
+
+    </style>
+
+    <style name="menuetext_gross_roter_hintergrund_rechts_angefügt">
+
+        <!-- TEXT -->
+        <item name="android:textSize">21dp</item>
+        <item name="android:textColor">@color/hell_organge_schrift</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+        <item name="android:paddingLeft">4dp</item>
+
+    </style>
+
+
 
 
     <!-- CONTAINERN -->

@@ -14,6 +14,8 @@ import java.lang.annotation.Target;
 public class BuchenScreen1 extends AppCompatActivity {
 
 
+    //######## Github Text #########
+
 // TEST -- FUNKTION Buchen -- //
 
     int button_grosses_Schiff_gedrueckt;
@@ -179,7 +181,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                         Intent intent = new Intent(BuchenScreen1.this, BuchenScreen2.class);
 
-                        Buchung aktuelleBuchung = new Buchung(987654321,"Großes Schiff", 100, 100, 0);
+                        Buchung aktuelleBuchung = new Buchung(987654321,"Großes Schiff", 0, 0, 0);
 
                         intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
 
@@ -194,7 +196,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                             Intent intent = new Intent(BuchenScreen1.this, BuchenScreen2.class);
 
-                            Buchung aktuelleBuchung = new Buchung(777777777,"Kleines Schiff", 1, 1, 0);
+                            Buchung aktuelleBuchung = new Buchung(777777777,"Kleines Schiff", 0, 0, 0);
 
                             intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
 

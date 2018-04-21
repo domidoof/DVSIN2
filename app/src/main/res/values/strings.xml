@@ -15,6 +15,17 @@
     <string name="suchen_beschreibung">Suchen</string>
 
 
+
+    <!-- Strings für das THEMA: Fehlermeldungen  -->
+
+
+    <string name="fehlertext_ueberschift_v1">Leider zu SCHWER!</string>
+
+    <string name="fehlertext_erklaerung_v1_teil_1">Die maximale Ladekapazität</string>
+
+    <string name="fehlertext_erklaerung_v1_teil_2">wurde überschritten</string>
+
+
     <!-- Strings für das THEMA: Login -->
 
     <string name="loginbefehl_teil_1">Es ist Zeit die </string>

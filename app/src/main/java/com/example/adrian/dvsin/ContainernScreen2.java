@@ -35,7 +35,7 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     TextView aktuelleEbeneAnzeige;
 
-    com.example.adrian.dvsin.Ebene schiffsebene = new Ebene(8);
+    Ebene schiffsebene = new Ebene(8);
 
 
     // Ebenentest ENDE
@@ -44,7 +44,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_containern_screen_2);
+        setContentView(R.layout.activity_containern_screen_2_gs);
 
 
         // TextView Menüstruktur zuweisen
