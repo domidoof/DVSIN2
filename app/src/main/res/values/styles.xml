@@ -1,0 +1,273 @@
+<resources>
+
+    <!-- Base application theme. -->
+	
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/standard_orange</item>
+
+    </style>
+
+    <!-- Style für mögliches PopUp-Menü -->
+
+    <style name="AppTheme.PopUpUser">
+
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+
+    </style>
+
+    <style name="trennstrich">
+
+        <item name="android:background">@color/hell_grau_schrift</item>
+
+    </style>
+
+
+
+    <!-- TEXTFELDER -->
+
+    <!-- Info: Die Schriftart wird mit Hilfe der Java.class Typeface gesetzt -->
+
+    <style name="text_mittig">
+
+        <!-- <item name="android:gravity">center</item> -->
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/weiß</item>
+
+    </style>
+    <!-- Erzeugen des Farbeverlaufs, laut App-Design (vgl. PowerPoint/PDF); von links nach rechts-->
+
+
+    <!-- BUTTONS -->
+    <style name="button_zurueck" >
+
+        <!-- TEXT -->
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/weiß</item>
+
+
+        <!--PADDING -->
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <!-- <item name="android:paddingRight"></item> -->
+
+
+        <!--SONSTIGES -->
+        <item name="android:background">@android:color/transparent</item>
+
+        <item name="android:gravity">left</item>
+
+    </style>
+
+    <!-- LOGIN -->
+
+    <style name="slogan">
+
+        <item name="android:textSize">21dp</item>
+        <item name="android:textColor">@color/standard_grau</item>
+
+    </style>
+
+    <style name="eingabefeld_v1_weisser_hintergrund">
+
+        <item name="android:gravity">center</item>
+
+        <item name="android:textColor">@color/standard_grau</item>
+
+        <item name="android:textSize">18dp</item>
+
+    </style>
+
+
+    <!-- Hauptmenü -->
+
+    <!-- Menütexte -->
+
+    <style name="menuetexte">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:gravity">center</item>
+
+
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/standard_grau</item>
+
+    </style>
+
+    <!-- BUCHEN -->
+
+    <!-- EINGABE Containeranzahl -->
+
+    <style name="menuetext_gross_oranger_hintergrund">
+
+        <!-- TEXT -->
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/hell_organge_schrift</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">5dp</item>
+
+    </style>
+
+    <style name="menuetext_gross_oranger_hintergrund_rechts_angefügt">
+
+        <!-- TEXT -->
+        <item name="android:textSize">21dp</item>
+        <item name="android:textColor">@color/hell_organge_schrift</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+        <item name="android:paddingLeft">4dp</item>
+
+    </style>
+
+    <style name="eingabefeld_v1_oranger_hintergrund">
+
+        <item name="android:gravity">center</item>
+
+        <item name="android:textColor">@color/hell_organge_schrift</item>
+
+        <item name="android:colorControlNormal">@color/hell_grau_icons</item>
+
+        <item name="android:textSize">18dp</item>
+
+    </style>
+
+
+    <!-- CONTAINERN -->
+
+    <!-- ANSICHT Containerplatzierung activity_containern_screen_2 -->
+
+    <style name="tabellenzeile_0_containern_ueberschrifft">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+
+    </style>
+
+    <style name="tabellenspalte_0_containern_buchstaben">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:gravity">fill_vertical</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+
+    </style>
+
+    <style name="tabellenzellen_containern_innen">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:gravity">fill_vertical</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+
+        <item name="android:background">@drawable/zellenrahmen</item>
+
+    </style>
+
+    <style name="tabellenzellen_containern_aussen">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:gravity">fill_vertical</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+
+    </style>
+
+    <!-- Buchung fertig! Menütext -->
+
+    <style name="menuetext_gross_weisser_hintergrund">
+
+        <!-- TEXT -->
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/standard_grau</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">5dp</item>
+
+    </style>
+
+    <style name="menuetext_gross_weisser_hintergrund_rechts_angefügt">
+
+        <!-- TEXT -->
+        <item name="android:textSize">21dp</item>
+        <item name="android:textColor">@color/standard_grau</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+        <item name="android:paddingLeft">4dp</item>
+
+    </style>
+
+    <!-- BOTTOMsection -->
+
+    <style name="menue_1">
+
+        <!-- TEXT -->
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/weiß</item>
+
+
+        <!--PADDING -->
+        <item name="android:paddingTop">13dp</item>
+        <item name="android:paddingBottom">13dp</item>
+        <!-- <item name="android:paddingLeft"></item> -->
+        <item name="android:paddingRight">8dp</item>
+
+
+        <!--SONSTIGES -->
+        <item name="android:background">@android:color/transparent</item>
+
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:gravity">center</item>
+        <item name="android:src">@drawable/icon_user_gross</item>
+
+    </style>
+
+
+
+</resources>

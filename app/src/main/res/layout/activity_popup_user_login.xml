@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/weiß"
+    android:gravity="center">
+
+ <LinearLayout
+        android:id="@+id/popup_gesamt_standort"
+        android:layout_width="210dp"
+        android:layout_height="90dp"
+        android:background="@drawable/shadow_menuebereiche_2"
+        android:elevation="8dp"
+        android:orientation="vertical"
+
+        android:gravity="center"
+>
+     <LinearLayout
+         android:id="@+id/designschatten_popup"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="#d9d9d9"
+         android:orientation="horizontal">
+
+
+         <LinearLayout
+             android:id="@+id/inhalt_popup"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="horizontal">
+
+             <ImageButton
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1.2"
+
+                 android:background="@android:color/transparent"
+                 android:paddingBottom="10dp"
+                 android:paddingLeft="22dp"
+                 android:paddingTop="12dp"
+                 android:scaleType="fitStart"
+                 android:src="@drawable/icon_foto_hinzufuegen_v1" />
+
+             <LinearLayout
+                 android:id="@+id/benutzerinformationen"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"
+                 android:orientation="vertical">
+
+                 <TextView
+                     android:id="@+id/text_benutzername"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:gravity="center|bottom"
+                     android:paddingBottom="2dp"
+                     android:paddingRight="5dp"
+
+                     android:text="Benutzername:"
+                     android:textColor="#a6a6a6"
+                     android:textSize="10dp" />
+
+                 <TextView
+                     android:id="@+id/benutzername_aktuell"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1.5"
+                     android:gravity="center|top"
+                     android:paddingRight="5dp"
+                     android:text="Peter Zwiespalt"
+                     android:textColor="@color/standard_grau"
+                     android:textSize="12dp" />
+
+             </LinearLayout>
+
+         </LinearLayout>
+
+     </LinearLayout>
+
+ </LinearLayout>
+
+</LinearLayout>

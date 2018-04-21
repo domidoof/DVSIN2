@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/buchen_screen_2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/weiss_hintergrund_screen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/icon_gross_schiff_umriss_v8_4"
+        android:gravity="fill"
+        >
+
+    <LinearLayout
+        android:id="@+id/topSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shadow_menuebereiche"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/color_topsection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/farbverlauf_appdesign_3"
+            android:layout_weight="1">
+
+        <Button
+            android:id="@+id/zurueck"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="left"
+            android:paddingBottom="8dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:text="@string/zurueckzeichen"
+            android:textColor="#ffffff"
+            android:textSize="25sp"/>
+
+            <ImageButton
+                android:id="@+id/ebene_oben"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_gravity="right"
+                android:scaleType="fitCenter"
+                android:paddingBottom="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="19dp"
+                android:background="@android:color/transparent"
+
+                android:src="@drawable/button_gross_ebene_nach_oben_weiss"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <TextView
+                    android:id="@+id/text_ebene"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:paddingRight="2dp"
+                    android:gravity="center"
+                    android:text="Ebene"
+                    android:textColor="@color/weiß"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/ebenen_nummer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/weiß"
+                    android:gravity="left"
+
+                    android:layout_gravity="center"
+                    android:text="1"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <ImageButton
+            android:id="@+id/ebene_unten"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:paddingLeft="10dp"
+            android:scaleType="fitCenter"
+            android:paddingBottom="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="19dp"
+            android:src="@drawable/button_gross_ebene_nach_unten_orange"
+            android:background="@android:color/transparent"
+            />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+        android:id="@+id/middleSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.25">
+
+            </LinearLayout>
+
+            <TableLayout
+            android:id="@+id/tabelle_containern"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1">
+
+            <TableRow
+                android:id="@+id/zeile_0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/zelle_00"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_01"
+                    android:text="1"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_02"
+                    android:text="2"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_03"
+                    android:text="3"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_04"
+                    android:text="4"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_05"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/zeile_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/zelle_A0"
+                    android:text="A"
+                    style="@style/tabellenzellen_containern_aussen"/>
+
+                <TextView
+                    android:id="@+id/zelle_A1"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_A2"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_A3"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_A4"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_A5"
+                    style="@style/tabellenzellen_containern_aussen"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/zeile_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/zelle_B0"
+                    android:text="B"
+                    style="@style/tabellenzellen_containern_aussen"/>
+
+                <TextView
+                    android:id="@+id/zelle_B1"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_B2"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_B3"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_B4"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_B5"
+                    style="@style/tabellenzellen_containern_aussen"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/zeile_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/zelle_C0"
+                    android:text="C"
+                    style="@style/tabellenzellen_containern_aussen"/>
+
+                <TextView
+                    android:id="@+id/zelle_C1"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_C2"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_C3"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_C4"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_C5"
+                    style="@style/tabellenzellen_containern_aussen"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/zeile_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/zelle_D0"
+                    android:text="D"
+                    style="@style/tabellenzellen_containern_aussen"/>
+
+                <TextView
+                    android:id="@+id/zelle_D1"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_D2"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_D3"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_D4"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_D5"
+                    style="@style/tabellenzellen_containern_aussen"
+                    />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/zeile_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/zelle_E0"
+                    android:text="E"
+                    style="@style/tabellenzellen_containern_aussen"/>
+
+                <TextView
+                    android:id="@+id/zelle_E1"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_E2"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_E3"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_E4"
+                    style="@style/tabellenzellen_containern_innen"
+                    />
+
+                <TextView
+                    android:id="@+id/zelle_E5"
+                    style="@style/tabellenzellen_containern_aussen"
+                    />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:layout_weight="2">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+
+                android:padding="7dp">
+
+                <!-- PopUp-Bereich -->
+
+                <LinearLayout
+                    android:id="@+id/popup_gesamt_standort"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shadow_menuebereiche_2"
+                    android:baselineAligned="false"
+                    android:layout_margin="1dp"
+                    android:elevation="8dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/designschatten_popup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:id="@+id/inhalt_popup"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+
+                                android:orientation="horizontal"
+
+                                >
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.25"
+                                    android:orientation="vertical"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="15dp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="8dp"
+
+                                        android:layout_weight="1.2"
+
+                                        android:background="@android:color/transparent"
+                                        android:scaleType="fitCenter"
+                                        android:src="@drawable/icon_schiffscontainer40_gross_v1_hellgrau" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3"
+                                        android:paddingTop="2dp">
+
+                                        <TextView
+                                            android:id="@+id/naechster_container_groesse"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:gravity="right"
+                                            android:paddingLeft="2dp"
+                                            android:text="@string/container_nummer_40"
+                                            android:textSize="11sp"
+                                            android:textColor="#bfbfbf"/>
+
+                                        <TextView
+                                            android:id="@+id/naechster_container_wort"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:paddingLeft="2dp"
+                                            android:textColor="#bfbfbf"
+                                            android:text="@string/container_name"
+
+                                            android:textSize="11sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="10dp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+
+                                        android:background="@android:color/transparent"
+
+                                        android:scaleType="fitCenter"
+                                        android:src="@drawable/icon_schiffscontainer40_gross_v1_dunkelgrau" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2.5"
+                                        android:paddingTop="2dp">
+
+                                        <TextView
+                                            android:id="@+id/aktueller_container_groesse"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:gravity="right"
+                                            android:paddingLeft="2dp"
+                                            android:textColor="#a1a1a1"
+                                            android:text="@string/container_nummer_40"
+                                            android:textSize="12sp" />
+
+                                        <TextView
+                                            android:id="@+id/aktueller_container_wort"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:paddingLeft="2dp"
+                                            android:layout_weight="1"
+                                            android:textColor="#a1a1a1"
+                                            android:text="@string/container_name"
+
+                                            android:textSize="12sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <!-- PopUp-Bereich ENDE -->
+
+                <ImageButton
+
+                    android:id="@+id/vorwaerts"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="top"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1.5"
+                    android:background="@color/weiss_hintergrund_screen"
+
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_button_yes" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/bottomSection"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/farbverlauf_appdesign_3"
+    android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/container_id_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp"
+            android:text="ContainerID:"
+            android:textSize="15sp"
+            android:textColor="@color/weiß"
+            />
+
+        <TextView
+            android:id="@+id/container_id_nummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="12356789"
+            android:textColor="@color/weiß"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

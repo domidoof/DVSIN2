@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/weiss_hintergrund_screen">
+
+    <LinearLayout
+        android:id="@+id/topSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:elevation="5dp"
+        android:background="@drawable/shadow_menuebereiche">
+
+        <LinearLayout
+            android:id="@+id/color_topsection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/farbverlauf_appdesign_3"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+	
+	<LinearLayout
+        android:id="@+id/middleSection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+			
+        <TextView
+            android:id="@+id/hauptmenue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="50dp"
+            android:text="@string/hauptmenue"
+            android:textColor="@color/standard_grau"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/trennbereich_1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <View
+                android:id="@+id/trennstrich_1_grau"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="8"
+                style="@style/trennstrich" />
+
+            <View
+                android:id="@+id/trennstrich_2_weiß"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/untermenue_2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:paddingTop="5dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/buchen_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:paddingRight="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_funktion_buchen_gross" />
+
+            <ImageButton
+                android:id="@+id/containern_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:paddingBottom="5dp"
+                android:paddingLeft="14dp"
+                android:paddingTop="19dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_funktion_containern_gross" />
+
+			<ImageButton
+                android:id="@+id/doku_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="18dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_funktion_doku_gross" />
+				
+        </LinearLayout>
+
+ 
+        <!-- letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!-->
+
+
+                <LinearLayout
+                    android:id="@+id/untermenue_2.2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/buchen_beschreibung"
+                        style="@style/menuetexte"
+                        android:text="@string/buchen_beschreibung"/>
+
+                    <TextView
+                        android:id="@+id/containern_beschreibung"
+                        style="@style/menuetexte"
+                        android:text="@string/containern_beschreibung"/>
+
+                    <TextView
+                        android:id="@+id/doku_beschreibung"
+                        style="@style/menuetexte"
+                        android:text="@string/doku_beschreibung"/>
+
+                </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/untermenue_3"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:paddingTop="5dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/suchen_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
+                android:paddingBottom="5dp"
+                android:paddingTop="13dp"
+                android:paddingRight="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_suche_gross_v1_orange" />
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:paddingBottom="5dp"
+                android:paddingLeft="14dp"
+                android:paddingTop="19dp"
+                android:background="@android:color/transparent" />
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="18dp"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+
+        <!-- letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!-->
+
+
+        <LinearLayout
+            android:id="@+id/untermenue_3.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/suchen_beschreibung"
+                style="@style/menuetexte"
+                android:text="@string/suchen_beschreibung"
+                android:layout_marginRight="120dp"
+                />
+
+            <TextView
+                android:id="@+id/untermenu_3.1_2"
+                style="@style/menuetexte"
+                />
+
+            <TextView
+                android:id="@+id/untermenu_3.1_3"
+                style="@style/menuetexte"
+                />
+
+        </LinearLayout>
+
+        </LinearLayout>
+	
+    <LinearLayout
+    android:id="@+id/bottomSection"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/farbverlauf_appdesign_3"
+    android:orientation="horizontal"
+        android:gravity="bottom">
+
+        <ImageButton
+            android:id="@+id/user_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/menue_1"
+            />
+
+        <View
+            android:id="@+id/menuefeld_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+        <View
+            android:id="@+id/menuefeld_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+        <View
+            android:id="@+id/menuefeld_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="20dp"/>
+
+    </LinearLayout>
+	
+</LinearLayout>

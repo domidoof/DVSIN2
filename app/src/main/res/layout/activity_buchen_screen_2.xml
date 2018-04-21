@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/buchen_screen_2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/weiss_hintergrund_screen">
+
+    <LinearLayout
+        android:id="@+id/topSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shadow_menuebereiche"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/color_topsection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/farbverlauf_appdesign_3"
+            android:layout_weight="1">
+
+        <Button
+            android:id="@+id/zurueck"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="left"
+            android:paddingBottom="8dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:text="@string/zurueckzeichen"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/schrittanzeige"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:elevation="1dp"
+            android:gravity="right"
+            android:paddingBottom="8dp"
+            android:paddingRight="20dp"
+            android:paddingTop="12dp"
+            android:text="@string/schritt_2"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/middleSection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="50dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/schifftyp_k_o_g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/schiff_groß_1"
+                android:textColor="@color/standard_grau"
+
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/schiff_wort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="4dp"
+                android:text="@string/schiff_wort"
+                android:textColor="@color/standard_grau"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/schiff_beschreibung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="4dp"
+                android:text="@string/text_schiff_groß"
+                android:textColor="@color/standard_grau"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/max_wort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="1"
+                android:paddingLeft="4dp"
+                android:text="@string/max_wort"
+                android:textColor="@color/standard_grau"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/ladekapazitaet_zahl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingLeft="4dp"
+                android:text="20"
+                android:textColor="@color/standard_grau"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/trennbereich_1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <View
+                android:id="@+id/trennstrich_1_grau"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="8"
+                style="@style/trennstrich"/>
+
+            <View
+                android:id="@+id/trennstrich_2_weiß"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/untermenue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="15dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+
+            android:text="@string/auswahl_container_und_anzahl"
+            android:textColor="@color/standard_grau"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+
+            android:id="@+id/alles_20_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="37dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/kleiner_container_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_schiffscontainer20_gross_v1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+
+                    android:id="@+id/icon_eingabe_kleiner_container"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="3dp"
+
+                    android:background="@drawable/zellenrahmen_2"
+
+                    android:textColor="@color/hell_grau_schrift"
+                    android:text="-"
+                    android:textSize="13sp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="37dp"
+            android:paddingTop="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/container_nummer_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/container_nummer_20"
+                    android:textColor="@color/hell_grau_schrift"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/container_name_klein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/standard_grau"
+                    android:text="@string/container_name"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/anzahl_feld_klein"
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/anzahl"
+                    android:textColor="@color/standard_grau"
+                    android:textSize="12sp"
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/alles_40_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical"
+
+            android:paddingTop="12dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="37dp"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/grosser_container_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_schiffscontainer40_gross_v1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <Button
+
+                        android:id="@+id/icon_eingabe_grosser_container"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="3dp"
+
+                        android:background="@drawable/zellenrahmen_2"
+
+                        android:textColor="@color/hell_grau_schrift"
+                        android:text="-"
+                        android:textSize="13sp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="37dp"
+                android:paddingTop="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/container_nummer_40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="@string/container_nummer_40"
+                        android:textColor="@color/hell_grau_schrift"
+                        android:textSize="12sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/container_name_gross"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="2dp"
+                        android:textColor="@color/standard_grau"
+                        android:text="@string/container_name"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/anzahl_feld_gross"
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/anzahl"
+                        android:textColor="@color/standard_grau"
+                        android:textSize="12sp"
+                        />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/bestaetigungsbereich"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+
+            android:paddingTop="2dp">
+
+            <LinearLayout
+                android:id="@+id/formel_und_button_trennen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- muss wieder in style ausgelagert werden (ImageButton_Thema) -->
+
+                <LinearLayout
+                    android:id="@+id/formelbereich"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    android:layout_gravity="bottom"
+                    android:paddingBottom="22dp"
+
+                    android:layout_weight="2">
+
+                    <LinearLayout
+                        android:id="@+id/trennbereich_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+
+                        android:background="@android:color/transparent"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp"
+                        >
+
+                        <View
+                            android:id="@+id/trennstrich_2_grau"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_weight="5.25"
+                            style="@style/trennstrich"/>
+
+                        <View
+                            android:id="@+id/trennstrich_3_weiß"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="7dp"
+                        >
+
+                        <TextView
+
+                            android:id="@+id/formel_text_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/formel_text_1"
+                            android:textColor="@color/standard_grau"
+
+                            android:textSize="15sp" />
+
+                        <TextView
+
+                            android:id="@+id/formel_restwert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingLeft="4dp"
+                            android:text="@string/formel_restwert"
+                            android:textColor="@color/standard_grau"
+                            android:textSize="15sp" />
+
+                        <TextView
+
+                            android:id="@+id/formel_text_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingLeft="4dp"
+                            android:text="@string/formel_text_2"
+                            android:textColor="@color/standard_grau"
+                            android:textSize="15sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ImageButton
+
+                    android:id="@+id/vorwaerts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="5"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_button_yes"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/bottomSection"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/farbverlauf_appdesign_3"
+    android:orientation="horizontal">
+
+        <View
+            android:id="@+id/menuefeld_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp" />
+
+        <View
+            android:id="@+id/menuefeld_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+        <View
+            android:id="@+id/menuefeld_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+        <View
+            android:id="@+id/menuefeld_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="20dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

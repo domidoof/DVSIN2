@@ -1,0 +1,159 @@
+<resources>
+
+    <!-- Strings für das THEMA: Allgemein -->
+
+    <string name="app_name">DVSIN</string>
+	
+	<string name="hauptmenue">Hauptmenü</string>
+	
+	<string name="buchen_beschreibung">Buchen</string>
+	
+	<string name="containern_beschreibung">Containern</string>
+	
+	<string name="doku_beschreibung">Doku</string>
+
+    <string name="suchen_beschreibung">Suchen</string>
+
+
+    <!-- Strings für das THEMA: Login -->
+
+    <string name="loginbefehl_teil_1">Es ist Zeit die </string>
+
+    <string name="loginbefehl_teil_2"> Welt</string>
+
+    <string name="loginbefehl_teil_3"> zu verladen!</string>
+
+
+    <string name="textvorgabe_login">Bitte gib Deinen Benutzernamen ein</string>
+
+
+    <!-- Strings für das THEMA: Funktion: Buchen -->
+
+    <string name="buchen_schritt_1_einleitung_1">Legen Sie eine neue</string>
+
+    <string name="buchen_schritt_1_einleitung_2">Schiffsbeladung</string>
+
+    <string name="buchen_schritt_1_einleitung_3">an!</string>
+
+
+    <!-- Strings für das THEMA: Funktion: Buchen: Eingabe Containerzahl -->
+
+    <string name="eingabeauffoderung_teil_1">Gib einfach die gewünschte </string>
+
+    <string name="eingabeauffoderung_teil_2">Anzahl </string>
+
+    <string name="eingabeauffoderung_teil_3">für den von Dir gewählten  </string>
+
+    <string name="eingabeauffoderung_teil_4">Container ein!</string>
+
+
+    <string name="textvorgabe_container_anzahleingabe">Bitte gib die Anzahl ein</string>
+
+
+
+
+    <string name="zurueckzeichen">&lt;</string>
+
+    <string name="schritt_1">Schritt 1 von 3</string>
+
+    <string name="schritt_2">Schritt 2 von 3</string>
+
+    <string name="schritt_3">Schritt 3 von 3</string>
+
+
+    <!-- Strings für das THEMA: Schiff -->
+
+    <string name="auswahl_schiffstyp">Wählen Sie einen gewünschten Schiffstyp aus
+</string>
+
+    <!-- SCHIFF: Schiffstypen -->
+
+    <string name="schiff_groß_1">Großes</string>
+
+    <string name="schiff_klein_1">Kleines</string>
+
+    <string name="schiff_wort">Schiff</string>
+
+
+    <!-- SCHIFF: Text zu Schiffstypen -->
+
+    <string name="text_schiff_groß">(TYP XAVKI)</string>
+
+    <string name="text_schiff_klein">(TYP HALLI)</string>
+
+
+    <!-- SCHIFF: Abkürzung max. -->
+
+    <string name="max_wort">max.</string>
+
+
+    <!-- SCHIFF: Anzahl Container; Wort. -->
+
+    <string name="anzahl">Anzahl</string>
+
+
+    <!-- Strings für das THEMA: Container -->
+
+    <string name="auswahl_container_und_anzahl">Wählen Sie die Container und deren Anzahl
+</string>
+
+
+    <!-- CONTAINER: Bezeichnungen -->
+
+    <string name="container_name">Container</string>
+
+    <string name="container_nummer_20">20`</string>
+
+    <string name="container_nummer_40">40`</string>
+
+    <string name="container_nummer_45">45`</string>
+
+
+    <!-- Strings für das THEMA: Funktion: Containern: Auswahl Buchungsnummer -->
+
+    <string name="eingabeauffoderung_containern_teil_1">Wähle einfach eine </string>
+
+    <string name="eingabeauffoderung_containern_teil_2">Buchungsnummer </string>
+
+    <string name="eingabeauffoderung_containern_teil_3">aus </string>
+
+    <string name="eingabeauffoderung_containern_teil_4">und das Verladen kann</string>
+
+    <string name="eingabeauffoderung_containern_teil_5">beginnen!</string>
+
+
+    <!-- Strings für das THEMA: Funktion: Containern: Auswahl Buchungsnummer -->
+
+    <string name="containern_bestaetigung_erfolgreich_teil_1">Sehr gut!</string>
+
+    <string name="containern_bestaetigung_erfolgreich_teil_2">Alles erfolgreich verstaut.
+ </string>
+
+
+    <!-- Formel in "activity_buchen_screen_2 -->
+
+    <string name="formel_text_1">Noch</string>
+
+    <string name="formel_restwert">20</string>
+
+    <string name="formel_text_2">freie Plätze!</string>
+
+    
+    
+    <!-- Buchungsbestätigungstext -->
+    
+    <string name="text_buchungsbestaetigung_teil_1">Super!</string>
+    
+    <string name="text_buchungsbestaetigung_teil_2">Die</string>
+
+    <string name="text_buchungsbestaetigung_teil_3">Buchung</string>
+
+    <string name="text_buchungsbestaetigung_teil_4">steht</string>
+
+
+    // Schifftypen unterscheiden
+
+    <string name="equal_kleines_schiff">Kleines Schiff</string>
+
+
+</resources>

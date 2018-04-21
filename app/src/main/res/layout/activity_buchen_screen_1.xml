@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/buchen_screen_1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/weiss_hintergrund_screen">
+
+    <LinearLayout
+        android:id="@+id/topSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shadow_menuebereiche"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/color_topsection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/farbverlauf_appdesign_3"
+            android:layout_weight="1">
+
+        <Button
+            android:id="@+id/zurueck"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/zurueckzeichen"
+            style="@style/button_zurueck"/>
+
+        <TextView
+            android:id="@+id/schrittanzeige"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:elevation="1dp"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:paddingBottom="8dp"
+            android:paddingRight="20dp"
+            android:paddingTop="12dp"
+            android:text="@string/schritt_1"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/middleSection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="50dp">
+
+            <TextView
+                android:id="@+id/hauptmenue_buchen_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buchen_schritt_1_einleitung_1"
+                android:textColor="@color/standard_grau"
+
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hauptmenue_buchen_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="4dp"
+                android:text="@string/buchen_schritt_1_einleitung_2"
+                android:textColor="@color/standard_grau"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hauptmenue_buchen_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="4dp"
+                android:text="@string/buchen_schritt_1_einleitung_3"
+                android:textColor="@color/standard_grau"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/trennbereich_1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <View
+                android:id="@+id/trennstrich_1_grau"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="8"
+                style="@style/trennstrich"/>
+
+            <View
+                android:id="@+id/trennstrich_2_weiß"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/untermenue_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="15dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+
+            android:text="@string/auswahl_schiffstyp"
+            android:textColor="@color/standard_grau"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:id="@+id/untermenue_2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/grosses_schiff_auswahl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_grosses_schiff_gross_v1" />
+
+            <ImageButton
+                android:id="@+id/kleines_schiff_auswahl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:paddingTop="22dp"
+                android:paddingBottom="4dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_kleines_schiff_gross_v1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/untermenue_2.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:id="@+id/schiff_gross_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/schiff_groß_1"
+                    android:textColor="@color/standard_grau"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/schiff_gross_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:textColor="@color/standard_grau"
+                    android:text="@string/schiff_wort"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:id="@+id/schiff_klein_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/schiff_klein_1"
+                    android:textColor="@color/standard_grau"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/schiff_klein_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:paddingLeft="4dp"
+                    android:textColor="@color/standard_grau"
+                    android:text="@string/schiff_wort"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!-->
+
+        <LinearLayout
+            android:id="@+id/untermenue_2.2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/beschreibung_schiff_groß"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:text="@string/text_schiff_groß"
+                    android:textColor="@color/standard_grau"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/beschreibung_schiff_klein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:text="@string/text_schiff_klein"
+                    android:textColor="@color/standard_grau"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/untermenue_2.3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- muss wieder in style ausgelagert werden (ImageButton_Thema) -->
+
+                <View
+                    android:id="@+id/menuefeld_oben_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"/>
+
+                <ImageButton
+                    android:id="@+id/vorwaerts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="5"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_button_yes"/>
+
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/bottomSection"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/farbverlauf_appdesign_3"
+    android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/shadow_missing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent">
+
+            <View
+                android:id="@+id/menuefeld_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:paddingRight="5dp" />
+
+            <View
+                android:id="@+id/menuefeld_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+
+            <View
+                android:id="@+id/menuefeld_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+
+            <View
+                android:id="@+id/menuefeld_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:paddingRight="20dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

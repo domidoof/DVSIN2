@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@android:color/black"
+        android:left="500dp" />
+    <item>
+        <bitmap
+            android:gravity="bottom|center|fill|clip_vertical"
+            android:mipMap="true"
+            android:src="@drawable/icon_gross_schiff_umriss_v2"/>
+    </item>
+
+</layer-list>
