@@ -13,7 +13,7 @@
 
     <!-- Style für mögliches PopUp-Menü -->
 
-    <style name="AppTheme.PopUpTheme">
+    <style name="AppTheme.PopUpUser">
 
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
