@@ -13,7 +13,7 @@
 
     <!-- Style für mögliches PopUp-Menü -->
 
-    <style name="AppTheme.PopUpUser">
+    <style name="AppTheme.PopUpTheme">
 
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
@@ -229,7 +229,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorAccent</item>
 
-        <item name="android:background">@drawable/zellenrahmen</item>
+        <item name="android:background">@drawable/zellenrahmen_v0</item>
 
     </style>
 
@@ -301,7 +301,7 @@
 
         <item name="android:scaleType">fitCenter</item>
         <item name="android:gravity">center</item>
-        <item name="android:src">@drawable/icon_user_gross</item>
+        <item name="android:src">@drawable/icon_menue_user</item>
 
     </style>
 

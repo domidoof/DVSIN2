@@ -4,7 +4,7 @@
     android:id="@+id/buchen_screen_2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/farbverlauf_appdesign"
+    android:background="@drawable/farbverlauf_appdesign_v0"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:id="@+id/color_topsection"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/farbverlauf_appdesign_3"
+            android:background="@drawable/farbverlauf_appdesign_v3"
             android:layout_weight="1">
 
         <Button
@@ -232,7 +232,7 @@
                     android:background="#ff883f"
                     android:padding="15dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_gross_face_well_done"/>
+                    android:src="@drawable/icon_face_welldone"/>
 
                 <TextView
                     android:id="@+id/abstand_02_01"

@@ -20,7 +20,7 @@
             android:id="@+id/color_topsection"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/farbverlauf_appdesign_3"
+            android:background="@drawable/farbverlauf_appdesign_v3"
             android:layout_weight="1">
 
         <Button
@@ -227,7 +227,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
 
-                    android:src="@drawable/icon_funktion_containern_gross_v1_dunkelgrau"
+                    android:src="@drawable/icon_containern_dunkelgrau"
                     android:scaleType="fitCenter"
                     android:padding="12dp"
 

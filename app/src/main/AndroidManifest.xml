@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Launchbildschirm">
+        <activity android:name=".Screens.LaunchScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,18 +17,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginScreen"></activity>
+        <activity android:name=".Screens.LoginScreen"></activity>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".BuchenScreen1"></activity>
-        <activity android:name=".BuchenScreen2"></activity>
-        <activity android:name=".BuchenScreen2_1"></activity>
-        <activity android:name=".BuchenScreen4"></activity>
-        <activity android:name=".ContainernScreen2"></activity>
-        <activity android:name=".PopUpUser"
-            android:theme="@style/AppTheme.PopUpUser">
+        <activity android:name=".Screens.BuchenScreen1"></activity>
+        <activity android:name=".Screens.BuchenScreen2"></activity>
+        <activity android:name=".Screens.BuchenScreen2_1"></activity>
+        <activity android:name=".Screens.BuchenScreen4"></activity>
+        <activity android:name=".Screens.ContainernScreen2"></activity>
+        <activity android:name=".Dialogs.PopUpUser"
+            android:theme="@style/AppTheme.PopUpTheme">
         </activity>
-        <activity android:name=".ContainernScreen1"></activity>
-        <activity android:name=".ContainernScreen3"></activity>
+        <activity android:name=".Screens.ContainernScreen1"></activity>
+        <activity android:name=".Screens.ContainernScreen3"></activity>
 
     </application>
 </manifest>

@@ -20,7 +20,7 @@
             android:id="@+id/color_topsection"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/farbverlauf_appdesign_3"
+            android:background="@drawable/farbverlauf_appdesign_v3"
             android:layout_weight="1">
 
         <Button
@@ -152,7 +152,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:padding="5dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/icon_grosses_schiff_gross_v1" />
+                android:src="@drawable/icon_grosses_schiff" />
 
             <ImageButton
                 android:id="@+id/kleines_schiff_auswahl"
@@ -163,7 +163,7 @@
                 android:paddingTop="22dp"
                 android:paddingBottom="4dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/icon_kleines_schiff_gross_v1" />
+                android:src="@drawable/icon_kleines_schiff" />
 
         </LinearLayout>
 
@@ -294,7 +294,7 @@
                     android:layout_weight="5"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_button_yes"/>
+                    android:src="@drawable/button_vorwaerts"/>
 
             </LinearLayout>
 
@@ -306,7 +306,7 @@
     android:id="@+id/bottomSection"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@drawable/farbverlauf_appdesign_3"
+    android:background="@drawable/farbverlauf_appdesign_v3"
     android:orientation="horizontal">
 
         <LinearLayout

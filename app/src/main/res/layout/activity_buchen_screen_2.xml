@@ -20,7 +20,7 @@
             android:id="@+id/color_topsection"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/farbverlauf_appdesign_3"
+            android:background="@drawable/farbverlauf_appdesign_v3"
             android:layout_weight="1">
 
         <Button
@@ -188,7 +188,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:padding="7dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/icon_schiffscontainer20_gross_v1" />
+                android:src="@drawable/icon_container_20" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -209,7 +209,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="3dp"
 
-                    android:background="@drawable/zellenrahmen_2"
+                    android:background="@drawable/zellenrahmen_v2"
 
                     android:textColor="@color/hell_grau_schrift"
                     android:text="-"
@@ -319,7 +319,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:padding="7dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_schiffscontainer40_gross_v1" />
+                    android:src="@drawable/icon_container_40" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -340,7 +340,7 @@
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="3dp"
 
-                        android:background="@drawable/zellenrahmen_2"
+                        android:background="@drawable/zellenrahmen_v2"
 
                         android:textColor="@color/hell_grau_schrift"
                         android:text="-"
@@ -534,7 +534,7 @@
                     android:layout_weight="5"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_button_yes"/>
+                    android:src="@drawable/button_vorwaerts"/>
 
             </LinearLayout>
 
@@ -546,7 +546,7 @@
     android:id="@+id/bottomSection"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@drawable/farbverlauf_appdesign_3"
+    android:background="@drawable/farbverlauf_appdesign_v3"
     android:orientation="horizontal">
 
         <View
