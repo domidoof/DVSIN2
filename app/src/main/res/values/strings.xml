@@ -16,14 +16,22 @@
 
 
 
-    <!-- Strings für das THEMA: Fehlermeldungen  -->
-
+    <!-- Strings für das THEMA: Fehlermeldungen "Überladen"  -->
 
     <string name="fehlertext_ueberschift_v1">Leider zu SCHWER!</string>
 
     <string name="fehlertext_erklaerung_v1_teil_1">Die maximale Ladekapazität</string>
 
     <string name="fehlertext_erklaerung_v1_teil_2">wurde überschritten</string>
+
+
+    <!-- Strings für das THEMA: Fehlermeldungen "Überladen"  -->
+
+    <string name="fehlertext_ueberschift_v2">Etwas zu leer!</string>
+
+    <string name="fehlertext_erklaerung_v2_teil_1">Gib bitte eine Anzahl</string>
+
+    <string name="fehlertext_erklaerung_v2_teil_2">an Containern ein!</string>
 
 
     <!-- Strings für das THEMA: Login -->

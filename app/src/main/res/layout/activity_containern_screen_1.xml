@@ -141,78 +141,78 @@
             android:layout_height="match_parent">
 
             <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+
+            android:paddingBottom="8dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-
-                android:paddingBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:paddingLeft="20dp"
-                    android:layout_weight="2"
-                    android:background="#ff883f"
->
-
-                    <TextView
-                        android:id="@+id/buchungsnummer_abkuerzung_01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingRight="2dp"
-                        android:text="BuNr.:"
-                        android:textSize="21sp"
-                        android:textColor="#fbe5d6"
-
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/buchungsnummer_aktuell_01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:textSize="21sp"
-                        android:paddingRight="10dp"
-                        android:paddingLeft="2dp"
-                        android:text="123456789"
-                        android:textColor="#fbe5d6"
-                        android:layout_gravity="center"/>
-
-
-                </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:layout_weight="2"
+                android:background="#ff883f"
+                >
 
                 <TextView
-                    android:id="@+id/abstand_01_01"
+                    android:id="@+id/buchungsnummer_abkuerzung_01"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:gravity="center"/>
-
-                <Button
-                    android:id="@+id/buchung_auswaehlen_01_01"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"                    android:text=">"
-
+                    android:layout_height="wrap_content"
+                    android:paddingRight="2dp"
+                    android:text="BuNr.:"
+                    android:textSize="21sp"
                     android:textColor="#fbe5d6"
-                    android:textSize="30sp"
-                    android:background="#ff883f"/>
+
+                    android:layout_gravity="center"/>
 
                 <TextView
-                    android:id="@+id/abstand_02_01"
+                    android:id="@+id/buchungsnummer_aktuell_01"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="0.25"/>
+                    android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/abstand_03_01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.125"
-                    android:background="#ff731d"/>
+                    android:textSize="21sp"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="2dp"
+                    android:text="123456789"
+                    android:textColor="#fbe5d6"
+                    android:layout_gravity="center"/>
 
 
-            </TableRow>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/abstand_01_01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/buchung_auswaehlen_01_01"
+                android:layout_width="70dp"
+                android:layout_height="70dp"                    android:text=">"
+
+                android:textColor="#fbe5d6"
+                android:textSize="30sp"
+                android:background="#ff883f"/>
+
+            <TextView
+                android:id="@+id/abstand_02_01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="0.25"/>
+
+            <TextView
+                android:id="@+id/abstand_03_01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.125"
+                android:background="#ff731d"/>
+
+
+        </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"

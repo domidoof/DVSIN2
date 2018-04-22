@@ -17,13 +17,13 @@ public class BuchenScreen1 extends AppCompatActivity {
 
     // -- INSTANZVARIABLEN festlegen -- //
 
-    // int
+    // INT
 
     int button_grosses_Schiff_gedrueckt;
     int button_kleines_Schiff_gedrueckt;
 
 
-    // String
+    // STRING
 
 
 
@@ -209,7 +209,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                             // BUCHUNG "aktuelleBuchung" initialisieren
 
-                            aktuelleBuchung = new Buchung(777777777,"Kleines Schiff", 2, 0, 0);
+                            aktuelleBuchung = new Buchung(777777777,"Kleines Schiff", 0, 0, 0);
 
                         }
 

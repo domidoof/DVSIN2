@@ -15,7 +15,7 @@ public class BuchenScreen2 extends AppCompatActivity {
 
     // -- INSTANZVARIABLEN festlegen -- //
 
-    // int
+    // INT
 
    		int button_vorwaerts_voll;
 		int button_vorwaerts_transparent;
@@ -23,7 +23,7 @@ public class BuchenScreen2 extends AppCompatActivity {
 		int kapazitaet_uebergeben;
 		int aktuelle_kapazitaet;
 
-    // String
+    // STRING
 
 		String text_kleines_schiff;
 		String text_grosses_schiff;
@@ -390,13 +390,13 @@ public class BuchenScreen2 extends AppCompatActivity {
         // BUTTONS
 
 			zurueck = (Button) findViewById(R.id.zurueck);
-			vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
 			icon_eingabe_grosser_container = (Button) findViewById(R.id.icon_eingabe_grosser_container);
 			icon_eingabe_kleiner_container = (Button) findViewById(R.id.icon_eingabe_kleiner_container);
 
 
         // ImageBUTTONS
-		
+
+			vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
 
     }
 	
@@ -413,7 +413,7 @@ public class BuchenScreen2 extends AppCompatActivity {
             text_grosses_schiff = "Großes Schiff";
 			uebergebener_schiffstyps = aktuelleBuchung.getSchifftyp();
 
-		// Bundle initalisieren
+		// BUNDLE initalisieren
 
 			wertesammlung = new Bundle();
 

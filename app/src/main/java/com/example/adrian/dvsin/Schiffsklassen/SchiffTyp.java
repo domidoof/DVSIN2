@@ -11,7 +11,10 @@ public class SchiffTyp extends Ebene {
 
     int stapelhoeheMax;
 
-    public SchiffTyp(int ebenenanzahl) {
+    public SchiffTyp(int ebenenanzahl, int stapelhoeheMax) {
+
         super(ebenenanzahl);
+        this.stapelhoeheMax = stapelhoeheMax;
+
     }
 }

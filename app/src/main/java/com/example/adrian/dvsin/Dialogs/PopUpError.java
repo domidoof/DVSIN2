@@ -26,7 +26,7 @@ public class PopUpError extends AppCompatActivity {
         font_roboto_medium = Typeface.createFromAsset(getAssets(), "fonts/roboto-medium.ttf");
 
 
-        fehlertext_ueberschift = (TextView) findViewById(R.id.fehlertext_ueberschift);
+        fehlertext_ueberschift = (TextView) findViewById(R.id.fehlertext_ueberschift_v1);
         fehlertext_erklaerung_v1_teil_1 = (TextView) findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
         fehlertext_erklaerung_v1_teil_2 = (TextView) findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
 

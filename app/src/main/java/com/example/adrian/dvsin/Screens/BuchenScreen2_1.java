@@ -14,286 +14,552 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.R;
 
 public class BuchenScreen2_1 extends AppCompatActivity {
 
+    // -- INSTANZVARIABLEN festlegen -- //
 
-    // Test Buchen
+    // INT
 
-    int containerart_zahl;
+		int containerart_zahl;
+		int kapazitaetMAX;
+		int aktuelle_eingabe_speicher;
+        int aktuelle_kapazitaet;
+        int zwischenwert;
+        int returnuebergabe;
+
+
+    // STRING
+
+		String text_kleines_schiff;
+		String text_grosses_schiff;
+		String uebergebener_schiffstyps;
+
+		
+    // -- Others -- //
+	
+	// TEXTVIEW
+
+    // TEXTVIEW Menüstruktur
+	
+	TextView eingabeaufforderung_1, eingabeaufforderung_2, eingabeaufforderung_3, eingabeaufforderung_4;
+	
+	// TEXTVIEW Containereingabe
+
+	TextView container_nummer, container_container, eingabefeld_container;
+	
+	// TEXTVIEW Containereingabe
+	
+	TextView fehlertext_ueberschift, fehlertext_erklaerung_v1_teil_1, fehlertext_erklaerung_v1_teil_2;
+
+
+    // FONTS
+
+    Typeface font_roboto_thin, font_roboto_medium;
+	
+	
+	// EDITTEXT
+	
+	EditText aktuelle_eingabe;
+
+
+    // BUTTONS
+
+    Button zurueck;
+
+	// POPUPVIEW
+
+	View popupView;
+
+	// ImageView
+	
+	ImageView aktueller_container;
 	
 
-    // TextView Elemente
+    // ImageBUTTONS
 
-    TextView zurueck, eingabeaufforderung_1, eingabeaufforderung_2, eingabeaufforderung_3, eingabeaufforderung_4, container_nummer, container_container, eingabefeld_container;
-    Typeface font_roboto_thin, font_roboto_medium;
+	ImageButton vorwaerts;
 
 
+    // BUCHUNG
+
+	Buchung aktuelleBuchung;
+	
+	
+	// BUNDLES
+
+	Bundle wertesammlung;
+	
+	
+	// POPUPWINDOW
+	
+	PopupWindow popupWindow;
+
+
+    // ########## //
+
+
+    // *** HAUPTMETHODE *** //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+		
+		// -- ACTIVITY starten -- //
+		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_2_1);
 
+        // IDs zuordnen
 
-        zurueck = (TextView) findViewById(R.id.zurueck);
-        eingabeaufforderung_1 = (TextView) findViewById(R.id.eingabeaufforderung_1);
-        eingabeaufforderung_2 = (TextView) findViewById(R.id.eingabeaufforderung_2);
-        eingabeaufforderung_3 = (TextView) findViewById(R.id.eingabeaufforderung_3);
-        eingabeaufforderung_4 = (TextView) findViewById(R.id.eingabeaufforderung_4);
-        container_nummer = (TextView) findViewById(R.id.container_nummer);
-        container_container = (TextView) findViewById(R.id.container_container);
-        eingabefeld_container = (TextView) findViewById(R.id.eingabefeld_container);
-
-        font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
-
-        zurueck.setTypeface(font_roboto_thin);
-        eingabeaufforderung_1.setTypeface(font_roboto_thin);
-        eingabeaufforderung_2.setTypeface(font_roboto_medium);
-        eingabeaufforderung_3.setTypeface(font_roboto_thin);
-        eingabeaufforderung_4.setTypeface(font_roboto_thin);
-        container_nummer.setTypeface(font_roboto_medium);
-        container_container.setTypeface(font_roboto_thin);
-        eingabefeld_container.setTypeface(font_roboto_thin);
+            setIDs();
 
 
-        // INHALT Activity wählen --- //
+        // FONTS einbeziehen
 
-        // Inhalt: Aktuelle Buchungseigenschaften von letzter Aktivity holen
+			setFonts();
 
-        final Buchung aktuelleBuchung = (Buchung) getIntent().getExtras().getParcelable("aktuelleBuchungKEY");
+		// INTENTINHALT holen
 
-        ImageView aktueller_container = (ImageView) findViewById(R.id.aktueller_container);
-
-        final EditText aktuelle_eingabe = (EditText) findViewById(R.id.eingabefeld_container);
+		getIntentInhalt();
 
 
+		// STARTINITIALISIERUNG
 
-        //--- TEST Kapazität Schiff festlegen ---//
-
-        String text_kleines_schiff = new String("Kleines Schiff");
-        String text_grosses_schiff = new String("Großes Schiff");
-
-        String uebergebener_schiffstyps = new String(aktuelleBuchung.getSchifftyp());
-
-        int kapazitaetMAX = 0;
-
-        if (text_kleines_schiff.equals(uebergebener_schiffstyps)){
-
-            kapazitaetMAX = 8;
-
-        }
-
-        if (text_grosses_schiff.equals(uebergebener_schiffstyps)){
-
-            kapazitaetMAX = 20;
-
-        }
-
-        // ### //
+		startInitialization();
 
 
+        // FONTS anwenden
 
-        // Großer oder kleiner Container soll gesetzt werden
-
-        // Kleiner Container
-
-
-        if (aktuelleBuchung.getContainerart() == 1) {
-
-            container_nummer.setText(R.string.container_nummer_20);
-
-            aktueller_container.setImageResource(R.drawable.icon_container_20_weiss);
-
-            containerart_zahl = 1;
-        }
-
-        // Großer Container
-
-        if (aktuelleBuchung.getContainerart() == 2) {
-
-            container_nummer.setText(R.string.container_nummer_40);
-
-            aktueller_container.setImageResource(R.drawable.icon_container_40_weiss);
-
-            containerart_zahl = 2;
-        }
+            setFontsToIDs();
 
 
-        //BUTTONS
+		// SCREENINHALT festlegen
 
-        // BUTTON zurück (links oben) aktivieren
+			showOnScreen();
 
-        final Button zurueck = (Button) findViewById(R.id.zurueck);
-        final int finalKapazitaetMAX = kapazitaetMAX;
-        zurueck.setOnClickListener(new View.OnClickListener() {
+
+        // -- BUTTONS  -- //
+
+        // BUTTON "zurueck" drücken
+
+            buttonGetBack();
+
+			
+		// -- BUTTON "vorwaerts" drücken
+		
+			buttonNextActivity();
+       
+	   // -- ACTIVITY Ende -- //
+
+    // *** ENDE *** //
+	   
+    }
+
+    // --- WEITERE Methoden --- //
+	
+	private void buttonNextActivity() {
+		
+		
+        // BUTTON "vorwaerts" drücken
+
+        vorwaerts.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BuchenScreen2_1.this, BuchenScreen2.class);
-
-                int aktuelle_eingabe_speicher;
-                int aktuelle_kapazitaet = getIntent().getExtras().getInt("aktuelle_kapazitaetKEY");
-                int zwischenwert;
-
-                eingabeaufforderung_1.setText(Integer.toString(aktuelle_kapazitaet));
-                eingabeaufforderung_2.setText(Integer.toString(finalKapazitaetMAX));
-
-
+				
+				
+				// prüfen ob EDITTEXT "aktuelle_eingabe" leer ist
+				
+				// Wenn JA, dann zeig Dialog "DialogEmptyV1"
+				
                 if (aktuelle_eingabe.getText().toString().isEmpty()) {
+
+					showDialogEmptyEditText();
+
+					return;
 
                 }
 
                 else {
+					
+				// Wenn NEIN, dann wird neue Containeranzahl an KLASSE "BuchenScreen2" übergeben
 
+					setNewContainerAnzahl();
 
-                    aktuelle_eingabe_speicher = Integer.parseInt(aktuelle_eingabe.getText().toString());
+				}
 
-                    if (containerart_zahl == 1) {
+				// Wenn keine Änderungen vorgenommen wurden, verlasse die Methode und zeige das PopUpWindow "Leider zu SCHWER"
 
-                        zwischenwert = aktuelle_kapazitaet - aktuelle_eingabe_speicher;
+				if (returnuebergabe ==  1) {
 
-                        if(zwischenwert >= 0 || aktuelle_eingabe_speicher <= finalKapazitaetMAX && aktuelle_kapazitaet >= aktuelle_eingabe_speicher){
+					showDialogErrorToMuch();
 
-                        aktuelleBuchung.setContainerZahlKlein(aktuelle_eingabe_speicher);
+					return;
 
-                        }
+				}
 
-                        else {
+				
+                // Neue bzw. alte Werte für Atrribute von BUCHUNG "aktuelleBuchung" zurück übergeben
+				
+				intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+				
+                // ACTIVITY BuchenScreen2 starten
 
-                            LayoutInflater layoutInflater
-                                    = (LayoutInflater) getBaseContext()
-                                    .getSystemService(LAYOUT_INFLATER_SERVICE);
-                            View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
-                            final PopupWindow popupWindow = new PopupWindow(
-                                    popupView,
-                                    ViewGroup.LayoutParams.MATCH_PARENT,
-                                    ViewGroup.LayoutParams.WRAP_CONTENT);
+                startActivity(intent);
+            }
+        });
+		
+	}
+	
+    private void buttonGetBack() {
+		
+        zurueck.setOnClickListener(new View.OnClickListener() {
 
-                            // TEST
+            @Override
+            public void onClick(View view) {
 
-                            popupWindow.setTouchable(true);
-                            popupWindow.setFocusable(false);
-                            popupWindow.setOutsideTouchable(true);
+                Intent intent = new Intent(BuchenScreen2_1.this, BuchenScreen2.class);
 
-                            popupWindow.setBackgroundDrawable(new BitmapDrawable());
+				// Alte Werte für Atrribute von BUCHUNG "aktuelleBuchung" zurück übergeben
 
-                            popupWindow.showAtLocation(zurueck,0,0, 50);
+				intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
 
-                            TextView fehlertext_ueberschift, fehlertext_erklaerung_v1_teil_1, fehlertext_erklaerung_v1_teil_2;
-
-                            fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift);
-                            fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
-                            fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
-
-                            fehlertext_ueberschift.setTypeface(font_roboto_medium);
-                            fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
-                            fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
-
-                            return;
-
-                        }
-                    }
-
-                    if (containerart_zahl == 2) {
-
-                        zwischenwert = aktuelle_kapazitaet - 2*aktuelle_eingabe_speicher;
-
-                        if(zwischenwert >= 0 || 2*aktuelle_eingabe_speicher <= finalKapazitaetMAX && aktuelle_kapazitaet >= 2*aktuelle_eingabe_speicher ){
-
-                            aktuelleBuchung.setContainerZahlGross(aktuelle_eingabe_speicher);
-
-                        }
-
-                        else {
-
-                            LayoutInflater layoutInflater
-                                    = (LayoutInflater) getBaseContext()
-                                    .getSystemService(LAYOUT_INFLATER_SERVICE);
-                            View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
-                            final PopupWindow popupWindow = new PopupWindow(
-                                    popupView,
-                                    ViewGroup.LayoutParams.MATCH_PARENT,
-                                    ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                            // TEST
-
-                            popupWindow.setTouchable(true);
-                            popupWindow.setFocusable(false);
-                            popupWindow.setOutsideTouchable(true);
-
-                            popupWindow.setBackgroundDrawable(new BitmapDrawable());
-
-                            popupWindow.showAtLocation(zurueck,0,0, 50);
-
-                            TextView fehlertext_ueberschift, fehlertext_erklaerung_v1_teil_1, fehlertext_erklaerung_v1_teil_2;
-
-                            fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift);
-                            fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
-                            fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
-
-                            fehlertext_ueberschift.setTypeface(font_roboto_medium);
-                            fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
-                            fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
-
-                            return;
-
-                        }
-                    }
-                }
-
-
-                intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+				// ACTIVITY BuchenScreen2 starten
 
                 startActivity(intent);
 
             }
         });
 
-        final ImageButton vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
-        vorwaerts.setOnClickListener(new View.OnClickListener() {
+    }
 
-            @Override
-            public void onClick(View view) {
+    private void setFontsToIDs() {
 
-                LayoutInflater layoutInflater
-                        = (LayoutInflater) getBaseContext()
-                        .getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
-                final PopupWindow popupWindow = new PopupWindow(
-                        popupView,
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
+        // FONTS SETZEN
+		
+		// FONTS Menüstruktur SETZEN 
 
-                // TEST
+		zurueck.setTypeface(font_roboto_thin);
+		
+        eingabeaufforderung_1.setTypeface(font_roboto_thin);
+        eingabeaufforderung_2.setTypeface(font_roboto_medium);
+        eingabeaufforderung_3.setTypeface(font_roboto_thin);
+        eingabeaufforderung_4.setTypeface(font_roboto_thin);
 
-                popupWindow.setTouchable(true);
-                popupWindow.setFocusable(false);
-                popupWindow.setOutsideTouchable(true);
+        // FONTS Containereingabe SETZEN
 
-                popupWindow.setBackgroundDrawable(new BitmapDrawable());
+		container_nummer.setTypeface(font_roboto_medium);
+        container_container.setTypeface(font_roboto_thin);
+        eingabefeld_container.setTypeface(font_roboto_thin);
+		
+		// FONTS PopUpWindow SETZEN
+		
+		fehlertext_ueberschift.setTypeface(font_roboto_medium);
+        fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
+        fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
+	
+    }
 
-                popupWindow.showAtLocation(vorwaerts,0,0, 50);
+    private void setFonts() {
 
-                TextView fehlertext_ueberschift, fehlertext_erklaerung_v1_teil_1, fehlertext_erklaerung_v1_teil_2;
+        // FONTS einbeziehen
 
-                fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift);
-                fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
-                fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
-
-                fehlertext_ueberschift.setTypeface(font_roboto_medium);
-                fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
-                fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
-
-
-
-            }
-        });
-
+        font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
+        font_roboto_medium = Typeface.createFromAsset(getAssets(), "fonts/roboto-medium.ttf");
 
     }
 
+    private void setIDs() {
+
+        // IDs ZUORDNEN
+
+        // TEXTVIEW
+
+        // TEXTVIEW Menüstruktur ZUORDNEN
+		
+        eingabeaufforderung_1 = (TextView) findViewById(R.id.eingabeaufforderung_1);
+        eingabeaufforderung_2 = (TextView) findViewById(R.id.eingabeaufforderung_2);
+        eingabeaufforderung_3 = (TextView) findViewById(R.id.eingabeaufforderung_3);
+        eingabeaufforderung_4 = (TextView) findViewById(R.id.eingabeaufforderung_4);
+		
+        // TEXTVIEW Containereingabe ZUORDNEN
+		
+		container_nummer = (TextView) findViewById(R.id.container_nummer);
+        container_container = (TextView) findViewById(R.id.container_container);
+        eingabefeld_container = (TextView) findViewById(R.id.eingabefeld_container);
+
+        // BUTTONS
+
+		zurueck = (Button) findViewById(R.id.zurueck);
+
+
+        // ImageBUTTONS
+		
+		vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
+			
+    }
+	
+	private void startInitialization() {
+		
+				
+		// STRING initialisieren
+		
+			text_kleines_schiff = "Kleines Schiff";
+            text_grosses_schiff = "Großes Schiff";
+			uebergebener_schiffstyps = aktuelleBuchung.getSchifftyp();
+		
+		// IMAGEVIEW initialisieren
+			
+			aktueller_container = (ImageView) findViewById(R.id.aktueller_container);
+			
+		// INT kapazitaetMAX initalisieren
+		
+			getAktuelleMaxKapazitaet();
+
+			
+		// EDITTEXT initialisieren
+			
+			aktuelle_eingabe = (EditText) findViewById(R.id.eingabefeld_container);
+
+		// LAYOUTINFLATER initialisieren
+
+		LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+
+
+		// VIEW initialisieren
+
+		View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
+
+
+		// POPUPWINDOW initialisieren
+
+		popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+		// TEXTVIEW PopUpWindow
+
+		fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift_v1);
+		fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
+		fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
+
+	}
+			
+	private void getIntentInhalt() {
+			
+		// BUCHUNG "aktulleBuchung" holen
+			
+			aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
+
+		// INT "aktuelle_kapazitaet" holen
+
+		aktuelle_kapazitaet = getIntent().getExtras().getInt("aktuelle_kapazitaetKEY");
+		
+		}
+
+	private void showOnScreen() {
+			
+			
+			// --- SHOW entweder Inhalt in Bezug auf einen kleinen oder einen großen Container --- //
+			
+			// "Kleiner Container" wurde ausgewählt
+
+			if (aktuelleBuchung.getContainerart() == 1) {
+				
+				// Containernummer und Containerimage setzen
+
+				container_nummer.setText(R.string.container_nummer_20);
+
+				aktueller_container.setImageResource(R.drawable.icon_container_20_weiss);
+				
+				
+				// INT containerart_zahl initialisieren
+
+				containerart_zahl = 1;
+			
+			}
+			
+
+			// "Großer Container" wurde ausgewählt
+			
+			if (aktuelleBuchung.getContainerart() == 2) {
+				
+				// Containernummer und Containerimage setzen
+
+				container_nummer.setText(R.string.container_nummer_40);
+
+				aktueller_container.setImageResource(R.drawable.icon_container_40_weiss);
+				
+				
+				// INT containerart_zahl initialisieren				
+
+				containerart_zahl = 2;
+            
+			}
+					
+		}
+			
+	private void getAktuelleMaxKapazitaet() {
+			
+			// Kleines Schiff gewählt, maximaler Platz = 8
+			
+			if (text_kleines_schiff.equals(uebergebener_schiffstyps)){
+
+				kapazitaetMAX = 8;
+
+			}
+			
+			
+			// Großes Schiff gewählt, maximaler Platz = 20
+
+			if (text_grosses_schiff.equals(uebergebener_schiffstyps)){
+
+				kapazitaetMAX = 20;
+
+			}
+			
+		}
+		
+		private void setNewContainerAnzahl() {
+		
+		// Eingabe aus EDITTEXT "aktuelle_eingabe" in INT umwandeln
+		
+		aktuelle_eingabe_speicher = Integer.parseInt(aktuelle_eingabe.getText().toString());
+		
+		// PRÜFEN ob kleiner oder großer Container ausgeählt wurde
+		
+		// Kleiner Container gewählt 
+
+			if (containerart_zahl == 1) {
+				
+						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
+
+                        zwischenwert = aktuelle_kapazitaet - aktuelle_eingabe_speicher;
+						
+						// Wenn ausreichend JA, dann Anzahl kleiner Container in Buchung erhöhen
+
+                        if(zwischenwert >= 0 || aktuelle_eingabe_speicher <= aktuelleBuchung.getContainerZahlKlein() || (kapazitaetMAX - aktuelle_eingabe_speicher <= aktuelle_kapazitaet) && (aktuelle_eingabe_speicher <= kapazitaetMAX)){
+
+							aktuelleBuchung.setContainerZahlKlein(aktuelle_eingabe_speicher);
+
+
+							// Damit POPUPWINDOW "DialogErrorV1" nicht mehr angezeigt wird!
+
+							returnuebergabe = 0;
+
+                        }
+						
+						// Wenn ausreichend NEIN, dann zeig POPUPWINDOW "DialogErrorV1"
+
+                        else {
+
+							returnuebergabe = 1;
+
+							return;
+							
+						}
+
+                         
+                     }
+            
+		// Großer Container gewählt 
+
+			if (containerart_zahl == 2) {
+				
+						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
+
+						zwischenwert = aktuelle_kapazitaet - 2*aktuelle_eingabe_speicher;
+						
+						// Wenn ausreichend JA, dann Anzahl kleiner Container in Buchung erhöhen 
+
+                        if(zwischenwert >= 0 || aktuelle_eingabe_speicher <= aktuelleBuchung.getContainerZahlGross()|| (kapazitaetMAX - 2*aktuelle_eingabe_speicher <= aktuelle_kapazitaet) && (2*aktuelle_eingabe_speicher <= kapazitaetMAX)){
+
+							aktuelleBuchung.setContainerZahlGross(aktuelle_eingabe_speicher);
+
+							// Damit POPUPWINDOW "DialogErrorV1" nicht mehr angezeigt wird!
+
+							returnuebergabe = 0;
+
+                        }
+						
+						// Wenn ausreichend NEIN, dann zeig Dialog "DialogErrorV1"
+
+                        else {
+
+							returnuebergabe = 1;
+
+							return;
+							
+						}
+
+                     }
+	}
+
+	private void showDialogErrorToMuch(){
+		
+		setPopUpDetailsForAll();
+		
+		// TEXTVIEW updaten
+			
+		setTextViewDialogErrorToMuch();
+		
+        return;
+	}	
+		
+	private void showDialogEmptyEditText(){
+
+		setPopUpDetailsForAll();
+		
+		// TEXTVIEW updaten
+
+		setTextViewDialogEmptyEditText();
+		
+        return;
+	}	
+			
+	private void setTextViewDialogErrorToMuch(){
+		
+			// TEXTVIEW PopUpWindow setzen
+
+		    fehlertext_ueberschift.setText(R.string.fehlertext_ueberschift_v1);
+            fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v1_teil_1);
+			fehlertext_erklaerung_v1_teil_2.setText(R.string.fehlertext_erklaerung_v1_teil_2);
+	}	
+	
+	private void setTextViewDialogEmptyEditText(){
+		
+			// TEXTVIEW PopUpWindow setzen
+
+		fehlertext_ueberschift.setText(R.string.fehlertext_ueberschift_v2);
+		fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v2_teil_1);
+		fehlertext_erklaerung_v1_teil_2.setText(R.string.fehlertext_erklaerung_v2_teil_2);
+		
+		
+	}
+	
+	private void setPopUpDetailsForAll(){
+		
+		// KOMMENTIEREN, wenn verstanden ;)
+
+			// Eigenschaften POPUPWINDOW "popupWindow" festlegen				
+
+            popupWindow.setTouchable(true);
+            popupWindow.setFocusable(false);
+            popupWindow.setOutsideTouchable(true);
+			
+			// Hintergrund festlegen
+
+			popupWindow.setBackgroundDrawable(new BitmapDrawable());
+			
+			// Position ausgehend con BUTTON "vorwaerts"
+
+            popupWindow.showAtLocation(zurueck,0,0,50);
+		
+	}
+	
 }
+
+
+
