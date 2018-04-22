@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/umriss_grosses_schiff"
+        android:background="@drawable/umriss_kleines_schiff_v1"
         android:gravity="fill"
         >
 
@@ -77,7 +77,7 @@
                     android:gravity="center"
                     android:text="Ebene"
                     android:textColor="@color/weiß"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ebenen_nummer"
@@ -195,22 +195,22 @@
 
                 <TextView
                     android:id="@+id/zelle_A1"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_A2"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_A3"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_A4"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -233,7 +233,7 @@
 
                 <TextView
                     android:id="@+id/zelle_B1"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -248,7 +248,7 @@
 
                 <TextView
                     android:id="@+id/zelle_B4"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -271,7 +271,7 @@
 
                 <TextView
                     android:id="@+id/zelle_C1"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -286,7 +286,7 @@
 
                 <TextView
                     android:id="@+id/zelle_C4"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -309,7 +309,7 @@
 
                 <TextView
                     android:id="@+id/zelle_D1"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -324,7 +324,7 @@
 
                 <TextView
                     android:id="@+id/zelle_D4"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -347,7 +347,7 @@
 
                 <TextView
                     android:id="@+id/zelle_E1"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
@@ -362,7 +362,7 @@
 
                 <TextView
                     android:id="@+id/zelle_E4"
-                    style="@style/tabellenzellen_containern_innen"
+                    style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView

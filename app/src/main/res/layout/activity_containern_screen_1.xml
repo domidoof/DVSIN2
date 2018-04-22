@@ -4,7 +4,7 @@
     android:id="@+id/buchen_screen_2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/farbverlauf_appdesign"
+    android:background="@drawable/farbverlauf_appdesign_v0"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:id="@+id/color_topsection"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/farbverlauf_appdesign_3"
+            android:background="@drawable/farbverlauf_appdesign_v3"
             android:layout_weight="1">
 
         <Button
@@ -288,6 +288,8 @@
 
 
             </TableRow>
+
+
 
             <!--
 
@@ -599,6 +601,7 @@
     <!-- bottomSection height muss irgendwie gesetzt werden, dass es passt, wenn ein neue Buchung hinzukommt. Aktueller Wert nur für ein Smartphone optimiert! -->
 
     <LinearLayout
+
         android:id="@+id/bottomSection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -614,8 +617,6 @@
             android:layout_weight="1"
             android:paddingLeft="20dp"
             android:paddingRight="5dp" />
-
-
 
     </LinearLayout>
 

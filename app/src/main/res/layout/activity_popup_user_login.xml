@@ -10,7 +10,7 @@
         android:id="@+id/popup_gesamt_standort"
         android:layout_width="210dp"
         android:layout_height="90dp"
-        android:background="@drawable/shadow_menuebereiche_2"
+        android:background="@drawable/shadow_userpopup"
         android:elevation="8dp"
         android:orientation="vertical"
 
