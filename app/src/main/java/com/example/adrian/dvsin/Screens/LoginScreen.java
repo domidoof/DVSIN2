@@ -28,11 +28,11 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
 
-        slogan_teil_1 =(TextView) findViewById(R.id.slogan_teil_1);
-        slogan_teil_2 = (TextView) findViewById(R.id.slogan_teil_2);
-        slogan_teil_3 = (TextView) findViewById(R.id.slogan_teil_3);
+        slogan_teil_1 =findViewById(R.id.slogan_teil_1);
+        slogan_teil_2 = findViewById(R.id.slogan_teil_2);
+        slogan_teil_3 = findViewById(R.id.slogan_teil_3);
 
-        eingabe_login =(EditText) findViewById(R.id.eingabefeld_login);
+        eingabe_login = findViewById(R.id.eingabefeld_login);
 
         font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
         font_roboto_medium = Typeface.createFromAsset(getAssets(),"fonts/roboto-medium.ttf");
@@ -49,7 +49,7 @@ public class LoginScreen extends AppCompatActivity {
 
         // BUTTON vorwärts zur Activity activity_homescreen
 
-        final ImageButton vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
+        final ImageButton vorwaerts = findViewById(R.id.vorwaerts);
 
         vorwaerts.setVisibility(View.GONE);
 
