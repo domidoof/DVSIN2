@@ -105,14 +105,13 @@ public class BuchenScreen1 extends AppCompatActivity {
             buttonGrossesSchiffWählen();
 
         // ########## //
+
+
+        // -- ACTIVITY Ende -- //
+
+        // *** ENDE *** //
+
     }
-
-    // -- ACTIVITY Ende -- //
-
-    // *** ENDE *** //
-
-
-
 
     // --- WEITERE Methoden --- //
 
@@ -142,7 +141,6 @@ public class BuchenScreen1 extends AppCompatActivity {
             }
         });
     }
-
 
     private void buttonKleinesSchiffWählen() {
 
@@ -227,7 +225,6 @@ public class BuchenScreen1 extends AppCompatActivity {
             }
         });
     }
-
 
     private void buttonGetBack() {
 
