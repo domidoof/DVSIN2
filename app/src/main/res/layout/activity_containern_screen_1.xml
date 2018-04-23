@@ -137,14 +137,15 @@
             android:layout_weight="1">
 
         <TableLayout
+            android:id="@+id/buchungsDatentabelle"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
 
-            android:paddingBottom="8dp">
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:paddingBottom="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -286,6 +287,82 @@
                     android:layout_weight="0.125"
                     android:background="#ff731d"/>
 
+
+            </TableRow>
+
+            <TableRow
+
+                android:id="@+id/buchungsDatenzeile"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:paddingBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:layout_weight="2"
+                    android:background="#ff883f"
+                    >
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="2dp"
+                        android:text="BuNr.:"
+                        android:textSize="21sp"
+                        android:textColor="#fbe5d6"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textSize="21sp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="2dp"
+                        android:text="666456789"
+                        android:textColor="#fbe5d6"
+                        android:layout_gravity="center"/>
+
+
+                </LinearLayout>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:gravity="center"/>
+
+                <Button
+
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"                    android:text=">"
+
+
+                    android:textColor="#fbe5d6"
+                    android:textSize="30sp"
+                    android:background="#ff883f"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.25"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.125"
+                    android:background="#ff731d"/>
 
             </TableRow>
 
@@ -592,7 +669,6 @@
                                     -->
 
         </TableLayout>
-
 
         </ScrollView>
 

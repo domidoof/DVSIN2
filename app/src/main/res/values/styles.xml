@@ -42,29 +42,6 @@
     </style>
     <!-- Erzeugen des Farbeverlaufs, laut App-Design (vgl. PowerPoint/PDF); von links nach rechts-->
 
-
-    <!-- BUTTONS -->
-    <style name="button_zurueck" >
-
-        <!-- TEXT -->
-        <item name="android:textSize">25dp</item>
-        <item name="android:textColor">@color/weiß</item>
-
-
-        <!--PADDING -->
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingLeft">20dp</item>
-        <!-- <item name="android:paddingRight"></item> -->
-
-
-        <!--SONSTIGES -->
-        <item name="android:background">@android:color/transparent</item>
-
-        <item name="android:gravity">left</item>
-
-    </style>
-
     <!-- LOGIN -->
 
     <style name="slogan">
@@ -103,6 +80,35 @@
         <item name="android:textColor">@color/standard_grau</item>
 
     </style>
+
+    <!-- BUTTONS -->
+
+    <style name="button_zurueck_v2">
+
+        <item name="android:orientation">horizontal</item>
+
+        <!-- TEXT -->
+
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/weiß</item>
+
+        <!-- PADDING -->
+
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">8dp</item>
+
+        <!-- <item name="android:paddingRight"></item> -->
+
+
+        <!--SONSTIGES -->
+
+        <item name="android:background">@android:color/transparent</item>
+
+        <item name="android:gravity">left</item>
+
+    </style>
+
 
     <!-- BUCHEN -->
 
@@ -158,6 +164,7 @@
     <style name="menuetext_gross_roter_hintergrund">
 
         <!-- TEXT -->
+
         <item name="android:textSize">21sp</item>
         <item name="android:textColor">@color/hell_organge_schrift</item>
 
@@ -306,5 +313,90 @@
     </style>
 
 
+    // -- Buchungsdatentabelle -- //
+
+
+    <style name="buchungsteil">
+
+    <item name ="android:layout_width">match_parent</item>
+    <item name ="android:layout_height">match_parent</item>
+    <item name ="android:orientation">horizontal</item>
+    <item name ="android:paddingLeft">20dp</item>
+    <item name="android:layout_weight">2</item>
+    <item name="android:background">#ff883f</item>
+
+    </style>
+
+    <style name="buchungsNrAbkürzung">
+
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">wrap_content</item>
+
+        <item name ="android:paddingRight">2dp</item>
+
+        <item name="android:text">BuNr.:</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#fbe5d6</item>
+
+        <item name="android:layout_gravity">center</item>
+
+    </style>
+
+    <style name="buchungsNrAktuell">
+
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">wrap_content</item>
+
+        <item name ="android:paddingRight">10dp</item>
+        <item name ="android:paddingLeft">2dp</item>
+
+        <item name="android:text">666456789</item>
+        <item name="android:textSize">21sp</item>
+
+        <item name="android:textColor">#fbe5d6</item>
+        <item name="android:layout_gravity">center</item>
+
+    </style>
+
+    <style name="zwischenBereich1">
+
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">match_parent</item>
+
+        <item name ="android:layout_weight">0.25</item>
+        <item name="android:layout_gravity">center</item>
+
+    </style>
+
+    <style name="weiter">
+
+        <item name ="android:layout_width">70dp</item>
+        <item name ="android:layout_height">70dp</item>
+
+        <item name=" android:background">#ff883f</item>
+        <item name="android:textSize">30sp</item>
+
+        <item name="android:textColor">#fbe5d6</item>
+        <item name="android:text">@string/weiterButton</item>
+
+    </style>
+
+    <style name="zwischenBereich3">
+
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">match_parent</item>
+
+        <item name ="android:layout_weight">0.125</item>
+        <item name="android:background">#ff731d</item>
+
+    </style>
+
+    <style name="buchungsDatenzeile">
+
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">70dp</item>
+        <item name="android:paddingBottom">8dp</item>
+
+    </style>
 
 </resources>

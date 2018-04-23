@@ -23,13 +23,13 @@
             android:background="@drawable/farbverlauf_appdesign_v3"
             android:layout_weight="1">
 
-        <Button
-            android:id="@+id/zurueck"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/zurueckzeichen"
-            style="@style/button_zurueck"/>
+            <Button
+                android:id="@+id/zurueck"
+                style="@style/button_zurueck_v2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/zurueckzeichen" />
 
         <TextView
             android:id="@+id/schrittanzeige"
