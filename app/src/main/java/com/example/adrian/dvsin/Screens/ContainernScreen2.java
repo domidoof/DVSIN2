@@ -48,11 +48,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD:app/src/main/java/com/example/adrian/dvsin/Screens/ContainernScreen2.java
         setContentView(R.layout.activity_containern_screen_2_1);
-=======
-        setContentView(R.layout.activity_containern_screen_2_gs);
->>>>>>> master:app/src/main/java/com/example/adrian/dvsin/ContainernScreen2.java
 
 
         // TextView Menüstruktur zuweisen

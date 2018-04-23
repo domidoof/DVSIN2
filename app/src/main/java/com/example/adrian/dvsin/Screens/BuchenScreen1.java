@@ -17,13 +17,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
     // -- INSTANZVARIABLEN festlegen -- //
 
-<<<<<<< HEAD:app/src/main/java/com/example/adrian/dvsin/Screens/BuchenScreen1.java
     // INT
-=======
-    //######## Github Text #########
-
-// TEST -- FUNKTION Buchen -- //
->>>>>>> master:app/src/main/java/com/example/adrian/dvsin/BuchenScreen1.java
 
     int button_grosses_Schiff_gedrueckt;
     int button_kleines_Schiff_gedrueckt;
@@ -196,11 +190,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                     // Prüfen ob BUTTON "schiff_klein_onklick" oder BUTTON "schiff_grosses_onklick" gedrückt
 
-<<<<<<< HEAD:app/src/main/java/com/example/adrian/dvsin/Screens/BuchenScreen1.java
                     // großes Schiff gewählt
-=======
-                        Buchung aktuelleBuchung = new Buchung(987654321,"Großes Schiff", 0, 0, 0);
->>>>>>> master:app/src/main/java/com/example/adrian/dvsin/BuchenScreen1.java
 
                     if (button_grosses_Schiff_gedrueckt == 1) {
 
@@ -215,15 +205,7 @@ public class BuchenScreen1 extends AppCompatActivity {
                     {
                         if (button_kleines_Schiff_gedrueckt == 1) {
 
-<<<<<<< HEAD:app/src/main/java/com/example/adrian/dvsin/Screens/BuchenScreen1.java
                             // BUCHUNG "aktuelleBuchung" initialisieren
-=======
-                            Intent intent = new Intent(BuchenScreen1.this, BuchenScreen2.class);
-
-                            Buchung aktuelleBuchung = new Buchung(777777777,"Kleines Schiff", 0, 0, 0);
-
-                            intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
->>>>>>> master:app/src/main/java/com/example/adrian/dvsin/BuchenScreen1.java
 
                             aktuelleBuchung = new Buchung(777777777,"Kleines Schiff", 0, 0, 0);
 

@@ -17,8 +17,6 @@
     <string name="weiterButton">&gt;</string>
 
 
-
-<<<<<<< HEAD
     <!-- Strings für das THEMA: Fehlermeldungen "Überladen"  -->
 =======
     <!-- Strings für das THEMA: Fehlermeldungen  -->
@@ -32,7 +30,6 @@
     <string name="fehlertext_erklaerung_v1_teil_2">wurde überschritten</string>
 
 
-<<<<<<< HEAD
     <!-- Strings für das THEMA: Fehlermeldungen "Überladen"  -->
 
     <string name="fehlertext_ueberschift_v2">Etwas zu leer!</string>
