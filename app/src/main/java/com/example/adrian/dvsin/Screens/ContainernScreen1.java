@@ -127,7 +127,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         // Setzen der individuellen LayoutParts
 
-        TableRow.LayoutParams buchungsDatenzeile_Layout = new TableRow.LayoutParams(1000,  170, 1f);
+        TableRow.LayoutParams buchungsDatenzeile_Layout = new TableRow.LayoutParams(100,  7770);
 
         LinearLayout.LayoutParams buchungsteil_Layout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.MATCH_PARENT, 4);
 
