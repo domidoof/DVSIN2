@@ -40,7 +40,11 @@
             android:paddingBottom="24dp"
             android:paddingLeft="40dp"
 
+<<<<<<< HEAD
             android:src="@drawable/icon_dialog_error_weiss"
+=======
+            android:src="@drawable/icon_gross_fehlermeldung_weiss"
+>>>>>>> master
             android:background="@android:color/transparent"
             />
 
@@ -53,7 +57,11 @@
                 android:orientation="vertical">
 
                 <TextView
+<<<<<<< HEAD
                     android:id="@+id/fehlertext_ueberschift_v1"
+=======
+                    android:id="@+id/fehlertext_ueberschift"
+>>>>>>> master
                     style="@style/menuetext_gross_roter_hintergrund"
                     android:textColor="@color/weiß"
                     android:layout_width="match_parent"
