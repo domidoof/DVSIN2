@@ -435,7 +435,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 			if (containerart_zahl == 1) {
 				
-						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
+						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist abzueglich der vorherigen zahl
 
                         zwischenwert = aktuelle_kapazitaet - aktuelle_eingabe_speicher + aktuelleBuchung.getContainerZahlKlein();
 
@@ -480,7 +480,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 			if (containerart_zahl == 2) {
 				
-						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
+						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist abzueglich der vorherigen zahl
 
 
 
