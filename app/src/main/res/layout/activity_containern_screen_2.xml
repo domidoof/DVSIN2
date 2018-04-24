@@ -589,6 +589,29 @@
             android:textColor="@color/weiß"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/order_id_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp"
+            android:text="OrderID:"
+            android:textSize="15sp"
+            android:textColor="@color/weiß"
+            />
+
+        <TextView
+            android:id="@+id/order_id_nummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="12356789"
+            android:textColor="@color/weiß"
+            android:textSize="15sp" />
+
     </LinearLayout>
 
 </LinearLayout>

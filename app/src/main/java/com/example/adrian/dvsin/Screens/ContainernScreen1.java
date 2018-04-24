@@ -64,6 +64,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 	Button buchung_auswaehlen_01_01;
 	Button buchung_auswaehlen_01_02;
 	Button weiter;
+	Button weiterClick;
 
 
 	// LINEARLAYOUTS
@@ -344,6 +345,28 @@ public class ContainernScreen1 extends AppCompatActivity {
             weiter.setTypeface(font_roboto_thin);
 
             weiter.setText(getText(R.string.weiterButton));
+
+            weiter.setId(i+1);
+
+            //id and orderid for inside method usage
+            final String orderid = str;
+            Log.d("TAG", orderid);
+
+
+            //weiterClick = findViewById(id_);
+            weiter.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+                    intent.putExtra("ORDER_ID", orderid);
+                    Log.d("ORDERID_MAL_SEHEN", orderid);
+                    startActivity(intent);
+
+//                    Toast.makeText(view.getContext(),
+//                            "Button clicked index = " + id_, Toast.LENGTH_SHORT)
+//                            .show();
+                }
+            });
 
 
             weiter.setBackgroundColor(Color.parseColor("#ff883f"));

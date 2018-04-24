@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,7 +19,11 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     // TextView Menüstruktur
 
-    TextView zurueck, text_ebene, ebenennummer, container_id_text, container_id_nummer;
+    TextView zurueck, text_ebene, ebenennummer, container_id_text, container_id_nummer, order_id_text, order_id_nummer;
+
+    // String
+
+    String orderID;
 
     // TextView Tabelle
 
@@ -50,6 +55,10 @@ public class ContainernScreen2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_containern_screen_2_1);
 
+        Intent intent = getIntent();
+        orderID = intent.getStringExtra("ORDER_ID");
+        Log.d("WHERE_IS_THE_ORDER", orderID);
+
 
         // TextView Menüstruktur zuweisen
 
@@ -58,6 +67,8 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer = (TextView) findViewById(R.id.ebenen_nummer);
         container_id_text = (TextView) findViewById(R.id.container_id_text);
         container_id_nummer = (TextView) findViewById(R.id.container_id_nummer);
+        order_id_text = findViewById(R.id.order_id_text);
+        order_id_nummer = findViewById(R.id.order_id_nummer);
 
 
         //TextView Tabelle zuweisen
@@ -97,6 +108,11 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer.setTypeface(font_roboto_thin);
         container_id_text.setTypeface(font_roboto_thin);
         container_id_nummer.setTypeface(font_roboto_medium);
+        order_id_text.setTypeface(font_roboto_thin);
+        order_id_nummer.setTypeface(font_roboto_medium);
+
+        //set text für orderid
+        order_id_nummer.setText(orderID);
 
 
         // Fonts für Tabelle setzen
