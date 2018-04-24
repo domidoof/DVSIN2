@@ -499,7 +499,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 						
 						// Wenn ausreichend JA, dann Anzahl kleiner Container in Buchung erhöhen 
 
-                        if(zwischenwert >= 0 || aktuelle_eingabe_speicher <= aktuelleBuchung.getContainerZahlGross()|| ((kapazitaetMAX - 2*aktuelle_eingabe_speicher <= aktuelle_kapazitaet) && (2*aktuelle_eingabe_speicher <= kapazitaetMAX))){
+                        if(zwischenwert >= 0 || aktuelle_eingabe_speicher <= aktuelleBuchung.getContainerZahlGross() || ((kapazitaetMAX - 2*aktuelle_eingabe_speicher <= aktuelle_kapazitaet) && (2*aktuelle_eingabe_speicher <= kapazitaetMAX))){
 
 							aktuelleBuchung.setContainerZahlGross(aktuelle_eingabe_speicher);
 

@@ -131,6 +131,7 @@
         </LinearLayout>
 
         <ScrollView
+            android:id="@+id/scrollView_Buchungen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="15dp"
@@ -290,6 +291,8 @@
 
             </TableRow>
 
+
+
             <TableRow
 
                 android:id="@+id/buchungsDatenzeile"
@@ -303,7 +306,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:paddingLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="15"
                     android:background="#ff883f"
                     >
 
@@ -337,7 +340,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.25"
+                    android:layout_weight="2"
                     android:gravity="center"/>
 
                 <Button
@@ -355,18 +358,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="2"/>
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.125"
+                    android:layout_weight="1"
                     android:background="#ff731d"/>
 
             </TableRow>
 
-
+            -->
 
             <!--
 
