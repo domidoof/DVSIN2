@@ -470,8 +470,14 @@ public class BuchenScreen2 extends AppCompatActivity {
 
 			//####################################################################################//
 			// FALLUNTERSCHEIDUNG HIER NOCH !!!
-				
-			formel_restwert.setText(Integer.toString(aktuelle_kapazitaet));
+
+			if (aktuelle_kapazitaet == 1) {
+				formel_restwert.setText(R.string.wenn_eins);
+				formel_text_2.setText(R.string.freier_platz_einzahl);
+			}
+			else {
+				formel_restwert.setText(Integer.toString(aktuelle_kapazitaet));
+			}
 
 			//####################################################################################//
 

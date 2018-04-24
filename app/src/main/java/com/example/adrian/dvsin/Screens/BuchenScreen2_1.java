@@ -15,6 +15,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.R;
 
@@ -435,7 +438,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 			if (containerart_zahl == 1) {
 				
-						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
+						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist abzueglich der vorherigen zahl
 
                         zwischenwert = aktuelle_kapazitaet - aktuelle_eingabe_speicher + aktuelleBuchung.getContainerZahlKlein();
 
@@ -480,7 +483,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 			if (containerart_zahl == 2) {
 				
-						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
+						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist abzueglich der vorherigen zahl
 
 
 
@@ -568,7 +571,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 		
 		// KOMMENTIEREN, wenn verstanden ;)
 
-			// Eigenschaften POPUPWINDOW "popupWindow" festlegen				
+			// Eigenschaften POPUPWINDOW "popupWindow" festlegen
 
             popupWindow.setTouchable(true);
             popupWindow.setFocusable(false);

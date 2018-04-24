@@ -61,6 +61,10 @@
 
     <string name="buchen_schritt_1_einleitung_3">an!</string>
 
+    <string name="wenn_eins">ein</string>
+
+    <string name="freier_platz_einzahl">freier Platz!</string>
+
 
     <!-- Strings für das THEMA: Funktion: Buchen: Eingabe Containerzahl -->
 
