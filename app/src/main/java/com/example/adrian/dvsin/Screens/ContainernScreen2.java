@@ -53,7 +53,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_containern_screen_2_1);
+        setContentView(R.layout.activity_containern_screen_2);
 
         Intent intent = getIntent();
         orderID = intent.getStringExtra("ORDER_ID");
