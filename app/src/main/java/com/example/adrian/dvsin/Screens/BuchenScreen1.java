@@ -38,6 +38,8 @@ public class BuchenScreen1 extends AppCompatActivity {
 
     Typeface font_roboto_thin, font_roboto_medium;
 
+    //penis
+
 
     // BUTTONS
 

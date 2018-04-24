@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -436,7 +437,18 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 				
 						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
 
-                        zwischenwert = aktuelle_kapazitaet - aktuelle_eingabe_speicher;
+                        zwischenwert = aktuelle_kapazitaet - aktuelle_eingabe_speicher + aktuelleBuchung.getContainerZahlKlein();
+
+				Log.d("BLABLABLA", Integer.toString(aktuelle_kapazitaet));
+				Log.d("TUTUTUTUT", Integer.toString(aktuelle_eingabe_speicher));
+				Log.d("ASASASASASA", Integer.toString(aktuelleBuchung.getContainerZahlKlein()));
+				Log.d("OFSPOASAP", Integer.toString(zwischenwert));
+
+				if (zwischenwert < 0) {
+					returnuebergabe = 1;
+
+					return;
+				}
 						
 						// Wenn ausreichend JA, dann Anzahl kleiner Container in Buchung erhöhen
 
@@ -470,7 +482,20 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 				
 						// Prüfen ob Kapazität des gewählten Schiffs noch ausreichend ist
 
-						zwischenwert = aktuelle_kapazitaet - 2*aktuelle_eingabe_speicher;
+
+
+				zwischenwert = aktuelle_kapazitaet - 2*aktuelle_eingabe_speicher + 2*aktuelleBuchung.getContainerZahlGross();
+
+				Log.d("BLABLABLA", Integer.toString(aktuelle_kapazitaet));
+				Log.d("TUTUTUTUT", Integer.toString(aktuelle_eingabe_speicher));
+				Log.d("ASASASASASA", Integer.toString(aktuelleBuchung.getContainerZahlGross()));
+				Log.d("OFSPOASAP", Integer.toString(zwischenwert));
+
+				if (zwischenwert < 0) {
+					returnuebergabe = 1;
+
+					return;
+				}
 						
 						// Wenn ausreichend JA, dann Anzahl kleiner Container in Buchung erhöhen 
 
