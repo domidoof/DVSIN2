@@ -359,11 +359,12 @@
     </style>
 
     <style name="zwischenBereich1">
-
+        <!--
         <item name ="android:layout_width">wrap_content</item>
         <item name ="android:layout_height">match_parent</item>
 
         <item name ="android:layout_weight">0.25</item>
+        -->
         <item name="android:layout_gravity">center</item>
 
     </style>
@@ -382,11 +383,12 @@
     </style>
 
     <style name="zwischenBereich3">
-
+        <!--
         <item name ="android:layout_width">wrap_content</item>
         <item name ="android:layout_height">match_parent</item>
 
         <item name ="android:layout_weight">0.125</item>
+        -->
         <item name="android:background">#ff731d</item>
 
     </style>
