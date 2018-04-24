@@ -211,8 +211,8 @@
 
                     android:background="@drawable/zellenrahmen_v2"
 
-                    android:textColor="@color/hell_grau_schrift"
                     android:text="-"
+                    android:textColor="@color/standard_grau"
                     android:textSize="13sp"
 
                     />
@@ -342,8 +342,8 @@
 
                         android:background="@drawable/zellenrahmen_v2"
 
-                        android:textColor="@color/hell_grau_schrift"
                         android:text="-"
+                        android:textColor="@color/standard_grau"
                         android:textSize="13sp"
 
                         />

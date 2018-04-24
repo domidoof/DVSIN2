@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
 
@@ -27,7 +29,78 @@ public class LoginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
+        setVariables();
 
+        loginButton();
+    }
+
+    public void loginButton() {
+        //BUTTONS
+
+        // BUTTON vorwärts zur Activity activity_homescreen
+
+        final ImageButton vorwaerts = findViewById(R.id.vorwaerts);
+
+        //  Test PASST
+
+        eingabe_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ((EditText)findViewById(R.id.eingabefeld_login)).setOnEditorActionListener(
+                        new EditText.OnEditorActionListener() {
+
+                            @Override
+                            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                                if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                                        actionId == EditorInfo.IME_ACTION_DONE ||
+                                        event != null &&
+                                                event.getAction() == KeyEvent.ACTION_DOWN &&
+                                                event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                                    if (event == null || !event.isShiftPressed()) {
+                                        // the user is done typing.
+
+                                        eingabe_login.length();
+                                        if(eingabe_login.length()!= 0){
+
+                                        }
+
+                                        else {
+                                            YoYo.with(Techniques.Tada)
+                                                    .duration(1000)
+                                                    .playOn(eingabe_login);
+                                        }
+
+                                    }
+                                }
+                                return false; // pass on to other listeners.
+                            }
+                        }
+                );
+
+            }
+        });
+
+        vorwaerts.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                eingabe_login.length();
+                if(eingabe_login.length()!= 0){
+                    Intent intent = new Intent(LoginScreen.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+                else {
+                    YoYo.with(Techniques.Tada)
+                            .duration(1000)
+                            .playOn(eingabe_login);
+                }
+            }
+        });
+    }
+
+    private void setVariables() {
         slogan_teil_1 =findViewById(R.id.slogan_teil_1);
         slogan_teil_2 = findViewById(R.id.slogan_teil_2);
         slogan_teil_3 = findViewById(R.id.slogan_teil_3);
@@ -43,62 +116,5 @@ public class LoginScreen extends AppCompatActivity {
 
         eingabe_login.setTypeface(font_roboto_thin);
 
-
-
-    //BUTTONS
-
-        // BUTTON vorwärts zur Activity activity_homescreen
-
-        final ImageButton vorwaerts = findViewById(R.id.vorwaerts);
-
-        vorwaerts.setVisibility(View.GONE);
-
-        //  Test PASST
-
-        eingabe_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            ((EditText)findViewById(R.id.eingabefeld_login)).setOnEditorActionListener(
-                        new EditText.OnEditorActionListener() {
-
-                            @Override
-                            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                                if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                                        actionId == EditorInfo.IME_ACTION_DONE ||
-                                        event != null &&
-                                                event.getAction() == KeyEvent.ACTION_DOWN &&
-                                                event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                                    if (event == null || !event.isShiftPressed()) {
-                                        // the user is done typing.
-
-                                        eingabe_login.length();
-                                        if(eingabe_login.length()!= 0){
-                                            vorwaerts.setVisibility(View.VISIBLE);// consume.
-                                        }
-
-                                        else vorwaerts.setVisibility(View.INVISIBLE);
-
-                                    }
-                                }
-                                return false; // pass on to other listeners.
-                            }
-                        }
-                );
-
-            }
-        });
-
-
-        //
-
-        vorwaerts.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginScreen.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
