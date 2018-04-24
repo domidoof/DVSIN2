@@ -1,18 +1,15 @@
 package com.example.adrian.dvsin.Screens;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteTableLockedException;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -40,6 +37,11 @@ public class ContainernScreen1 extends AppCompatActivity {
 	
     TextView buchungsnummer_abkuerzung_01, buchungsnummer_abkuerzung_02, buchungsnummer_aktuell_01, buchungsnummer_aktuell_02;
 
+    // TEXTVIEW Buchungsbereich (dynamsich)
+
+    TextView buchungsNrAbkürzung, buchungsNrAktuell, zwischenBereich1, zwischenBereich2, zwischenBereich3;
+
+
     // FONTS
 
     Typeface font_roboto_thin, font_roboto_medium;
@@ -50,6 +52,12 @@ public class ContainernScreen1 extends AppCompatActivity {
     Button zurueck;
 	Button buchung_auswaehlen_01_01;
 	Button buchung_auswaehlen_01_02;
+	Button weiter;
+
+
+	// LINEARLAYOUTS
+
+    LinearLayout buchungsteil;
 
 
 	// TABLE
@@ -59,7 +67,19 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     // TABLEROW
 
+    TableRow buchungsDatenzeileVorgabe;
     TableRow buchungsDatenzeile;
+
+
+    // TABLEROW.LAYOUTPARAMS
+
+    TableRow.LayoutParams buchungsDatenzeile_Layout;
+    TableRow.LayoutParams buchungsteil_Layout;
+    TableRow.LayoutParams buchungsNrAbkürzung_Layout;
+    TableRow.LayoutParams buchungsNrAktuell_Layout;
+    TableRow.LayoutParams weiter_Layout;
+    TableRow.LayoutParams zwischenBereich1_Layout;
+    TableRow.LayoutParams zwischenBereich3_Layout;
 	
 
     // ########## //
@@ -80,19 +100,19 @@ public class ContainernScreen1 extends AppCompatActivity {
             setIDs();
 
 
+        // FONTS einbeziehen
+
+            setFonts();
+
+
         // BuchungsdatenTabelle erstellen
 
             setBuchungsDatentabelle();
 
 
-        // FONTS einbeziehen
-
-			setFonts();
-
-
         // -- FONTS ANWENDEN
 
-			setFontsToIDs();
+        setFontsToIDs();
 
 
         // -- BUTTONS  -- //
@@ -101,6 +121,8 @@ public class ContainernScreen1 extends AppCompatActivity {
 
             buttonGetBack();
 
+
+        // --- MUSS in andere Funktion eingebaut werden --- //
 
         // BUTTON "buchung_auswaehlen_01_01" drücken
 
@@ -111,6 +133,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
             buttonBuchungVerladenStarten();
 
+        // ------ //
 
         // ########## //
 
@@ -125,32 +148,19 @@ public class ContainernScreen1 extends AppCompatActivity {
     private void setBuchungsDatentabelle() {
 
 
-        // Setzen der individuellen LayoutParts
+        // LAYOUT.PARAMS setzen
 
-        TableRow.LayoutParams buchungsDatenzeile_Layout = new TableRow.LayoutParams(100,  7770);
-
-        LinearLayout.LayoutParams buchungsteil_Layout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.MATCH_PARENT, 4);
-
-        ViewGroup.LayoutParams weiter_Layout = new ViewGroup.LayoutParams(70,70);
-
-        ViewGroup.LayoutParams buchungsNrAbkürzung_Layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        ViewGroup.LayoutParams buchungsNrAktuell_Layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        LinearLayout.LayoutParams zwischenBereich1_Layout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,  LinearLayout.LayoutParams.MATCH_PARENT, 2);
-
-        LinearLayout.LayoutParams zwischenBereich3_Layout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,  LinearLayout.LayoutParams.MATCH_PARENT, 1);
-
-        // Eine zusätzliche Tabellenzeile anfügen zu TABLELAYOUT "buchungsDatentabelle"
+        useLayoutParamsForNewRow();
 
 
-        for (int i = 0; i <10; i++) {
+        // NEW TABLEROW hizufügen zu TABLELAYOUT "buchungsDatentabelle"
+
+        for (int i = 0; i <4; i++) {
 
 
-            // --- Erstellen der neuen Tabellenzeile --- //
+            // --- ERSTELLEN der neuen TABELLENZELLE --- //
 
-
-            TableRow buchungsDatenzeileVorgabe = new TableRow(this);
+            buchungsDatenzeileVorgabe = new TableRow(this);
 
             // LAYOUT setzen
 
@@ -158,111 +168,124 @@ public class ContainernScreen1 extends AppCompatActivity {
 
             // INHALT und weitere Eigenschaften
 
-            buchungsDatenzeileVorgabe.setPadding(0,0,0,8);
+            buchungsDatenzeileVorgabe.setPadding(0,0,0,17);
 
-            // ------ //
-
-
+            // ##### //
 
 
-            LinearLayout buchungsteil = new LinearLayout(new ContextThemeWrapper(this, R.style.buchungsteil), null, 0);
+            // --- ERSTELLEN des INHALTS für neue TABELLENZELLE --- //
+
+            buchungsteil = new LinearLayout(new ContextThemeWrapper(this, R.style.buchungsteil), null, 0);
 
             // LAYOUT setzen
 
-            // buchungsteil.setLayoutParams(buchungsteil_Layout);
+            buchungsteil.setLayoutParams(buchungsteil_Layout);
 
             // INHALT und weitere Eigenschaften
 
             buchungsteil.setOrientation(LinearLayout.HORIZONTAL);
 
-            buchungsteil.setPadding(20,0,0,0);
+            buchungsteil.setPadding(40,0,0,0);
 
-            // ------ //
-
-
+            // ##### //
 
 
-            TextView buchungsNrAbkürzung = new TextView(new ContextThemeWrapper(this, R.style.buchungsNrAbkürzung), null, 0);
+            buchungsNrAbkürzung = new TextView(this, null, R.style.buchungsNrAbkürzung);
 
             // LAYOUT setzen
 
-            // buchungsNrAbkürzung.setLayoutParams(weiter_Layout);
+            buchungsNrAbkürzung.setLayoutParams(buchungsNrAbkürzung_Layout);
+
 
             // INHALT und weitere Eigenschaften
 
             buchungsNrAbkürzung.setTextAppearance(this, R.style.buchungsNrAbkürzung);
 
+            buchungsNrAbkürzung.setTypeface(font_roboto_thin);
+
             buchungsNrAbkürzung.setText("BuNr.:");
+
 
             buchungsNrAbkürzung.setGravity(17);
 
             buchungsNrAbkürzung.setPadding(0,0,2,0);
 
-            // ------ //
+            // ##### //
 
 
-
-
-            TextView buchungsNrAktuell = new TextView(new ContextThemeWrapper(this, R.style.buchungsNrAktuell), null, 0);
+            buchungsNrAktuell = new TextView(this, null, R.style.buchungsNrAktuell);
 
             // LAYOUT setzen
 
-            // buchungsNrAbkürzung.setLayoutParams(weiter_Layout);
+            buchungsNrAktuell.setLayoutParams(buchungsNrAktuell_Layout);
 
             // INHALT und weitere Eigenschaften
 
             buchungsNrAktuell.setTextAppearance(this, R.style.buchungsNrAktuell);
 
+            buchungsNrAktuell.setTypeface(font_roboto_medium);
+
             buchungsNrAktuell.setText("123456789");
 
-            buchungsNrAktuell.setPadding(2,0,10,0);
 
-            buchungsDatenzeile.setGravity(17);
+            buchungsNrAktuell.setGravity(17);
+
+            buchungsNrAktuell.setPadding(2,0,10,0);
 
             // ------ //
 
 
+            zwischenBereich1 = new TextView (this, null, R.style.zwischenBereich1);
 
-
-            TextView zwischenBereich1 = new TextView(new ContextThemeWrapper(this, R.style.zwischenBereich1), null, 0);
+            // TextView zwischenBereich1 = new TextView(new ContextThemeWrapper(this, R.style.zwischenBereich1), null, 0);
 
             // LAYOUT setzen
 
-            // zwischenBereich1.setLayoutParams(weiter_Layout);
+            zwischenBereich1.setLayoutParams(zwischenBereich1_Layout);
 
             // INHALT und weitere Eigenschaften
 
             zwischenBereich1.setGravity(17);
 
+            zwischenBereich1.setTextAppearance(this, R.style.zwischenBereich1);
+
             // ------ //
 
 
-
-
-            Button weiter = new Button(new ContextThemeWrapper(this, R.style.weiter), null, 0);
+            weiter = new Button(this, null, R.style.weiter);
 
             // LAYOUT setzen
 
-            // weiter.setLayoutParams(weiter_Layout);
+            weiter.setLayoutParams(weiter_Layout);
 
             // INHALT und weitere Eigenschaften
 
             weiter.setTextAppearance(this, R.style.weiter);
 
-            weiter.setText(">");
+            weiter.setTypeface(font_roboto_thin);
+
+            weiter.setText(getText(R.string.weiterButton));
+
+
+            weiter.setBackgroundColor(Color.parseColor("#ff883f"));
+
+
+            weiter.setGravity(17);
 
             // ------ //
 
 
 
-
-            TextView zwischenBereich2 = new TextView(new ContextThemeWrapper(this, R.style.zwischenBereich1), null, 0);
+            zwischenBereich2 = new TextView (this, null, R.style.zwischenBereich1);
 
             // LAYOUT setzen
 
-            // zwischenBereich2.setLayoutParams(weiter_Layout);
+            zwischenBereich2.setLayoutParams(zwischenBereich1_Layout);
 
             // INHALT und weitere Eigenschaften
+
+            zwischenBereich2.setTextAppearance(this, R.style.zwischenBereich1);
+
 
             zwischenBereich2.setGravity(1);
 
@@ -270,27 +293,29 @@ public class ContainernScreen1 extends AppCompatActivity {
 
 
 
-
-            TextView zwischenBereich3 = new TextView(new ContextThemeWrapper(this, R.style.zwischenBereich3), null, 0);
+            zwischenBereich3 = new TextView(this, null, R.style.zwischenBereich3);
 
             // LAYOUT setzen
 
-            // zwischenBereich3.setLayoutParams(weiter_Layout);
+            zwischenBereich3.setLayoutParams(zwischenBereich3_Layout);
 
             // INHALT und weitere Eigenschaften
+
+            zwischenBereich3.setTextAppearance(this, R.style.zwischenBereich3);
+
+
+            zwischenBereich3.setBackgroundColor(Color.parseColor("#ff731d"));
+
 
             zwischenBereich3.setGravity(17);
 
             // ------ //
 
 
-
-
             // LINEARLAYOUT "buchungsteil" füllen
 
             buchungsteil.addView(buchungsNrAbkürzung);
             buchungsteil.addView(buchungsNrAktuell);
-
 
             // TABLEROW "buchungsDatenzeile" füllen
 
@@ -300,7 +325,7 @@ public class ContainernScreen1 extends AppCompatActivity {
             buchungsDatenzeileVorgabe.addView(zwischenBereich2);
             buchungsDatenzeileVorgabe.addView(zwischenBereich3);
 
-            // TABLELAYOUT "buchngsDatentabelle" füllen
+            // TABLELAYOUT "buchungsDatenzeileVorgabe" füllen
 
             buchngsDatentabelle.addView(buchungsDatenzeileVorgabe, i);
 
@@ -367,9 +392,13 @@ public class ContainernScreen1 extends AppCompatActivity {
 		// FONTS für Buchungsbereich SETZEN
 		
 		buchungsnummer_abkuerzung_01.setTypeface(font_roboto_thin);
-        buchungsnummer_abkuerzung_02.setTypeface(font_roboto_thin);
+		buchungsnummer_abkuerzung_02.setTypeface(font_roboto_thin);
         buchungsnummer_aktuell_01.setTypeface(font_roboto_medium);
         buchungsnummer_aktuell_02.setTypeface(font_roboto_medium);
+
+        // FONTS für Buchungsbereich SETZEN (dynamisch)
+
+        // funktioniert nicht ;(
 		
 		// FONTS Buttons setzen
 
@@ -421,6 +450,28 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         buchungsDatenzeile = findViewById(R.id.buchungsDatenzeile);
 
+        // LINEARLAYOUTS
+
+
+
+
+    }
+
+    public void useLayoutParamsForNewRow(){
+
+        buchungsDatenzeile_Layout = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,  ViewGroup.LayoutParams.MATCH_PARENT);
+
+        buchungsteil_Layout = new TableRow.LayoutParams(buchungsDatenzeile_Layout.MATCH_PARENT,  buchungsDatenzeile_Layout.MATCH_PARENT, 15);
+
+        buchungsNrAbkürzung_Layout = new TableRow.LayoutParams(buchungsteil_Layout.WRAP_CONTENT,  buchungsteil_Layout.MATCH_PARENT);
+
+        buchungsNrAktuell_Layout = new TableRow.LayoutParams(buchungsteil_Layout.WRAP_CONTENT,  buchungsteil_Layout.MATCH_PARENT);
+
+        weiter_Layout = new TableRow.LayoutParams(70,140);
+
+        zwischenBereich1_Layout = new TableRow.LayoutParams(buchungsDatenzeile_Layout.WRAP_CONTENT,  buchungsDatenzeile_Layout.MATCH_PARENT, 2);
+
+        zwischenBereich3_Layout = new TableRow.LayoutParams(buchungsDatenzeile_Layout.WRAP_CONTENT,  buchungsDatenzeile_Layout.MATCH_PARENT, 1);
 
     }
 
