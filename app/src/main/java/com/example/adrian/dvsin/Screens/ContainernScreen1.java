@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +16,23 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ContainernScreen1 extends AppCompatActivity {
 
     // -- INSTANZVARIABLEN festlegen -- //
 
     // int
+    int i;
 
 
     // String
@@ -68,7 +79,7 @@ public class ContainernScreen1 extends AppCompatActivity {
     // TABLEROW
 
     TableRow buchungsDatenzeileVorgabe;
-    TableRow buchungsDatenzeile;
+    //TableRow buchungsDatenzeile;
 
 
     // TABLEROW.LAYOUTPARAMS
@@ -80,6 +91,22 @@ public class ContainernScreen1 extends AppCompatActivity {
     TableRow.LayoutParams weiter_Layout;
     TableRow.LayoutParams zwischenBereich1_Layout;
     TableRow.LayoutParams zwischenBereich3_Layout;
+
+    //Database Resources
+
+    FirebaseDatabase database;
+    FirebaseDatabase database2;
+
+
+    //Reference to the database
+
+    DatabaseReference ref;
+    DatabaseReference ref2;
+
+
+    //Array List to save the data from the database
+
+    ArrayList<String> orderList = new ArrayList<>();
 	
 
     // ########## //
@@ -107,31 +134,12 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         // BuchungsdatenTabelle erstellen
 
-            setBuchungsDatentabelle();
+        getDatabaseOrders();
+
+        waitForData();
 
 
-        // -- FONTS ANWENDEN
 
-        setFontsToIDs();
-
-
-        // -- BUTTONS  -- //
-
-        // BUTTON "zurueck" drücken
-
-            buttonGetBack();
-
-
-        // --- MUSS in andere Funktion eingebaut werden --- //
-
-        // BUTTON "buchung_auswaehlen_01_01" drücken
-
-            buttonBuchungVerladenStarten();
-
-
-        // BUTTON "buchung_auswaehlen_01_02" drücken 
-
-            buttonBuchungVerladenStarten();
 
         // ------ //
 
@@ -143,7 +151,75 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     }
 
+    private void waitForData() {
+
+        final LottieAnimationView loadingScreen = findViewById(R.id.animation_view);
+        loadingScreen.setAnimation("off_time_leap_frog_loader.json");
+        loadingScreen.playAnimation();
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                loadingScreen.setVisibility(View.GONE);
+                loadingScreen.cancelAnimation();
+
+                setBuchungsDatentabelle();
+
+                // -- FONTS ANWENDEN
+
+                setFontsToIDs();
+
+
+                // -- BUTTONS  -- //
+
+                // BUTTON "zurueck" drücken
+
+                buttonGetBack();
+
+
+                // --- MUSS in andere Funktion eingebaut werden --- //
+
+                // BUTTON "buchung_auswaehlen_01_01" drücken
+
+                //buttonBuchungVerladenStarten();
+
+
+                // BUTTON "buchung_auswaehlen_01_02" drücken
+
+                //buttonBuchungVerladenStarten();
+
+            }
+        }, 3000);
+    }
+
     // --- WEITERE Methoden --- //
+
+    private void getDatabaseOrders() {
+        database2 = FirebaseDatabase.getInstance();
+        ref2 = database2.getReference("orders");
+
+        ref2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snp : dataSnapshot.getChildren()) {
+                    orderList.add(String.valueOf(snp.getKey()));
+                    Log.d("TAG", "Value is: " + snp);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Failed to read value.", databaseError.toException());
+
+            }
+        });
+
+    }
 
     private void setBuchungsDatentabelle() {
 
@@ -152,10 +228,13 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         useLayoutParamsForNewRow();
 
+        i = 0;
+
 
         // NEW TABLEROW hizufügen zu TABLELAYOUT "buchungsDatentabelle"
 
-        for (int i = 0; i <4; i++) {
+        //for (int i = 0; i <4; i++) {
+        for (String str : orderList) {
 
 
             // --- ERSTELLEN der neuen TABELLENZELLE --- //
@@ -225,7 +304,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
             buchungsNrAktuell.setTypeface(font_roboto_medium);
 
-            buchungsNrAktuell.setText("123456789");
+            buchungsNrAktuell.setText(str);
 
 
             buchungsNrAktuell.setGravity(17);
@@ -329,41 +408,42 @@ public class ContainernScreen1 extends AppCompatActivity {
 
             buchngsDatentabelle.addView(buchungsDatenzeileVorgabe, i);
 
+            i++;
         }
     }
 
-	private void buttonBuchungVerladenStarten(){
-		
-		// BUTTON "buchung_containern_01" wird gedrückt
-
-        buchung_auswaehlen_01_01.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
-				
-				// ACTIVITY ContainernScreen2 starten
-				
-                startActivity(intent);
-            }
-        });
-		
-		
-		// BUTTON "buchung_containern_02" wird gedrückt
-
-        buchung_auswaehlen_01_02.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
-				
-				// ACTIVITY ContainernScreen2 starten
-				
-                startActivity(intent);
-            }
-        });
-				
-	}
+//	private void buttonBuchungVerladenStarten(){
+//
+//		// BUTTON "buchung_containern_01" wird gedrückt
+//
+//        buchung_auswaehlen_01_01.setOnClickListener( new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+//
+//				// ACTIVITY ContainernScreen2 starten
+//
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//		// BUTTON "buchung_containern_02" wird gedrückt
+//
+//        buchung_auswaehlen_01_02.setOnClickListener( new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+//
+//				// ACTIVITY ContainernScreen2 starten
+//
+//                startActivity(intent);
+//            }
+//        });
+//
+//	}
 
     private void buttonGetBack() {
 
@@ -391,10 +471,10 @@ public class ContainernScreen1 extends AppCompatActivity {
 		
 		// FONTS für Buchungsbereich SETZEN
 		
-		buchungsnummer_abkuerzung_01.setTypeface(font_roboto_thin);
-		buchungsnummer_abkuerzung_02.setTypeface(font_roboto_thin);
-        buchungsnummer_aktuell_01.setTypeface(font_roboto_medium);
-        buchungsnummer_aktuell_02.setTypeface(font_roboto_medium);
+//		buchungsnummer_abkuerzung_01.setTypeface(font_roboto_thin);
+//		buchungsnummer_abkuerzung_02.setTypeface(font_roboto_thin);
+//        buchungsnummer_aktuell_01.setTypeface(font_roboto_medium);
+//        buchungsnummer_aktuell_02.setTypeface(font_roboto_medium);
 
         // FONTS für Buchungsbereich SETZEN (dynamisch)
 
@@ -403,8 +483,8 @@ public class ContainernScreen1 extends AppCompatActivity {
 		// FONTS Buttons setzen
 
         zurueck.setTypeface(font_roboto_thin);
-		buchung_auswaehlen_01_01.setTypeface(font_roboto_thin);
-        buchung_auswaehlen_01_02.setTypeface(font_roboto_thin);
+//		buchung_auswaehlen_01_01.setTypeface(font_roboto_thin);
+//        buchung_auswaehlen_01_02.setTypeface(font_roboto_thin);
 
     }
 
@@ -431,16 +511,16 @@ public class ContainernScreen1 extends AppCompatActivity {
 		
 		// TEXTVIEW Buchungsbereich
 		
-		buchungsnummer_abkuerzung_01 =(TextView) findViewById(R.id.buchungsnummer_abkuerzung_01);
-        buchungsnummer_abkuerzung_02 = (TextView) findViewById(R.id.buchungsnummer_abkuerzung_02);
-        buchungsnummer_aktuell_01 = (TextView) findViewById(R.id.buchungsnummer_aktuell_01);
-        buchungsnummer_aktuell_02 = (TextView) findViewById(R.id.buchungsnummer_aktuell_02);
+//		buchungsnummer_abkuerzung_01 =(TextView) findViewById(R.id.buchungsnummer_abkuerzung_01);
+//        buchungsnummer_abkuerzung_02 = (TextView) findViewById(R.id.buchungsnummer_abkuerzung_02);
+//        buchungsnummer_aktuell_01 = (TextView) findViewById(R.id.buchungsnummer_aktuell_01);
+//        buchungsnummer_aktuell_02 = (TextView) findViewById(R.id.buchungsnummer_aktuell_02);
         
         // BUTTONS
 
         zurueck = (Button) findViewById(R.id.zurueck);
-		buchung_auswaehlen_01_01 = (Button) findViewById(R.id.buchung_auswaehlen_01_01);
-        buchung_auswaehlen_01_02 = (Button) findViewById(R.id.buchung_auswaehlen_01_02);
+//		buchung_auswaehlen_01_01 = (Button) findViewById(R.id.buchung_auswaehlen_01_01);
+//        buchung_auswaehlen_01_02 = (Button) findViewById(R.id.buchung_auswaehlen_01_02);
 
         // TABLELAYOUT
 
@@ -448,7 +528,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         // TABELLENZEILE
 
-        buchungsDatenzeile = findViewById(R.id.buchungsDatenzeile);
+//        buchungsDatenzeile = findViewById(R.id.buchungsDatenzeile);
 
         // LINEARLAYOUTS
 
@@ -467,7 +547,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         buchungsNrAktuell_Layout = new TableRow.LayoutParams(buchungsteil_Layout.WRAP_CONTENT,  buchungsteil_Layout.MATCH_PARENT);
 
-        weiter_Layout = new TableRow.LayoutParams(70,140);
+        weiter_Layout = new TableRow.LayoutParams(140,140);
 
         zwischenBereich1_Layout = new TableRow.LayoutParams(buchungsDatenzeile_Layout.WRAP_CONTENT,  buchungsDatenzeile_Layout.MATCH_PARENT, 2);
 
