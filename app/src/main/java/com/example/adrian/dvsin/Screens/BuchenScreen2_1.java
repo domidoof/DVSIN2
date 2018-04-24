@@ -15,6 +15,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.R;
 
@@ -568,7 +571,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 		
 		// KOMMENTIEREN, wenn verstanden ;)
 
-			// Eigenschaften POPUPWINDOW "popupWindow" festlegen				
+			// Eigenschaften POPUPWINDOW "popupWindow" festlegen
 
             popupWindow.setTouchable(true);
             popupWindow.setFocusable(false);
