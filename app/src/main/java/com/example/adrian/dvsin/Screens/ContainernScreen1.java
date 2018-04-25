@@ -112,7 +112,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         // -- FONTS ANWENDEN
 
-        setFontsToIDs();
+            setFontsToIDs();
 
 
         // -- BUTTONS  -- //
@@ -451,9 +451,6 @@ public class ContainernScreen1 extends AppCompatActivity {
         buchungsDatenzeile = findViewById(R.id.buchungsDatenzeile);
 
         // LINEARLAYOUTS
-
-
-
 
     }
 

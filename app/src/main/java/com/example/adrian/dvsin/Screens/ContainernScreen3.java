@@ -8,27 +8,52 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
+import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
 
 public class ContainernScreen3 extends AppCompatActivity {
 
-    // TextView Eingabeauffroderung und Menüstruktur
+    // -- INSTANZVARIABLEN festlegen -- //
 
-    TextView zurueck, text_buchungsbestaetigung_teil_1, text_buchungsbestaetigung_teil_2, text_buchungsbestaetigung_teil_3, text_buchungsbestaetigung_teil_4;
+    // int
 
 
-    // TextView Buchungsbereich
+    // String
 
+
+    // -- Others -- //
+
+    // TEXTVIEW Eingabeauffroderung und Menüstruktur
+
+     TextView text_containern_done_teil_1, text_containern_done_teil_2, text_containern_done_teil_3, text_containern_done_teil_4;
+	
+	// TEXTVIEW Buchungsnummer (dynamisch)
+	
     TextView buchungsnummer_abkuerzung, buchungsnummer_aktuell;
 
-
-    // verwendete Fonts
+	
+    // FONTS
 
     Typeface font_roboto_thin, font_roboto_medium;
 
 
+    // BUTTONS
+
+    Button zurueck;
+	
+	
+	// IMAGEBUTTON 
+	
+	ImageButton buchung_containern_done;	
+	
+	
+    // ########## //
+
+
+    // *** HAUPTMETHODE *** //
+
+    // -- ACTIVITY starten -- //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,66 +61,135 @@ public class ContainernScreen3 extends AppCompatActivity {
         setContentView(R.layout.activity_containern_screen_3);
 
 
-        // TextView Eingabeauffroderung und Menüstruktur
+        // IDs zuordnen
 
-        zurueck =(TextView) findViewById(R.id.zurueck);
-        text_buchungsbestaetigung_teil_1 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_1);
-        text_buchungsbestaetigung_teil_2 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_2);
-        text_buchungsbestaetigung_teil_3 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_3);
-        text_buchungsbestaetigung_teil_4 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_4);
+            setIDs();
 
-        // TextView Buchung zuweisen
+			
+        // FONTS einbeziehen
 
-        buchungsnummer_abkuerzung =(TextView) findViewById(R.id.buchungsnummer_abkuerzung_01);
-        buchungsnummer_aktuell = (TextView) findViewById(R.id.buchungsnummer_aktuell_01);
+			setFonts();
 
 
-        // Fonts einbeziehen
+        // -- FONTS ANWENDEN
 
-        font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
-
-
-        //-- Fonts ANWENDEN --
-
-        // Fonts für Eingabeauffroderung und Menüstruktur setzen
-
-        zurueck.setTypeface(font_roboto_thin);
-        text_buchungsbestaetigung_teil_1.setTypeface(font_roboto_thin);
-        text_buchungsbestaetigung_teil_2.setTypeface(font_roboto_medium);
-        text_buchungsbestaetigung_teil_3.setTypeface(font_roboto_thin);
-        text_buchungsbestaetigung_teil_4.setTypeface(font_roboto_thin);
-
-        // Fonts für Eingabeauffroderung und Menüstruktur setzen
-
-        buchungsnummer_abkuerzung.setTypeface(font_roboto_thin);
-        buchungsnummer_aktuell.setTypeface(font_roboto_medium);
+			setFontsToIDs();
 
 
-    //BUTTONS
+        // -- BUTTONS  -- //
 
-        // BUTTON zurück (links oben) aktivieren
+        // BUTTON "zurueck" drücken
 
-        Button zurueck = (Button) findViewById(R.id.zurueck);
-        zurueck.setOnClickListener( new View.OnClickListener() {
+            buttonGetBack();
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ContainernScreen3.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        // BUTTON angeklickte Buchung verladen; erste Buchungsnummer
+        // BUTTON "buchung_containern_done" drücken
+		
+			getBacktoMainActivity();
 
-        ImageButton buchung_containern_done = (ImageButton) findViewById(R.id.buchung_auswaehlen_01_01);
+
+        // ########## //
+
+    // -- ACTIVITY Ende -- //
+
+    // *** ENDE *** //
+
+    }
+
+    // --- WEITERE Methoden --- //
+	
+	private void getBacktoMainActivity(){
+	
+		// Führt zurück zur CLASS "MainActivity" (zurück ins Hauptmenü)
+
         buchung_containern_done.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContainernScreen3.this, MainActivity.class);
+				
+				// ACTIVITY MainActivity starten
+				
                 startActivity(intent);
+            }
+        });
+		
+	}
+
+    private void buttonGetBack() {
+		
+		// Führt zurück zur CLASS "MainActivity" (zurück ins Hauptmenü)
+
+		zurueck.setOnClickListener(new View.OnClickListener() {
+		
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ContainernScreen3.this, MainActivity.class);
+
+                // ACTIVITY MainActivity starten
+
+                startActivity(intent);
+
             }
         });
 
     }
+
+    private void setFontsToIDs() {
+
+        // FONTS Buchungsbestätigungsbereich SETZEN
+
+        text_containern_done_teil_1.setTypeface(font_roboto_thin);
+        text_containern_done_teil_2.setTypeface(font_roboto_thin);
+        text_containern_done_teil_3.setTypeface(font_roboto_medium);
+        text_containern_done_teil_4.setTypeface(font_roboto_thin);
+		buchungsnummer_abkuerzung.setTypeface(font_roboto_thin);
+		
+		// FONTS Buchungsnummer (dynamisch) SETZEN
+
+        buchungsnummer_aktuell.setTypeface(font_roboto_medium);
+
+        // BUTTONS FONTS
+
+        zurueck.setTypeface(font_roboto_thin);
+
+    }
+
+    private void setFonts() {
+
+        // Fonts einbeziehen
+
+        font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
+        font_roboto_medium = Typeface.createFromAsset(getAssets(), "fonts/roboto-medium.ttf");
+
+    }
+
+    private void setIDs() {
+
+        // IDs Buchungsbestätigungsbereich ZUORDNEN
+		
+		// TEXTVIEW Buchungsbestätigungsbereich
+
+        text_containern_done_teil_1 =(TextView) findViewById(R.id.text_containern_done_teil_1);
+        text_containern_done_teil_2 = (TextView) findViewById(R.id.text_containern_done_teil_2);
+        text_containern_done_teil_3 = (TextView) findViewById(R.id.text_containern_done_teil_3);
+        text_containern_done_teil_4 = (TextView) findViewById(R.id.text_containern_done_teil_4);
+        buchungsnummer_abkuerzung = (TextView) findViewById(R.id.buchungsnummer_abkuerzung_01);
+		
+		// TEXTVIEW Buchungsnummer (dynamisch)
+
+        buchungsnummer_aktuell = (TextView) findViewById(R.id.buchungsnummer_aktuell_01);
+		
+		// BUTTON
+		
+		zurueck = (Button) findViewById(R.id.zurueck);
+		
+		// IMAGEBUTTON 
+		
+        buchung_containern_done = (ImageButton) findViewById(R.id.containern_fertig);
+
+    }
 }
+
+
+

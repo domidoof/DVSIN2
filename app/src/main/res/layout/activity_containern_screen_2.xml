@@ -551,7 +551,7 @@
                     android:background="@color/weiss_hintergrund_screen"
 
                     android:scaleType="fitCenter"
-                    android:src="@drawable/button_vorwaerts" />
+                    android:src="@drawable/button_go" />
 
             </LinearLayout>
         </LinearLayout>

@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="50dp"
     android:background="@android:color/transparent">
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="132dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/popup_error_gesamt"
         android:layout_width="match_parent"
-        android:layout_height="122dp"
+        android:layout_height="127dp"
         android:background="@drawable/shadow_menuebereiche"
         android:elevation="5dp"
         android:orientation="horizontal"
@@ -25,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:background="@color/standard_rot">
+            android:background="@drawable/farbverlauf_popupdesign_v1">
 
 
         <ImageView
@@ -37,8 +38,8 @@
 
             android:layout_weight="1"
             android:paddingTop="17dp"
-            android:paddingBottom="24dp"
-            android:paddingLeft="40dp"
+            android:paddingBottom="17dp"
+            android:paddingLeft="25dp"
 
             android:src="@drawable/icon_dialog_error_weiss"
 
@@ -59,7 +60,7 @@
                     android:textColor="@color/weiß"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="17sp"
+                    android:textSize="21sp"
                     android:text="@string/fehlertext_ueberschift_v1"
                     android:paddingLeft="2dp"
                     />
