@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,7 +19,11 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     // TextView Menüstruktur
 
-    TextView zurueck, text_ebene, ebenennummer, container_id_text, container_id_nummer;
+    TextView zurueck, text_ebene, ebenennummer, container_id_text, container_id_nummer, order_id_text, order_id_nummer;
+
+    // String
+
+    String orderID;
 
     // TextView Tabelle
 
@@ -48,9 +53,127 @@ public class ContainernScreen2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_containern_screen_2_1);
+        setContentView(R.layout.activity_containern_screen_2);
+
+        Intent intent = getIntent();
+        orderID = intent.getStringExtra("ORDER_ID");
+        Log.d("WHERE_IS_THE_ORDER", orderID);
+
+        setActivityViews();
+
+        setLevelButtons();
 
 
+        //-- BUTTONS
+
+        // BUTTON zurück (links oben) aktivieren
+
+        //Button zurueck = (Button) findViewById(R.id.zurueck);
+
+
+        // BUTTON vorwärts zur Activity activity_containern_screen_3
+
+        //ImageButton vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
+
+    }
+
+    private void setLevelButtons() {
+        // EBENE Allgemein
+
+        aktuelleEbeneAnzeige = (TextView) findViewById(R.id.ebenen_nummer);
+
+        final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
+        final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
+
+
+        // schiffsebene nach oben wechseln
+
+        ebene_oben.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                schiffsebene.getAktuelleEbene();
+
+                // Neue Ebenenennummer berechnen, schiffsebene nach oben wandern
+
+                {
+                    if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
+                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
+
+                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+
+                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                    }
+                    if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                    }
+                    else {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+
+                    }
+                }
+
+
+            }
+
+
+        });
+
+
+        // schiffsebene nach unten wechseln
+
+        ebene_unten.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                schiffsebene.getAktuelleEbene();
+
+                // Neue Ebenenennummer berechnen, schiffsebene nach oben wandern
+
+                {
+                    if (schiffsebene.aktuelleEbene > 1 && schiffsebene.aktuelleEbene <= schiffsebene.ebenenanzahl) {
+                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene -1);
+
+                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                    }
+                    if (schiffsebene.aktuelleEbene == 1) {
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_orange);
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                    }
+                    else {
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                    }
+
+                }
+
+
+            }
+
+
+        });
+    }
+
+    public void onClickBack(View view) {
+        Intent intent = new Intent(ContainernScreen2.this, ContainernScreen1.class);
+        startActivity(intent);
+    }
+
+    public void onClickNext(View view) {
+        Intent intent = new Intent(ContainernScreen2.this, ContainernScreen3.class);
+        startActivity(intent);
+    }
+
+    private void setActivityViews() {
         // TextView Menüstruktur zuweisen
 
         zurueck = (TextView) findViewById(R.id.zurueck);
@@ -58,6 +181,8 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer = (TextView) findViewById(R.id.ebenen_nummer);
         container_id_text = (TextView) findViewById(R.id.container_id_text);
         container_id_nummer = (TextView) findViewById(R.id.container_id_nummer);
+        order_id_text = findViewById(R.id.order_id_text);
+        order_id_nummer = findViewById(R.id.order_id_nummer);
 
 
         //TextView Tabelle zuweisen
@@ -97,6 +222,11 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer.setTypeface(font_roboto_thin);
         container_id_text.setTypeface(font_roboto_thin);
         container_id_nummer.setTypeface(font_roboto_medium);
+        order_id_text.setTypeface(font_roboto_thin);
+        order_id_nummer.setTypeface(font_roboto_medium);
+
+        //set text für orderid
+        order_id_nummer.setText(orderID);
 
 
         // Fonts für Tabelle setzen
@@ -120,119 +250,5 @@ public class ContainernScreen2 extends AppCompatActivity {
         naechster_container_wort.setTypeface(font_roboto_thin);
         aktueller_container_groesse.setTypeface(font_roboto_medium);
         aktueller_container_wort.setTypeface(font_roboto_thin);
-
-
-        //-- BUTTONS
-
-        // BUTTON zurück (links oben) aktivieren
-
-        Button zurueck = (Button) findViewById(R.id.zurueck);
-        zurueck.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ContainernScreen2.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        // BUTTON vorwärts zur Activity activity_containern_screen_3
-
-        ImageButton vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
-        vorwaerts.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ContainernScreen2.this, ContainernScreen3.class);
-                startActivity(intent);
-            }
-
-        });
-
-
-        // EBENE Allgemein
-
-        aktuelleEbeneAnzeige = (TextView) findViewById(R.id.ebenen_nummer);
-
-        final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
-        final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
-
-
-        // schiffsebene nach oben wechseln
-
-        ebene_oben.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                schiffsebene.getAktuelleEbene();
-
-                    // Neue Ebenenennummer berechnen, schiffsebene nach oben wandern
-
-                {
-                    if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
-                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
-
-                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
-
-
-                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
-
-                    }
-                    if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
-                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
-                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
-                    }
-                    else {
-                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
-                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
-
-                    }
-                }
-
-
-            }
-
-
-        });
-
-
-        // schiffsebene nach unten wechseln
-
-        ebene_unten.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                schiffsebene.getAktuelleEbene();
-
-                    // Neue Ebenenennummer berechnen, schiffsebene nach oben wandern
-
-                {
-                    if (schiffsebene.aktuelleEbene > 1 && schiffsebene.aktuelleEbene <= schiffsebene.ebenenanzahl) {
-                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene -1);
-
-                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
-
-                    // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
-
-                    }
-                    if (schiffsebene.aktuelleEbene == 1) {
-                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_orange);
-                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
-                    }
-                    else {
-                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
-                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
-                    }
-
-                }
-
-
-            }
-
-
-        });
     }
 }

@@ -32,19 +32,20 @@
             android:background="@drawable/farbverlauf_appdesign_v3"
             android:layout_weight="1">
 
-        <Button
-            android:id="@+id/zurueck"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:gravity="left"
-            android:paddingBottom="8dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="5dp"
-            android:text="@string/zurueckzeichen"
-            android:textColor="#ffffff"
-            android:textSize="25sp"/>
+            <Button
+                android:id="@+id/zurueck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="left"
+                android:onClick="onClickBack"
+                android:paddingBottom="8dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:text="@string/zurueckzeichen"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
 
             <ImageButton
                 android:id="@+id/ebene_oben"
@@ -550,6 +551,7 @@
                     android:layout_weight="1.5"
                     android:background="@color/weiss_hintergrund_screen"
 
+                    android:onClick="onClickNext"
                     android:scaleType="fitCenter"
                     android:src="@drawable/button_vorwaerts" />
 
@@ -581,6 +583,29 @@
 
         <TextView
             android:id="@+id/container_id_nummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="12356789"
+            android:textColor="@color/weiß"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/order_id_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp"
+            android:text="OrderID:"
+            android:textSize="15sp"
+            android:textColor="@color/weiß"
+            />
+
+        <TextView
+            android:id="@+id/order_id_nummer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
