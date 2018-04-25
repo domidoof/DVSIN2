@@ -95,13 +95,11 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     //Database Resources
 
-    FirebaseDatabase database;
     FirebaseDatabase database2;
 
 
     //Reference to the database
 
-    DatabaseReference ref;
     DatabaseReference ref2;
 
 
@@ -131,6 +129,10 @@ public class ContainernScreen1 extends AppCompatActivity {
         // FONTS einbeziehen
 
             setFonts();
+
+        // -- FONTS ANWENDEN
+
+        setFontsToIDs();
 
 
         // BuchungsdatenTabelle erstellen
@@ -168,10 +170,6 @@ public class ContainernScreen1 extends AppCompatActivity {
                 loadingScreen.cancelAnimation();
 
                 setBuchungsDatentabelle();
-
-                // -- FONTS ANWENDEN
-
-                setFontsToIDs();
 
 
                 // -- BUTTONS  -- //

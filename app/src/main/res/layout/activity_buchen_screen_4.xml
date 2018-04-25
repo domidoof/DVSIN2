@@ -48,6 +48,15 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/loadingBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="bla"
+            android:background="@color/weiss_hintergrund_screen" />
+            <!-- android:visibility="gone" -->
+
+
         <LinearLayout
             android:id="@+id/buchungsbestätigung_text_uebersicht"
             android:layout_width="match_parent"
@@ -253,8 +262,6 @@
             </TableRow>
 
         </TableLayout>
-
-
 
     </LinearLayout>
 
