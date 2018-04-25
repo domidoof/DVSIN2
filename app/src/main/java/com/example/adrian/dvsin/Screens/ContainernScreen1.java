@@ -142,12 +142,6 @@ public class ContainernScreen1 extends AppCompatActivity {
         waitForData();
 
 
-<<<<<<< HEAD
-=======
-            setFontsToIDs();
->>>>>>> 2ee47f621af6e7fa63da5898dd1ea2f445f94aff
-
-
         // ------ //
 
         // ########## //
