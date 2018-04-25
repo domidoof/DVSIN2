@@ -96,6 +96,8 @@ public class BuchenScreen4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_4);
 
+        //initialisieren
+
         setIDs();
 
         // Fonts einbeziehen
