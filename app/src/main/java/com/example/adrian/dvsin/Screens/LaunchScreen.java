@@ -10,7 +10,9 @@ public class LaunchScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_launch_screen);
 
         Thread launchBildschirm = new Thread() {

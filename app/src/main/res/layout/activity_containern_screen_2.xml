@@ -553,7 +553,7 @@
 
                     android:onClick="onClickNext"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/button_vorwaerts" />
+                    android:src="@drawable/button_go" />
 
             </LinearLayout>
         </LinearLayout>

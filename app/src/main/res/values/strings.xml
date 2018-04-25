@@ -186,4 +186,15 @@
     <string name="equal_kleines_schiff">Kleines Schiff</string>
 
 
+    <!-- Containernbestätigungstext -->
+
+    <string name="text_containern_done_teil_1">Sehr gut!</string>
+
+    <string name="text_containern_done_teil_2">Alles</string>
+
+    <string name="text_containern_done_teil_3">erfolgreich</string>
+
+    <string name="text_containern_done_teil_4">verstaut</string>
+
+
 </resources>

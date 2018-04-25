@@ -87,11 +87,11 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/text_buchungsbestaetigung_teil_1"
+                android:id="@+id/text_containern_done_teil_1"
                 style="@style/menuetext_gross_oranger_hintergrund"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_buchungsbestaetigung_teil_1" />
+                android:text="@string/text_containern_done_teil_1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,33 +99,33 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/text_buchungsbestaetigung_teil_2"
+                    android:id="@+id/text_containern_done_teil_2"
                     style="@style/menuetext_gross_oranger_hintergrund"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="2dp"
-                    android:text="@string/text_buchungsbestaetigung_teil_2" />
+                    android:text="@string/text_containern_done_teil_2" />
 
                 <TextView
-                    android:id="@+id/text_buchungsbestaetigung_teil_3"
+                    android:id="@+id/text_containern_done_teil_3"
                     style="@style/menuetext_gross_oranger_hintergrund_rechts_angefügt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:paddingLeft="-2dp"
                     android:paddingTop="2dp"
-                    android:text="@string/text_buchungsbestaetigung_teil_3" />
+                    android:text="@string/text_containern_done_teil_3" />
 
 
                 <TextView
-                    android:id="@+id/text_buchungsbestaetigung_teil_4"
+                    android:id="@+id/text_containern_done_teil_4"
                     style="@style/menuetext_gross_oranger_hintergrund_rechts_angefügt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingLeft="2dp"
                     android:paddingTop="2dp"
-                    android:text="@string/text_buchungsbestaetigung_teil_4" />
+                    android:text="@string/text_containern_done_teil_4" />
             </LinearLayout>
 
         </LinearLayout>
@@ -192,12 +192,12 @@
                         android:id="@+id/buchungsnummer_abkuerzung_01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:paddingRight="2dp"
                         android:text="BuNr.:"
-                        android:textSize="21sp"
                         android:textColor="#fbe5d6"
 
-                        android:layout_gravity="center"/>
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/buchungsnummer_aktuell_01"
@@ -222,7 +222,7 @@
                     android:gravity="center"/>
 
                 <ImageButton
-                    android:id="@+id/buchung_auswaehlen_01_01"
+                    android:id="@+id/containern_fertig"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
 
