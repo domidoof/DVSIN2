@@ -18,7 +18,7 @@ public class PopUpError extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_popup_error_01);
+        setContentView(R.layout.activity_popup_error_02);
 
         // Schiriftart setzen
 
@@ -28,11 +28,11 @@ public class PopUpError extends AppCompatActivity {
 
         fehlertext_ueberschift = (TextView) findViewById(R.id.fehlertext_ueberschift_v1);
         fehlertext_erklaerung_v1_teil_1 = (TextView) findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
-        fehlertext_erklaerung_v1_teil_2 = (TextView) findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
+        // fehlertext_erklaerung_v1_teil_2 = (TextView) findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
 
         fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_medium);
         fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
-        fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
+        // fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
 
 
         DisplayMetrics dm = new DisplayMetrics();

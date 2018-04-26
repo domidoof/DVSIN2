@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.R;
@@ -60,29 +61,34 @@ public class BuchenScreen2 extends AppCompatActivity {
 
     // FONTS
 
-    Typeface font_roboto_thin, font_roboto_medium;
+   		 Typeface font_roboto_thin, font_roboto_medium;
 
 
     // BUTTONS
 
-    Button zurueck;
-	Button icon_eingabe_kleiner_container;
-	Button icon_eingabe_grosser_container;
+   		 Button zurueck;
+   		 Button icon_eingabe_kleiner_container;
+   		 Button icon_eingabe_grosser_container;
 	
 
     // ImageBUTTONS
 
-	ImageButton vorwaerts;
+		ImageButton vorwaerts;
 
 
     // BUCHUNG
 
-	Buchung aktuelleBuchung;
+		Buchung aktuelleBuchung;
 	
 	
 	// BUNDLES
 
-	Bundle wertesammlung;
+		Bundle wertesammlung;
+
+
+	// ImageVIEW
+
+		ImageView grosser_container_icon, kleiner_container_icon;
 
 	
     // ########## //
@@ -157,19 +163,15 @@ public class BuchenScreen2 extends AppCompatActivity {
 		// -- BUTTON "vorwaerts" drücken
 		
 			buttonNextActivity();
-       
+
+
+		// -- ACTIVITY Ende -- //
+
+		// *** ENDE *** //
     }
 
-    // -- ACTIVITY Ende -- //
-
-    // *** ENDE *** //
-
-
-
-
     // --- WEITERE Methoden --- //
-	
-	
+
 	private void buttonNextActivity() {
 		
 		
@@ -215,7 +217,6 @@ public class BuchenScreen2 extends AppCompatActivity {
         });
 	
 	}
-	
 
     private void buttonZuEingabe40Container() {
 
@@ -277,7 +278,6 @@ public class BuchenScreen2 extends AppCompatActivity {
         });
 		
 	}
-
 
     private void buttonGetBack() {
 
@@ -398,9 +398,16 @@ public class BuchenScreen2 extends AppCompatActivity {
 
 			vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
 
+
+		// ImageVIEW
+
+			grosser_container_icon = (ImageView) findViewById(R.id.grosser_container_icon);
+			kleiner_container_icon = (ImageView) findViewById(R.id.kleiner_container_icon);
+
+
     }
 	
-	    private void startInitialization() {
+    private void startInitialization() {
 			
 		// INTEGER initialisieren
 		
@@ -418,9 +425,8 @@ public class BuchenScreen2 extends AppCompatActivity {
 			wertesammlung = new Bundle();
 
 		}
-		
-		
-		private void getIntentInhalt() {
+
+	private void getIntentInhalt() {
 			
 		// BUCHUNG "aktulleBuchung" holen
 		
@@ -428,9 +434,8 @@ public class BuchenScreen2 extends AppCompatActivity {
 		
 		}
 
-		private void showOnScreen() {
-			
-			
+	private void showOnScreen() {
+
 			// --- SHOW entweder Inhalt in Bezug auf ein kleines oder ein großes Schiff --- //
 			
 			// "Kleines Schiff" wurde ausgewählt
@@ -485,7 +490,7 @@ public class BuchenScreen2 extends AppCompatActivity {
 			
 		}
 		
-		private void setContainerformel() {
+	private void setContainerformel() {
 			
 			// --- CONTAINERFORMEL entweder Inhalt in Bezug auf ein kleines oder ein großes Schiff --- //
 			
@@ -514,7 +519,7 @@ public class BuchenScreen2 extends AppCompatActivity {
 			
 		}
 		
-		private void showDifferentOnScreen(){
+	private void showDifferentOnScreen(){
 			
 			// --- Wenn BUCHUNG/"containerZahlKlein" oder "containerZahlGross" wird ORANGE als Hauptfarbe gewählt --- //
 			
@@ -522,18 +527,37 @@ public class BuchenScreen2 extends AppCompatActivity {
 			
 			if(aktuelleBuchung.containerZahlKlein != 0){
 				
-				// BUTTON "eingabeAnzahl20Container" oranger Rahmen & FONTcolor
+				// BUTTON "eingabeAnzahl20Container" oranger Rahmen & FONTcolor & ImageVIEW "orange"
 				
 				// Rahmen
-				
-				icon_eingabe_kleiner_container.getResources().getDrawable(R.drawable.zellenrahmen_v3);
+
+				icon_eingabe_kleiner_container.setBackground(getResources().getDrawable(R.drawable.zellenrahmen_v3));
 				
 				// FONTcolor
 				
-				icon_eingabe_kleiner_container.getResources().getColor(R.color.standard_orange);
+				// icon_eingabe_kleiner_container.setTextColor(getResources().getColor(R.color.standard_orange));
+
+				// ICON CONTAINER "orange"
+
+				kleiner_container_icon.setImageResource(R.drawable.icon_container_20_orange);
 				
 			}
-			
+
+			else{
+
+				// Rahmen
+
+				icon_eingabe_kleiner_container.setBackground(getResources().getDrawable(R.drawable.zellenrahmen_v2));
+
+				// FONTcolor
+
+				// icon_eingabe_kleiner_container.setTextColor(getResources().getColor(R.color.standard_grau));
+
+				// ICON CONTAINER "grau"
+
+				kleiner_container_icon.setImageResource(R.drawable.icon_container_20);
+
+			}
 			
 			// mindestens ein großer Container ist gesetzt
 			
@@ -543,12 +567,32 @@ public class BuchenScreen2 extends AppCompatActivity {
 				
 				// Rahmen
 				
-				icon_eingabe_grosser_container.getResources().getDrawable(R.drawable.zellenrahmen_v3);
+				icon_eingabe_grosser_container.setBackground(getResources().getDrawable(R.drawable.zellenrahmen_v3));
 				
 				// FONTcolor
 				
-				icon_eingabe_grosser_container.getResources().getColor(R.color.standard_orange);
+				// icon_eingabe_grosser_container.getResources().getColor(R.color.standard_orange);
+
+				// ICON CONTAINER "orange"
+
+				grosser_container_icon.setImageResource(R.drawable.icon_container_40_orange);
 				
+			}
+
+			else{
+
+				// Rahmen
+
+				icon_eingabe_grosser_container.setBackground(getResources().getDrawable(R.drawable.zellenrahmen_v2));
+
+				// FONTcolor
+
+				// icon_eingabe_grosser_container.setTextColor(getResources().getColor(R.color.standard_grau));
+
+				// ICON CONTAINER "grau"
+
+				grosser_container_icon.setImageResource(R.drawable.icon_container_40);
+
 			}
 			
 			// ########## //
@@ -570,7 +614,7 @@ public class BuchenScreen2 extends AppCompatActivity {
 				
 		}
 		
-		private void setVisability(){
+	private void setVisability(){
 			
 			// ZUSATZMETHODE für "buttonNextActivity()"
 			
