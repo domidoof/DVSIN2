@@ -2,12 +2,14 @@ package com.example.adrian.dvsin;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.adrian.dvsin.Screens.ContainernScreen1;
 import com.example.adrian.dvsin.Screens.BuchenScreen1;
@@ -17,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 // -- INSTANZVARIABLEN festlegen -- //
 
     // int
+
+    int saufCount;
 
 
     // String
@@ -218,6 +222,26 @@ public class MainActivity extends AppCompatActivity {
         menuepunkt_buchen = (ImageButton) findViewById(R.id.buchen_button);
         menuepunkt_containern = (ImageButton) findViewById(R.id.containern_button);
 
+        //Int
+        saufCount = 0;
+
+    }
+
+    public void textSaufenPlay(View view) {
+        saufCount++;
+
+        if (saufCount == 2) {
+            Toast.makeText(this, "oh oh was passiert hier?", Toast.LENGTH_SHORT).show();
+        }
+
+        if (saufCount == 4) {
+            Toast.makeText(this, "einmal noch dann...", Toast.LENGTH_SHORT).show();
+        }
+
+        if (saufCount == 5) {
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.saufen_morgens_immer);
+            mp.start();
+        }
     }
 
 }
