@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
@@ -93,12 +92,12 @@ public class ContainernScreen1 extends AppCompatActivity {
     TableRow.LayoutParams zwischenBereich1_Layout;
     TableRow.LayoutParams zwischenBereich3_Layout;
 
-    //Database Resources
+    // Database Resources
 
     FirebaseDatabase database2;
 
 
-    //Reference to the database
+    // Reference to the database
 
     DatabaseReference ref2;
 
@@ -130,17 +129,17 @@ public class ContainernScreen1 extends AppCompatActivity {
 
             setFonts();
 
+
         // -- FONTS ANWENDEN
 
-        setFontsToIDs();
+            setFontsToIDs();
 
 
         // BuchungsdatenTabelle erstellen
 
-        getDatabaseOrders();
+            getDatabaseOrders();
 
-        waitForData();
-
+            waitForData();
 
         // ------ //
 

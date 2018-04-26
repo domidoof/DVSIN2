@@ -18,7 +18,7 @@ public class DialogErrorV1 extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View view = inflater.inflate(R.layout.activity_popup_error_01, null);
+        View view = inflater.inflate(R.layout.activity_popup_error_02, null);
 
         builder.setView(view);
 

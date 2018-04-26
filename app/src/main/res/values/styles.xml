@@ -195,8 +195,40 @@
 
     </style>
 
+    <style name="menuetext_gross_grauer_hintergrund">
 
+        <!-- TEXT -->
 
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/standard_grau</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+        <!--  <item name="android:paddingLeft">20dp</item> -->
+        <item name="android:paddingRight">5dp</item>
+
+    </style>
+
+    <style name="menuetext_gross_grauer_hintergrund_rechts_angefügt">
+
+        <!-- TEXT -->
+        <item name="android:textSize">21dp</item>
+
+        <item name="android:textColor">@color/standard_grau</item>
+
+        !--PADDING -->
+
+        <item name="android:layout_gravity">left</item>
+
+        <!-- <item name="android:paddingTop">5dp</item> -->
+        <!-- <item name="android:paddingBottom">8dp</item> -->
+        <item name="android:paddingLeft">4dp</item>
+
+    </style>
 
     <!-- CONTAINERN -->
 
@@ -312,9 +344,7 @@
 
     </style>
 
-
     // -- Buchungsdatentabelle -- //
-
 
     <style name="buchungsteil">
 

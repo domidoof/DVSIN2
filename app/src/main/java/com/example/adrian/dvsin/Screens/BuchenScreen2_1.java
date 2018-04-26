@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -101,6 +103,10 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 	
 	PopupWindow popupWindow;
 
+	// ANIMATION
+
+	Animation animPopUp;
+
 
     // ########## //
 
@@ -124,14 +130,15 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 			setFonts();
 
+
 		// INTENTINHALT holen
 
-		getIntentInhalt();
+			getIntentInhalt();
 
 
 		// STARTINITIALISIERUNG
 
-		startInitialization();
+			startInitialization();
 
 
         // FONTS anwenden
@@ -263,7 +270,9 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 		
 		fehlertext_ueberschift.setTypeface(font_roboto_medium);
         fehlertext_erklaerung_v1_teil_1.setTypeface(font_roboto_thin);
-        fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
+        // fehlertext_erklaerung_v1_teil_2.setTypeface(font_roboto_thin);
+
+
 	
     }
 
@@ -303,6 +312,10 @@ public class BuchenScreen2_1 extends AppCompatActivity {
         // ImageBUTTONS
 		
 		vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
+
+		// ANIMATION
+
+		animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slideup);
 			
     }
 	
@@ -335,8 +348,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 		// VIEW initialisieren
 
-		View popupView = layoutInflater.inflate(R.layout.activity_popup_error_01, null);
-
+		popupView = layoutInflater.inflate(R.layout.activity_popup_error_02, null);
 
 		// POPUPWINDOW initialisieren
 
@@ -346,8 +358,8 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 		// TEXTVIEW PopUpWindow
 
 		fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift_v1);
-		fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_1);
-		fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
+		fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_1_teil_1);
+		// fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
 
 	}
 			
@@ -425,8 +437,8 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 			}
 			
 		}
-		
-		private void setNewContainerAnzahl() {
+
+	private void setNewContainerAnzahl() {
 		
 		// Eingabe aus EDITTEXT "aktuelle_eingabe" in INT umwandeln
 		
@@ -552,8 +564,8 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 			// TEXTVIEW PopUpWindow setzen
 
 		    fehlertext_ueberschift.setText(R.string.fehlertext_ueberschift_v1);
-            fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v1_teil_1);
-			fehlertext_erklaerung_v1_teil_2.setText(R.string.fehlertext_erklaerung_v1_teil_2);
+            fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v1_1_teil_1);
+			// fehlertext_erklaerung_v1_teil_2.setText(R.string.fehlertext_erklaerung_v1_teil_2);
 	}	
 	
 	private void setTextViewDialogEmptyEditText(){
@@ -561,8 +573,8 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 			// TEXTVIEW PopUpWindow setzen
 
 		fehlertext_ueberschift.setText(R.string.fehlertext_ueberschift_v2);
-		fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v2_teil_1);
-		fehlertext_erklaerung_v1_teil_2.setText(R.string.fehlertext_erklaerung_v2_teil_2);
+		fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v2_1_teil_1);
+		// fehlertext_erklaerung_v1_teil_2.setText(R.string.fehlertext_erklaerung_v2_teil_2);
 		
 		
 	}
@@ -572,6 +584,12 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 		// KOMMENTIEREN, wenn verstanden ;)
 
 			// Eigenschaften POPUPWINDOW "popupWindow" festlegen
+
+			// ??? GEHT DAS ??? //
+
+			popupView.startAnimation(animPopUp);
+
+			// ??? GEHT DAS ??? //
 
             popupWindow.setTouchable(true);
             popupWindow.setFocusable(false);
@@ -584,6 +602,8 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 			// Position ausgehend con BUTTON "vorwaerts"
 
             popupWindow.showAtLocation(zurueck,0,0,50);
+
+
 		
 	}
 	

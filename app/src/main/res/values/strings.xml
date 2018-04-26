@@ -18,10 +18,14 @@
 
 
     <!-- Strings für das THEMA: Fehlermeldungen "Überladen"  -->
-=======
+
     <!-- Strings für das THEMA: Fehlermeldungen  -->
 
->>>>>>> master
+
+    <string name="fehlertext_ueberschift_v1_1">Leider zu SCHWER!</string>
+
+    <string name="fehlertext_erklaerung_v1_1_teil_1">Maximale Ladekapazität überschritten</string>
+
 
     <string name="fehlertext_ueberschift_v1">Leider zu SCHWER!</string>
 
@@ -32,15 +36,18 @@
 
     <!-- Strings für das THEMA: Fehlermeldungen "Überladen"  -->
 
-    <string name="fehlertext_ueberschift_v2">Etwas zu leer!</string>
+    <string name="fehlertext_ueberschift_v2_1">Etwas zu LEER!</string>
+
+    <string name="fehlertext_erklaerung_v2_1_teil_1">Containeranzahl bitte eingeben</string>
+
+
+    <string name="fehlertext_ueberschift_v2">Etwas zu LEER!</string>
 
     <string name="fehlertext_erklaerung_v2_teil_1">Gib bitte eine Anzahl</string>
 
     <string name="fehlertext_erklaerung_v2_teil_2">an Containern ein!</string>
 
 
-=======
->>>>>>> master
     <!-- Strings für das THEMA: Login -->
 
     <string name="loginbefehl_teil_1">Es ist Zeit die </string>
