@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.adrian.dvsin.Screens.ContainernScreen1;
 import com.example.adrian.dvsin.Screens.BuchenScreen1;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
     ImageButton button_benuter_informationen;
 
 
+    // DATABASE
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+
+
     // ########## //
 
 
@@ -61,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
+
+        Intent intent = getIntent();
+        String user = intent.getStringExtra("USER_NAME");
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users");
+        myRef.setValue(user);
+
 
         // IDs zuordnen
 
@@ -223,12 +238,15 @@ public class MainActivity extends AppCompatActivity {
         menuepunkt_containern = (ImageButton) findViewById(R.id.containern_button);
 
         //Int
+
         saufCount = 0;
 
     }
 
     public void textSaufenPlay(View view) {
         saufCount++;
+
+        //a little sugarle
 
         if (saufCount == 2) {
             Toast.makeText(this, "oh oh was passiert hier?", Toast.LENGTH_SHORT).show();

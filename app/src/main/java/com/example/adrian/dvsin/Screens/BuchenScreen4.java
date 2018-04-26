@@ -3,12 +3,15 @@ package com.example.adrian.dvsin.Screens;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
@@ -33,6 +36,8 @@ public class BuchenScreen4 extends AppCompatActivity {
 
     // String
 
+    String childOrderID;
+
 
     // -- Others -- //
 
@@ -51,11 +56,15 @@ public class BuchenScreen4 extends AppCompatActivity {
 
     //Database Resources
 
+    FirebaseDatabase database;
     FirebaseDatabase database2;
 
 
     //Reference to the database
 
+    DatabaseReference newChildRef;
+    DatabaseReference containerLargeRef;
+    DatabaseReference containerSmallRef;
     DatabaseReference ref2;
 
 
@@ -64,6 +73,10 @@ public class BuchenScreen4 extends AppCompatActivity {
     ArrayList<Integer> orderList = new ArrayList<>();
     ArrayList<Integer> containerGrossList = new ArrayList<>();
     ArrayList<Integer> containerKleinList = new ArrayList<>();
+
+
+    //set Lottie Animation
+    LottieAnimationView loadingScreen;
 
 
     //aktuelle Buchungsklasse aus vorheriger activity
@@ -96,6 +109,18 @@ public class BuchenScreen4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_4);
 
+
+        // INHALT Activity wählen --- //
+
+        // Inhalt: Aktuelle Buchungseigenschaften von letzter Aktivity holen
+
+        aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
+
+        Log.d("HERENOW", aktuelleBuchung.getSchifftyp());
+
+
+
+
         //initialisieren
 
         setIDs();
@@ -110,111 +135,154 @@ public class BuchenScreen4 extends AppCompatActivity {
         setFontsToIDs();
 
 
+        // letzte order ID aus der Datenbank abfragen
         getLatestOrderID();
 
-        writeToDatabase();
-
-
-        // INHALT Activity wählen --- //
-
-        // Inhalt: Aktuelle Buchungseigenschaften von letzter Aktivity holen
-
-        aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
-
-        buchungsnummer_aktuell.setText(Integer.toString((aktuelleBuchung.getBuchungsID())));
-
-        //BUTTONS
-
-        // BUTTON zurück (links oben) aktivieren
-
-        Button zurueck = (Button) findViewById(R.id.zurueck);
-        zurueck.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // BUTTON angeklickte Buchung verladen; erste Buchungsnummer
-
-        ImageButton containern_gleich_starten = (ImageButton) findViewById(R.id.buchung_containern);
-        containern_gleich_starten.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BuchenScreen4.this, ContainernScreen1.class);
-                startActivity(intent);
-            }
-        });
 
     }
+//
+//    private void waitForDatabase() {
+//
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                //Do something after 100ms
+//
+//
+//            }
+//        }, 5000);
+//    }
 
     private void writeToDatabase() {
-        lastElement = orderList.size() - 1;
-        newOrderID = orderList.get(lastElement) + 1;
 
-        //set new orderID
-        aktuelleBuchung.setBuchungsID(newOrderID);
+        //set the loading animation
+        loadingScreen = findViewById(R.id.animation_view);
+        loadingScreen.setAnimation("off_time_leap_frog_loader.json");
+        loadingScreen.playAnimation();
 
-        for (int i = 0; i < aktuelleBuchung.getContainerZahlGross(); i++) {
-            randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
-            containerGrossList.add(randomNum);
-        }
 
-        for (int i = 0; i < aktuelleBuchung.getContainerZahlKlein(); i++) {
-            randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
-            containerKleinList.add(randomNum);
-        }
+        // the handler is waiting 5 seconds then executes the code inside it, to make sure, that the database writing action is over
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                loadingScreen.setVisibility(View.GONE);
+                loadingScreen.cancelAnimation();
+                loadingBackground.setVisibility(View.GONE);
+
+
+                // write the new data to the database
+                lastElement = orderList.size() - 1;
+                newOrderID = orderList.get(lastElement) + 1;
+
+                database = FirebaseDatabase.getInstance();
+                Log.d("ORDERIDIS", Integer.toString(newOrderID));
+
+                //set new orderID
+                aktuelleBuchung.setBuchungsID(newOrderID);
+
+                //write to textView
+                buchungsnummer_aktuell.setText(Integer.toString((aktuelleBuchung.getBuchungsID())));
+
+                //make lists with random container IDs
+
+                for (int i = 0; i < aktuelleBuchung.getContainerZahlGross(); i++) {
+                    randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
+                    containerGrossList.add(randomNum);
+                    Log.d("GROSS_LIST", Integer.toString(containerGrossList.get(i)));
+                }
+
+
+                for (int i = 0; i < aktuelleBuchung.getContainerZahlKlein(); i++) {
+                    randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
+                    containerKleinList.add(randomNum);
+                    Log.d("KLEIN_LIST", Integer.toString(containerKleinList.get(i)));
+                }
+
+                // convert the new orderID to a string
+                childOrderID = Integer.toString(newOrderID);
+
+                // add the new order ID as a child of orders to the database
+                newChildRef = database.getReference("orders").child(childOrderID);
+
+                //add the large containers to database
+                for (Integer a : containerGrossList) {
+                    newChildRef.child("containerLarge").child(Integer.toString(a)).setValue("40");
+                }
+
+                //add the small containers to database
+                for (Integer a : containerKleinList) {
+                    newChildRef.child("containerSmall").child(Integer.toString(a)).setValue("20");
+                }
+
+                //add the ship type to the database
+                newChildRef.child("shipType").setValue(aktuelleBuchung.getSchifftyp());
+
+
+                //BUTTONS
+
+                // BUTTON zurück (links oben) aktivieren
+
+                Button zurueck = (Button) findViewById(R.id.zurueck);
+                zurueck.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                // BUTTON angeklickte Buchung verladen; erste Buchungsnummer
+
+                ImageButton containern_gleich_starten = (ImageButton) findViewById(R.id.buchung_containern);
+                containern_gleich_starten.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(BuchenScreen4.this, ContainernScreen1.class);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+        }, 5000);
 
     }
 
 
 
     private void getLatestOrderID() {
+
+        //get the order list from the database to set net orderID
+
         database2 = FirebaseDatabase.getInstance();
         ref2 = database2.getReference("orders");
-            ref2.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    for (DataSnapshot snp : dataSnapshot.getChildren()) {
-                        orderList.add(Integer.valueOf(snp.getKey()));
-                        Log.d("TAG", "Value is: " + snp);
+        ref2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    }
+                for (DataSnapshot snp : dataSnapshot.getChildren()) {
+                    orderList.add(Integer.valueOf(snp.getKey()));
+                    Log.d("TAGTAGTAG", "Value is: " + snp);
+
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.w("TAG", "Failed to read value.", databaseError.toException());
-                }
-            });
-        }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Failed to read value.", databaseError.toException());
+            }
+        });
 
-    // -- BUTTONS  -- //
+        //neuen Auftrag in die Datenbank schreiben
+        writeToDatabase();
 
-    // BUTTON "containern_gleich_starten" drücken
-        public void onClickContainern (View view){
-            Intent intent = new Intent(BuchenScreen4.this, ContainernScreen1.class);
-
-            // ACTIVITY ContainernScreen1 starten
-
-            startActivity(intent);
-        }
-
-    // BUTTON "zurueck" drücken
-
-        // Ermöglicht den sofortigen Übergang von der Funktion "Buchen" zur Funktion "Containern"
-        private void buttonGetBack (View view){
-            Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
-
-            // ACTIVITY MainActivity starten
-
-            startActivity(intent);
-
-        }
+    }
 
         private void setFontsToIDs () {
 

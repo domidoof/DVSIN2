@@ -15,6 +15,8 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginScreen extends AppCompatActivity {
 
@@ -179,6 +181,7 @@ public class LoginScreen extends AppCompatActivity {
                 if(eingabe_login.length()!= 0){
 
                     Intent intent = new Intent(LoginScreen.this, MainActivity.class);
+                    intent.putExtra("USER_NAME", eingabe_login.getText().toString());
                     startActivity(intent);
                 }
 
