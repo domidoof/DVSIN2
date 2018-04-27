@@ -95,16 +95,24 @@ public class ContainernScreen1 extends AppCompatActivity {
     // Database Resources
 
     FirebaseDatabase database2;
+    FirebaseDatabase database;
 
 
     // Reference to the database
 
     DatabaseReference ref2;
-
+    DatabaseReference ref;
+    DatabaseReference refChild;
 
     //Array List to save the data from the database
 
     ArrayList<String> orderList = new ArrayList<>();
+    ArrayList<String> orderStatus = new ArrayList<>();
+
+
+    //setup lottie animation
+
+    LottieAnimationView loadingScreen;
 	
 
     // ########## //
@@ -153,7 +161,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     private void waitForData() {
 
-        final LottieAnimationView loadingScreen = findViewById(R.id.animation_view);
+        loadingScreen = findViewById(R.id.animation_view);
         loadingScreen.setAnimation("off_time_leap_frog_loader.json");
         loadingScreen.playAnimation();
 
@@ -162,7 +170,39 @@ public class ContainernScreen1 extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                //Do something after 2000ms
+
+                lookForStatus();
+
+                newHandler();
+
+
+                // --- MUSS in andere Funktion eingebaut werden --- //
+
+                // BUTTON "buchung_auswaehlen_01_01" drücken
+
+                //buttonBuchungVerladenStarten();
+
+
+                // BUTTON "buchung_auswaehlen_01_02" drücken
+
+                //buttonBuchungVerladenStarten();
+
+            }
+        }, 2000);
+    }
+
+
+    // --- WEITERE Methoden --- //
+
+    private void newHandler() {
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 //Do something after 100ms
+
                 loadingScreen.setVisibility(View.GONE);
                 loadingScreen.cancelAnimation();
 
@@ -188,10 +228,30 @@ public class ContainernScreen1 extends AppCompatActivity {
                 //buttonBuchungVerladenStarten();
 
             }
-        }, 3000);
+        }, 2000);
     }
 
-    // --- WEITERE Methoden --- //
+    private void lookForStatus() {
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("orders");
+
+        for (String str : orderList) {
+            refChild = ref.child(str).child("status");
+            refChild.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    orderStatus.add(dataSnapshot.getValue(String.class));
+                    Log.d("TEST_VALUE", dataSnapshot.getValue(String.class));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+    }
 
     private void getDatabaseOrders() {
         database2 = FirebaseDatabase.getInstance();
@@ -204,6 +264,9 @@ public class ContainernScreen1 extends AppCompatActivity {
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
                     orderList.add(String.valueOf(snp.getKey()));
                     Log.d("TAG", "Value is: " + snp);
+
+//                    orderStatus.add(String.valueOf(snp.getValue()));
+//                    Log.d("STATUS_VALUE", String.valueOf(snp.getValue()));
 
                 }
             }
