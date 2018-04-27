@@ -198,6 +198,8 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     // --- WEITERE Methoden --- //
 
+    //Handler for wait until database query is finished
+
     private void newHandler() {
 
         Handler handler = new Handler();
