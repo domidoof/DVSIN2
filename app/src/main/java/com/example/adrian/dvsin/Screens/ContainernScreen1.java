@@ -103,12 +103,14 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     DatabaseReference ref2;
     DatabaseReference ref;
-    DatabaseReference refChild;
+    DatabaseReference refChildStatus;
+    DatabaseReference refChildShip;
 
     //Array List to save the data from the database
 
     ArrayList<String> orderList = new ArrayList<>();
     ArrayList<String> orderStatus = new ArrayList<>();
+    ArrayList<String> orderShip = new ArrayList<>();
 
 
     //setup lottie animation
@@ -237,12 +239,26 @@ public class ContainernScreen1 extends AppCompatActivity {
         ref = database.getReference("orders");
 
         for (String str : orderList) {
-            refChild = ref.child(str).child("status");
-            refChild.addListenerForSingleValueEvent(new ValueEventListener() {
+            refChildStatus = ref.child(str).child("status");
+            refChildStatus.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     orderStatus.add(dataSnapshot.getValue(String.class));
                     Log.d("TEST_VALUE", dataSnapshot.getValue(String.class));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            refChildShip = ref.child(str).child("shipType");
+            refChildShip.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    orderShip.add(dataSnapshot.getValue(String.class));
+                    Log.d("TEST_SHIP", dataSnapshot.getValue(String.class));
                 }
 
                 @Override
@@ -265,10 +281,6 @@ public class ContainernScreen1 extends AppCompatActivity {
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
                     orderList.add(String.valueOf(snp.getKey()));
                     Log.d("TAG", "Value is: " + snp);
-
-//                    orderStatus.add(String.valueOf(snp.getValue()));
-//                    Log.d("STATUS_VALUE", String.valueOf(snp.getValue()));
-
                 }
             }
 
@@ -291,17 +303,13 @@ public class ContainernScreen1 extends AppCompatActivity {
         i = 0;
         rowCount = 0;
 
-        Log.d("LENGTH_LIST", Integer.toString(orderList.size()));
-
-        Log.d("LENGTH_STATUS", Integer.toString(orderStatus.size()));
-
 
         // NEW TABLEROW hizufügen zu TABLELAYOUT "buchungsDatentabelle"
 
         //for (int i = 0; i <4; i++) {
         for (String str : orderList) {
             if (orderStatus.get(i).equals("open")) {
-                Log.d("BLUBLUB", orderStatus.get(i));
+
                 // --- ERSTELLEN der neuen TABELLENZELLE --- //
 
                 buchungsDatenzeileVorgabe = new TableRow(this);
@@ -414,21 +422,26 @@ public class ContainernScreen1 extends AppCompatActivity {
 
                 //id and orderid for inside method usage
                 final String orderID = str;
+                final int shipCount = i;
                 Log.d("TAG", orderID);
 
+
+                // ------------------ muss noch geändert werden, sobald der screen für das kleine schiff ferztig ist! -----------------------------------
 
                 //weiterClick = findViewById(id_);
                 weiter.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
+                        if (orderShip.get(shipCount).equals("Großes Schiff")) {
+                            Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+                            intent.putExtra("ORDER_ID", orderID);
+                            startActivity(intent);
+                        }
+                        else {
+                            Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+                            intent.putExtra("ORDER_ID", orderID);
+                            startActivity(intent);
+                        }
 
-                        Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
-                        intent.putExtra("ORDER_ID", orderID);
-                        Log.d("ORDERID_MAL_SEHEN", orderID);
-                        startActivity(intent);
-
-//                    Toast.makeText(view.getContext(),
-//                            "Button clicked index = " + id_, Toast.LENGTH_SHORT)
-//                            .show();
                     }
                 });
 
