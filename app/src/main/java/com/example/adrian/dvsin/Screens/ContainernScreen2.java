@@ -19,8 +19,7 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     // TextView Menüstruktur
 
-    TextView zurueck, text_ebene, ebenennummer, container_id_text, container_id_nummer, order_id_text, order_id_nummer;
-
+    TextView zurueck, text_ebene, ebenennummer, container_id_text, container_id_nummer;
     // String
 
     String orderID;
@@ -32,7 +31,7 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     // TextView Containeranzeige
 
-    TextView naechster_container_groesse, naechster_container_wort, aktueller_container_groesse, aktueller_container_wort;
+    TextView aktueller_container_groesse, aktueller_container_wort, aktuelle_containerid_wort, aktuelle_containerid;
 
     // verwendete Fonts
 
@@ -181,8 +180,8 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer = (TextView) findViewById(R.id.ebenen_nummer);
         container_id_text = (TextView) findViewById(R.id.container_id_text);
         container_id_nummer = (TextView) findViewById(R.id.container_id_nummer);
-        order_id_text = findViewById(R.id.order_id_text);
-        order_id_nummer = findViewById(R.id.order_id_nummer);
+        // order_id_text = findViewById(R.id.order_id_text);
+        // order_id_nummer = findViewById(R.id.order_id_nummer);
 
 
         //TextView Tabelle zuweisen
@@ -202,8 +201,8 @@ public class ContainernScreen2 extends AppCompatActivity {
 
         // TextView Containeranzeige zuweisen
 
-        naechster_container_groesse = (TextView) findViewById(R.id.naechster_container_groesse);
-        naechster_container_wort = (TextView) findViewById(R.id.naechster_container_wort);
+        aktuelle_containerid = (TextView) findViewById(R.id.aktuelle_containerid);
+        aktuelle_containerid_wort = (TextView) findViewById(R.id.aktuelle_containerid_wort);
         aktueller_container_groesse = (TextView) findViewById(R.id.aktueller_container_groesse);
         aktueller_container_wort = (TextView) findViewById(R.id.aktueller_container_wort);
 
@@ -222,11 +221,11 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer.setTypeface(font_roboto_thin);
         container_id_text.setTypeface(font_roboto_thin);
         container_id_nummer.setTypeface(font_roboto_medium);
-        order_id_text.setTypeface(font_roboto_thin);
-        order_id_nummer.setTypeface(font_roboto_medium);
+        // order_id_text.setTypeface(font_roboto_thin);
+        // order_id_nummer.setTypeface(font_roboto_medium);
 
-        //set text für orderid
-        order_id_nummer.setText(orderID);
+        // set text für orderid
+        // order_id_nummer.setText(orderID);
 
 
         // Fonts für Tabelle setzen
@@ -246,8 +245,8 @@ public class ContainernScreen2 extends AppCompatActivity {
 
         // Fonts für Containeranzeige setzen
 
-        naechster_container_groesse.setTypeface(font_roboto_medium);
-        naechster_container_wort.setTypeface(font_roboto_thin);
+        aktuelle_containerid.setTypeface(font_roboto_medium);
+        aktuelle_containerid_wort.setTypeface(font_roboto_thin);
         aktueller_container_groesse.setTypeface(font_roboto_medium);
         aktueller_container_wort.setTypeface(font_roboto_thin);
     }

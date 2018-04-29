@@ -96,17 +96,21 @@ public class BuchenScreen4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_4);
 
-        setIDs();
+        // IDs setzen
+
+            setIDs();
+
 
         // Fonts einbeziehen
 
-        setFonts();
+            setFonts();
 
 
         // -- FONTS ANWENDEN
 
-        setFontsToIDs();
+            setFontsToIDs();
 
+        //
 
         getLatestOrderID();
 
@@ -202,10 +206,13 @@ public class BuchenScreen4 extends AppCompatActivity {
             startActivity(intent);
         }
 
+
     // BUTTON "zurueck" drücken
 
-        // Ermöglicht den sofortigen Übergang von der Funktion "Buchen" zur Funktion "Containern"
         private void buttonGetBack (View view){
+
+            // Ermöglicht den sofortigen Übergang von der Funktion "Buchen" zur Funktion "Containern"
+
             Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
 
             // ACTIVITY MainActivity starten
@@ -254,7 +261,7 @@ public class BuchenScreen4 extends AppCompatActivity {
             text_buchungsbestaetigung_teil_3 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_3);
             text_buchungsbestaetigung_teil_4 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_4);
             buchungsnummer_abkuerzung = (TextView) findViewById(R.id.buchungsnummer_abkuerzung);
-            loadingBackground = (TextView) findViewById(R.id.loadingBackground);
+            // loadingBackground = (TextView) findViewById(R.id.loadingBackground);
 
             // TEXTVIEW Buchungsnummer (dynamisch)
 

@@ -407,14 +407,14 @@
                         android:id="@+id/designschatten_popup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
-
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            >
 
 
                             <LinearLayout
@@ -430,61 +430,9 @@
 
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1.25"
-                                    android:orientation="vertical"
-                                    android:paddingBottom="10dp"
-                                    android:paddingLeft="10dp"
-                                    android:paddingTop="15dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginLeft="8dp"
-
-                                        android:layout_weight="1.2"
-
-                                        android:background="@android:color/transparent"
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/icon_container_40_hellgrau" />
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="3"
-                                        android:paddingTop="2dp">
-
-                                        <TextView
-                                            android:id="@+id/naechster_container_groesse"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="2"
-                                            android:gravity="right"
-                                            android:paddingLeft="2dp"
-                                            android:text="@string/container_nummer_40"
-                                            android:textSize="11sp"
-                                            android:textColor="#bfbfbf"/>
-
-                                        <TextView
-                                            android:id="@+id/naechster_container_wort"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"
-                                            android:paddingLeft="2dp"
-                                            android:textColor="#bfbfbf"
-                                            android:text="@string/container_name"
-
-                                            android:textSize="11sp" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                                <LinearLayout
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
                                     android:layout_weight="1"
                                     android:orientation="vertical"
+                                    android:paddingLeft="10dp"
                                     android:paddingBottom="5dp"
                                     android:paddingTop="10dp">
 
@@ -496,13 +444,13 @@
                                         android:background="@android:color/transparent"
 
                                         android:scaleType="fitCenter"
-                                        android:src="@drawable/icon_container_40_dunkelgrau" />
+                                        android:src="@drawable/icon_container_20_dunkelgrau" />
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="2.5"
-                                        android:paddingTop="2dp">
+                                        android:paddingTop="2.5dp">
 
                                         <TextView
                                             android:id="@+id/aktueller_container_groesse"
@@ -510,18 +458,20 @@
                                             android:layout_height="match_parent"
                                             android:layout_weight="2"
                                             android:gravity="right"
+
                                             android:paddingLeft="2dp"
-                                            android:textColor="#a1a1a1"
-                                            android:text="@string/container_nummer_40"
+                                            android:textColor="@color/standard_grau"
+                                            android:text="@string/container_nummer_20"
                                             android:textSize="12sp" />
 
                                         <TextView
                                             android:id="@+id/aktueller_container_wort"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+
                                             android:paddingLeft="2dp"
                                             android:layout_weight="1"
-                                            android:textColor="#a1a1a1"
+                                            android:textColor="@color/standard_grau"
                                             android:text="@string/container_name"
 
                                             android:textSize="12sp" />
@@ -530,12 +480,80 @@
 
                                 </LinearLayout>
 
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.1"
+                                    android:orientation="vertical"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="10dp">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.75"
+
+                                        android:background="@android:color/transparent"
+
+                                        android:scaleType="fitStart"
+
+                                        android:paddingTop="10dp"
+                                        android:paddingLeft="10dp"
+                                        android:paddingBottom="7dp"
+
+                                        android:src="@drawable/icon_container20_tabelle" />
+
+
+
+                                    <TextView
+                                        android:id="@+id/aktuelle_containerid_wort"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:paddingLeft="10dp"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/standard_grau"
+                                        android:text="ContainerID"
+                                        android:gravity="bottom"
+                                        android:textSize="10sp" />
+
+                                    <TextView
+                                        android:id="@+id/aktuelle_containerid"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1.25"
+                                        android:gravity="left"
+
+
+                                        android:paddingLeft="10dp"
+                                        android:textColor="@color/standard_grau"
+                                        android:text="4331"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
                             </LinearLayout>
 
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.1"
+                            >
+
+                        </LinearLayout>
+
                     </LinearLayout>
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="15"-->
+                        <!--android:background="@android:color/transparent">-->
+             <!---->
+                    <!--</LinearLayout>-->
 
                 </LinearLayout>
                 <!-- PopUp-Bereich ENDE -->
@@ -576,36 +594,13 @@
             android:layout_weight="0"
             android:paddingLeft="20dp"
             android:paddingRight="5dp"
-            android:text="ContainerID:"
+            android:text="Buchungsnummer:"
             android:textSize="15sp"
             android:textColor="@color/weiß"
             />
 
         <TextView
             android:id="@+id/container_id_nummer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="12356789"
-            android:textColor="@color/weiß"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/order_id_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0"
-            android:paddingLeft="20dp"
-            android:paddingRight="5dp"
-            android:text="OrderID:"
-            android:textSize="15sp"
-            android:textColor="@color/weiß"
-            />
-
-        <TextView
-            android:id="@+id/order_id_nummer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

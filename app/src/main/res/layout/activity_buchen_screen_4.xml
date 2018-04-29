@@ -48,13 +48,13 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
+        <!--<TextView
             android:id="@+id/loadingBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="bla"
             android:background="@color/weiss_hintergrund_screen" />
-            <!-- android:visibility="gone" -->
+            &lt;!&ndash; android:visibility="gone" &ndash;&gt;-->
 
 
         <LinearLayout
