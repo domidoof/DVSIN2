@@ -97,11 +97,17 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 	// BUNDLES
 
 	Bundle wertesammlung;
-	
-	
+
+
+	// LAYOUTINFLATOR
+
+	LayoutInflater layoutInflater;
+
+
 	// POPUPWINDOW
 	
 	PopupWindow popupWindow;
+
 
 	// ANIMATION
 
@@ -343,22 +349,22 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 		// LAYOUTINFLATER initialisieren
 
-		LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+			layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
 
 
 		// VIEW initialisieren
 
-		popupView = layoutInflater.inflate(R.layout.activity_popup_error_02, null);
+			popupView = layoutInflater.inflate(R.layout.activity_popup_error_02, null);
 
 		// POPUPWINDOW initialisieren
 
-		popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
 
 		// TEXTVIEW PopUpWindow
 
-		fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift_v1);
-		fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_1_teil_1);
+			fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift_v1);
+			fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_1_teil_1);
 		// fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
 
 	}

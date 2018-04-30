@@ -2,12 +2,18 @@ package com.example.adrian.dvsin;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +21,8 @@ import com.example.adrian.dvsin.Screens.ContainernScreen1;
 import com.example.adrian.dvsin.Screens.BuchenScreen1;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import static android.view.Gravity.BOTTOM;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,12 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
     // TEXTVIEW 
 
-    TextView hauptmenue, buchen_beschreibung, containern_buchen, doku_beschreibung, suchen_bescheibung;
+    TextView hauptmenue, buchen_beschreibung, containern_buchen, doku_beschreibung, suchen_bescheibung, aendern_bescheibung;
+
+    TextView benutzername_aktuell, benutzer_status;
 
 
     // FONTS
 
-    Typeface font_roboto_thin;
+    Typeface font_roboto_thin, font_roboto_medium;
 
 
     // BUTTONS
@@ -51,6 +61,26 @@ public class MainActivity extends AppCompatActivity {
     ImageButton button_benuter_informationen;
 
 
+    // LAYOUTINFLATOR
+
+    LayoutInflater layoutInflater;
+
+
+    // POPUPVIEW
+
+    View popupView;
+
+
+    // POPUPWINDWOW
+
+    PopupWindow popupWindow;
+
+
+    // ANIMATION
+
+    Animation animPopUp;
+  
+  
     // DATABASE
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -79,34 +109,34 @@ public class MainActivity extends AppCompatActivity {
 
         // IDs zuordnen
 
-        setIDs();
+            setIDs();
 
 
         // FONTS einbeziehen
 
-        setFonts();
+            setFonts();
 
 
         // -- FONTS ANWENDEN
 
-        setFontsToIDs();
+            setFontsToIDs();
 
 
         // -- BUTTONS  -- //
 
         // BUTTON "menuepunkt_buchen" drücken
 
-        startMethodeBuchen();
+            startMethodeBuchen();
 
 
         // BUTTON "menuepunkt_containern" drücken
 
-        startMethodeContainern();
+            startMethodeContainern();
 
 
         // BUTTON "button_benuter_informationen" drücken
 
-        // showUserInformation();
+            showUserDetails();
 
 
         // ########## //
@@ -149,55 +179,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* privat void showUserInformation() {
-
-    		// !!! NICHT AUF AKTUELLEM STAND !!! //
-		
-        Anzeigen der Benutzerinformationen über Button onCklick
-
-        final ImageButton button_benuter_informationen = (ImageButton) findViewById(R.id.user_id);
-        button_benuter_informationen.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                PopupWindow popupWindow = new PopupWindow(R.layout.activity_popup_user_login, 5, 5, true);
-                  popupMenu.getMenuInflater()
-				  
-		});
-		
-		}
-	} */
-
-    @Override
-    public void onBackPressed(){
-
-        // APPLICATION go to Background; Keine Rückkehr zum Loginbildschirm!
-
-        moveTaskToBack(true);
-
-        }
-
-    /* public void ShowPopup(View v){
-		
-		// !!! NICHT AUF AKTUELLEM STAND !!! //
-		
-        benutzer_informationen.setContentView(R.layout.activity_popup_user_login);
-
-
-
-        font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
-
-        benutzername_aktuell = (TextView) findViewById(R.id.benutzername_aktuell);
-        text_benutzername = (TextView) findViewById(R.id.text_benutzername);
-        benutzername_aktuell.setTypeface(font_roboto_thin);
-        text_benutzername.setTypeface(font_roboto_thin);
-
-
-        benutzer_informationen.show();
-		
-        */
-
     private void setFontsToIDs() {
 
         // FONTS SETZEN
@@ -208,6 +189,10 @@ public class MainActivity extends AppCompatActivity {
         containern_buchen.setTypeface(font_roboto_thin);
         doku_beschreibung.setTypeface(font_roboto_thin);
         suchen_bescheibung.setTypeface(font_roboto_thin);
+        aendern_bescheibung.setTypeface(font_roboto_thin);
+
+        benutzername_aktuell.setTypeface(font_roboto_medium);
+        benutzer_status.setTypeface(font_roboto_thin);
 
     }
 
@@ -216,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
         // Fonts einbeziehen
 
         font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
+        font_roboto_medium = Typeface.createFromAsset(getAssets(), "fonts/roboto-medium.ttf");
 
     }
 
@@ -225,17 +211,86 @@ public class MainActivity extends AppCompatActivity {
 
         // TEXTVIEW
 
-        hauptmenue = (TextView) findViewById(R.id.hauptmenue);
+        hauptmenue = (TextView) findViewById(R.id.hauptmenue_text);
 
         buchen_beschreibung = (TextView) findViewById(R.id.buchen_beschreibung);
         containern_buchen = (TextView) findViewById(R.id.containern_beschreibung);
         doku_beschreibung = (TextView) findViewById(R.id.doku_beschreibung);
         suchen_bescheibung = (TextView) findViewById(R.id.suchen_beschreibung);
+        aendern_bescheibung = (TextView) findViewById(R.id.aendern_beschreibung);
 
         // IMAGEBUTTON
 
         menuepunkt_buchen = (ImageButton) findViewById(R.id.buchen_button);
         menuepunkt_containern = (ImageButton) findViewById(R.id.containern_button);
+        button_benuter_informationen = (ImageButton) findViewById(R.id.user_id);
+
+        // LAYOUTINFLATER initialisieren
+
+        layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        // VIEW initialisieren
+
+        popupView = layoutInflater.inflate(R.layout.activity_popup_user_login_02, null);
+
+        // POPUPWINDOW initialisieren
+
+        popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+        // TEXTVIEW PopUpWindow
+
+        benutzername_aktuell = (TextView) popupView.findViewById(R.id.benutzername_aktuell);
+        benutzer_status = (TextView) popupView.findViewById(R.id.benutzer_status);
+
+        // ANIMATION
+
+        animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slideup_v2);
+
+    }
+
+    private void showUserDetails() {
+
+        //	FUNKTION "Benutzerinformationen" wird gestartet
+
+        button_benuter_informationen.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                setPopUpDetailsForAll();
+
+            }
+        });
+
+    }
+
+    private void setPopUpDetailsForAll(){
+
+        // KOMMENTIEREN, wenn verstanden ;)
+
+        // Eigenschaften POPUPWINDOW "popupWindow" festlegen
+
+        popupView.startAnimation(animPopUp);
+
+        // Design anpassen
+
+        benutzername_aktuell.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
+        benutzer_status.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
+
+        //
+
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(false);
+        popupWindow.setOutsideTouchable(true);
+
+        // Hintergrund festlegen
+
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+        // Position ausgehend con BUTTON "vorwaerts"
+
+        popupWindow.showAtLocation(button_benuter_informationen,BOTTOM,0,84);
 
         //Int
 
