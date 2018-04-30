@@ -209,21 +209,21 @@ public class BuchenScreen4 extends AppCompatActivity {
                 // add the new order ID as a child of orders to the database
                 newChildRef = database.getReference("orders").child(childOrderID);
 
-                //add the large containers to database
+                //add the large containers to database order
                 for (Integer a : containerGrossList) {
                     newChildRef.child("containerLarge").child(Integer.toString(a)).setValue("40");
                 }
 
-                //add the small containers to database
+                //add the small containers to database order
                 for (Integer a : containerKleinList) {
                     newChildRef.child("containerSmall").child(Integer.toString(a)).setValue("20");
                 }
 
-                //add the ship type to the database
+                //add the ship type to the database order
                 newChildRef.child("shipType").setValue(aktuelleBuchung.getSchifftyp());
 
 
-                //add the order status to the database
+                //add the order status to the database order
                 newChildRef.child("status").setValue("open");
 
 
