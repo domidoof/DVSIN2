@@ -223,6 +223,10 @@ public class BuchenScreen4 extends AppCompatActivity {
                 newChildRef.child("shipType").setValue(aktuelleBuchung.getSchifftyp());
 
 
+                //add the order status to the database
+                newChildRef.child("status").setValue("open");
+
+
                 //BUTTONS
 
                 // BUTTON zurück (links oben) aktivieren
@@ -329,6 +333,8 @@ public class BuchenScreen4 extends AppCompatActivity {
             // IDs Buchungsbestätigungsbereich ZUORDNEN
 
             // TEXTVIEW Buchungsbestätigungsbereich
+
+            loadingBackground = (TextView) findViewById(R.id.loadingBackground);
 
             text_buchungsbestaetigung_teil_1 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_1);
             text_buchungsbestaetigung_teil_2 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_2);
