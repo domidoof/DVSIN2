@@ -3,6 +3,7 @@ package com.example.adrian.dvsin;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,9 +15,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.adrian.dvsin.Screens.ContainernScreen1;
 import com.example.adrian.dvsin.Screens.BuchenScreen1;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.view.Gravity.BOTTOM;
 
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 // -- INSTANZVARIABLEN festlegen -- //
 
     // int
+
+    int saufCount;
 
 
     // String
@@ -73,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
     // ANIMATION
 
     Animation animPopUp;
+  
+  
+    // DATABASE
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
 
     // ########## //
@@ -87,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
+
+        Intent intent = getIntent();
+        String user = intent.getStringExtra("USER_NAME");
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users");
+        myRef.setValue(user);
+
 
         // IDs zuordnen
 
@@ -273,6 +292,29 @@ public class MainActivity extends AppCompatActivity {
 
         popupWindow.showAtLocation(button_benuter_informationen,BOTTOM,0,84);
 
+        //Int
+
+        saufCount = 0;
+
+    }
+
+    public void textSaufenPlay(View view) {
+        saufCount++;
+
+        //a little sugarle
+
+        if (saufCount == 2) {
+            Toast.makeText(this, "oh oh was passiert hier?", Toast.LENGTH_SHORT).show();
+        }
+
+        if (saufCount == 4) {
+            Toast.makeText(this, "einmal noch dann...", Toast.LENGTH_SHORT).show();
+        }
+
+        if (saufCount == 5) {
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.saufen_morgens_immer);
+            mp.start();
+        }
     }
 
 }

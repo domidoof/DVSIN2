@@ -315,6 +315,7 @@
 
 
         </LinearLayout>
+
 	
     <LinearLayout
     android:id="@+id/bottomSection"
@@ -354,6 +355,14 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:paddingRight="20dp"/>
+
+        <TextView
+            android:id="@+id/textSaufen"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:onClick="textSaufenPlay"
+            android:focusable="true"/>
 
     </LinearLayout>
 	

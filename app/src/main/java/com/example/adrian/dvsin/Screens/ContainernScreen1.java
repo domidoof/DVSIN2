@@ -32,6 +32,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     // int
     int i;
+    int rowCount;
 
 
     // String
@@ -95,16 +96,26 @@ public class ContainernScreen1 extends AppCompatActivity {
     // Database Resources
 
     FirebaseDatabase database2;
+    FirebaseDatabase database;
 
 
     // Reference to the database
 
     DatabaseReference ref2;
-
+    DatabaseReference ref;
+    DatabaseReference refChildStatus;
+    DatabaseReference refChildShip;
 
     //Array List to save the data from the database
 
     ArrayList<String> orderList = new ArrayList<>();
+    ArrayList<String> orderStatus = new ArrayList<>();
+    ArrayList<String> orderShip = new ArrayList<>();
+
+
+    //setup lottie animation
+
+    LottieAnimationView loadingScreen;
 	
 
     // ########## //
@@ -153,7 +164,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     private void waitForData() {
 
-        final LottieAnimationView loadingScreen = findViewById(R.id.animation_view);
+        loadingScreen = findViewById(R.id.animation_view);
         loadingScreen.setAnimation("off_time_leap_frog_loader.json");
         loadingScreen.playAnimation();
 
@@ -162,7 +173,41 @@ public class ContainernScreen1 extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                //Do something after 2000ms
+
+                lookForStatus();
+
+                newHandler();
+
+
+                // --- MUSS in andere Funktion eingebaut werden --- //
+
+                // BUTTON "buchung_auswaehlen_01_01" drücken
+
+                //buttonBuchungVerladenStarten();
+
+
+                // BUTTON "buchung_auswaehlen_01_02" drücken
+
+                //buttonBuchungVerladenStarten();
+
+            }
+        }, 2000);
+    }
+
+
+    // --- WEITERE Methoden --- //
+
+    //Handler for wait until database query is finished
+
+    private void newHandler() {
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 //Do something after 100ms
+
                 loadingScreen.setVisibility(View.GONE);
                 loadingScreen.cancelAnimation();
 
@@ -188,10 +233,44 @@ public class ContainernScreen1 extends AppCompatActivity {
                 //buttonBuchungVerladenStarten();
 
             }
-        }, 3000);
+        }, 2000);
     }
 
-    // --- WEITERE Methoden --- //
+    private void lookForStatus() {
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("orders");
+
+        for (String str : orderList) {
+            refChildStatus = ref.child(str).child("status");
+            refChildStatus.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    orderStatus.add(dataSnapshot.getValue(String.class));
+                    Log.d("TEST_VALUE", dataSnapshot.getValue(String.class));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            refChildShip = ref.child(str).child("shipType");
+            refChildShip.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    orderShip.add(dataSnapshot.getValue(String.class));
+                    Log.d("TEST_SHIP", dataSnapshot.getValue(String.class));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+    }
 
     private void getDatabaseOrders() {
         database2 = FirebaseDatabase.getInstance();
@@ -204,7 +283,6 @@ public class ContainernScreen1 extends AppCompatActivity {
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
                     orderList.add(String.valueOf(snp.getKey()));
                     Log.d("TAG", "Value is: " + snp);
-
                 }
             }
 
@@ -225,208 +303,222 @@ public class ContainernScreen1 extends AppCompatActivity {
         useLayoutParamsForNewRow();
 
         i = 0;
+        rowCount = 0;
 
 
         // NEW TABLEROW hizufügen zu TABLELAYOUT "buchungsDatentabelle"
 
         //for (int i = 0; i <4; i++) {
         for (String str : orderList) {
+            if (orderStatus.get(i).equals("open")) {
 
+                // --- ERSTELLEN der neuen TABELLENZELLE --- //
 
-            // --- ERSTELLEN der neuen TABELLENZELLE --- //
+                buchungsDatenzeileVorgabe = new TableRow(this);
 
-            buchungsDatenzeileVorgabe = new TableRow(this);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                buchungsDatenzeileVorgabe.setLayoutParams(buchungsDatenzeile_Layout);
 
-            buchungsDatenzeileVorgabe.setLayoutParams(buchungsDatenzeile_Layout);
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                buchungsDatenzeileVorgabe.setPadding(0,0,0,17);
 
-            buchungsDatenzeileVorgabe.setPadding(0,0,0,17);
+                // ##### //
 
-            // ##### //
 
+                // --- ERSTELLEN des INHALTS für neue TABELLENZELLE --- //
 
-            // --- ERSTELLEN des INHALTS für neue TABELLENZELLE --- //
+                buchungsteil = new LinearLayout(new ContextThemeWrapper(this, R.style.buchungsteil), null, 0);
 
-            buchungsteil = new LinearLayout(new ContextThemeWrapper(this, R.style.buchungsteil), null, 0);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                buchungsteil.setLayoutParams(buchungsteil_Layout);
 
-            buchungsteil.setLayoutParams(buchungsteil_Layout);
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                buchungsteil.setOrientation(LinearLayout.HORIZONTAL);
 
-            buchungsteil.setOrientation(LinearLayout.HORIZONTAL);
+                buchungsteil.setPadding(40,0,0,0);
 
-            buchungsteil.setPadding(40,0,0,0);
+                // ##### //
 
-            // ##### //
 
+                buchungsNrAbkürzung = new TextView(this, null, R.style.buchungsNrAbkürzung);
 
-            buchungsNrAbkürzung = new TextView(this, null, R.style.buchungsNrAbkürzung);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                buchungsNrAbkürzung.setLayoutParams(buchungsNrAbkürzung_Layout);
 
-            buchungsNrAbkürzung.setLayoutParams(buchungsNrAbkürzung_Layout);
 
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                buchungsNrAbkürzung.setTextAppearance(this, R.style.buchungsNrAbkürzung);
 
-            buchungsNrAbkürzung.setTextAppearance(this, R.style.buchungsNrAbkürzung);
+                buchungsNrAbkürzung.setTypeface(font_roboto_thin);
 
-            buchungsNrAbkürzung.setTypeface(font_roboto_thin);
+                buchungsNrAbkürzung.setText("BuNr.:");
 
-            buchungsNrAbkürzung.setText("BuNr.:");
 
+                buchungsNrAbkürzung.setGravity(17);
 
-            buchungsNrAbkürzung.setGravity(17);
+                buchungsNrAbkürzung.setPadding(0,0,2,0);
 
-            buchungsNrAbkürzung.setPadding(0,0,2,0);
+                // ##### //
 
-            // ##### //
 
+                buchungsNrAktuell = new TextView(this, null, R.style.buchungsNrAktuell);
 
-            buchungsNrAktuell = new TextView(this, null, R.style.buchungsNrAktuell);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                buchungsNrAktuell.setLayoutParams(buchungsNrAktuell_Layout);
 
-            buchungsNrAktuell.setLayoutParams(buchungsNrAktuell_Layout);
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                buchungsNrAktuell.setTextAppearance(this, R.style.buchungsNrAktuell);
 
-            buchungsNrAktuell.setTextAppearance(this, R.style.buchungsNrAktuell);
+                buchungsNrAktuell.setTypeface(font_roboto_medium);
 
-            buchungsNrAktuell.setTypeface(font_roboto_medium);
+                buchungsNrAktuell.setText(str);
 
-            buchungsNrAktuell.setText(str);
 
+                buchungsNrAktuell.setGravity(17);
 
-            buchungsNrAktuell.setGravity(17);
+                buchungsNrAktuell.setPadding(2,0,10,0);
 
-            buchungsNrAktuell.setPadding(2,0,10,0);
+                // ------ //
 
-            // ------ //
 
+                zwischenBereich1 = new TextView (this, null, R.style.zwischenBereich1);
 
-            zwischenBereich1 = new TextView (this, null, R.style.zwischenBereich1);
+                // TextView zwischenBereich1 = new TextView(new ContextThemeWrapper(this, R.style.zwischenBereich1), null, 0);
 
-            // TextView zwischenBereich1 = new TextView(new ContextThemeWrapper(this, R.style.zwischenBereich1), null, 0);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                zwischenBereich1.setLayoutParams(zwischenBereich1_Layout);
 
-            zwischenBereich1.setLayoutParams(zwischenBereich1_Layout);
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                zwischenBereich1.setGravity(17);
 
-            zwischenBereich1.setGravity(17);
+                zwischenBereich1.setTextAppearance(this, R.style.zwischenBereich1);
 
-            zwischenBereich1.setTextAppearance(this, R.style.zwischenBereich1);
+                // ------ //
 
-            // ------ //
 
+                weiter = new Button(this, null, R.style.weiter);
 
-            weiter = new Button(this, null, R.style.weiter);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                weiter.setLayoutParams(weiter_Layout);
 
-            weiter.setLayoutParams(weiter_Layout);
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                weiter.setTextAppearance(this, R.style.weiter);
 
-            weiter.setTextAppearance(this, R.style.weiter);
+                weiter.setTypeface(font_roboto_thin);
 
-            weiter.setTypeface(font_roboto_thin);
+                weiter.setText(getText(R.string.weiterButton));
 
-            weiter.setText(getText(R.string.weiterButton));
+                weiter.setId(i+1);
 
-            weiter.setId(i+1);
+                //id and orderid for inside method usage
+                final String orderID = str;
+                final int shipCount = i;
+                Log.d("TAG", orderID);
 
-            //id and orderid for inside method usage
-            final String orderid = str;
-            Log.d("TAG", orderid);
 
+                // ------------------ muss noch geändert werden, sobald der screen für das kleine schiff ferztig ist! -----------------------------------
 
-            //weiterClick = findViewById(id_);
-            weiter.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
+                //weiterClick = findViewById(id_);
+                weiter.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        if (orderShip.get(shipCount).equals("Großes Schiff")) {
+                            Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+                            intent.putExtra("ORDER_ID", orderID);
+                            startActivity(intent);
+                        }
+                        else {
+                            Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+                            intent.putExtra("ORDER_ID", orderID);
+                            startActivity(intent);
+                        }
 
-                    Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
-                    intent.putExtra("ORDER_ID", orderid);
-                    Log.d("ORDERID_MAL_SEHEN", orderid);
-                    startActivity(intent);
+                    }
+                });
 
-//                    Toast.makeText(view.getContext(),
-//                            "Button clicked index = " + id_, Toast.LENGTH_SHORT)
-//                            .show();
-                }
-            });
 
+                weiter.setBackgroundColor(Color.parseColor("#ff883f"));
 
-            weiter.setBackgroundColor(Color.parseColor("#ff883f"));
 
+                weiter.setGravity(17);
 
-            weiter.setGravity(17);
+                // ------ //
 
-            // ------ //
 
 
+                zwischenBereich2 = new TextView (this, null, R.style.zwischenBereich1);
 
-            zwischenBereich2 = new TextView (this, null, R.style.zwischenBereich1);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                zwischenBereich2.setLayoutParams(zwischenBereich1_Layout);
 
-            zwischenBereich2.setLayoutParams(zwischenBereich1_Layout);
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                zwischenBereich2.setTextAppearance(this, R.style.zwischenBereich1);
 
-            zwischenBereich2.setTextAppearance(this, R.style.zwischenBereich1);
 
+                zwischenBereich2.setGravity(1);
 
-            zwischenBereich2.setGravity(1);
+                // ------ //
 
-            // ------ //
 
 
+                zwischenBereich3 = new TextView(this, null, R.style.zwischenBereich3);
 
-            zwischenBereich3 = new TextView(this, null, R.style.zwischenBereich3);
+                // LAYOUT setzen
 
-            // LAYOUT setzen
+                zwischenBereich3.setLayoutParams(zwischenBereich3_Layout);
 
-            zwischenBereich3.setLayoutParams(zwischenBereich3_Layout);
+                // INHALT und weitere Eigenschaften
 
-            // INHALT und weitere Eigenschaften
+                zwischenBereich3.setTextAppearance(this, R.style.zwischenBereich3);
 
-            zwischenBereich3.setTextAppearance(this, R.style.zwischenBereich3);
 
+                zwischenBereich3.setBackgroundColor(Color.parseColor("#ff731d"));
 
-            zwischenBereich3.setBackgroundColor(Color.parseColor("#ff731d"));
 
+                zwischenBereich3.setGravity(17);
 
-            zwischenBereich3.setGravity(17);
+                // ------ //
 
-            // ------ //
 
+                // LINEARLAYOUT "buchungsteil" füllen
 
-            // LINEARLAYOUT "buchungsteil" füllen
+                buchungsteil.addView(buchungsNrAbkürzung);
+                buchungsteil.addView(buchungsNrAktuell);
 
-            buchungsteil.addView(buchungsNrAbkürzung);
-            buchungsteil.addView(buchungsNrAktuell);
+                // TABLEROW "buchungsDatenzeile" füllen
 
-            // TABLEROW "buchungsDatenzeile" füllen
+                buchungsDatenzeileVorgabe.addView(buchungsteil);
+                buchungsDatenzeileVorgabe.addView(zwischenBereich1);
+                buchungsDatenzeileVorgabe.addView(weiter);
+                buchungsDatenzeileVorgabe.addView(zwischenBereich2);
+                buchungsDatenzeileVorgabe.addView(zwischenBereich3);
 
-            buchungsDatenzeileVorgabe.addView(buchungsteil);
-            buchungsDatenzeileVorgabe.addView(zwischenBereich1);
-            buchungsDatenzeileVorgabe.addView(weiter);
-            buchungsDatenzeileVorgabe.addView(zwischenBereich2);
-            buchungsDatenzeileVorgabe.addView(zwischenBereich3);
+                // TABLELAYOUT "buchungsDatenzeileVorgabe" füllen
 
-            // TABLELAYOUT "buchungsDatenzeileVorgabe" füllen
+                buchngsDatentabelle.addView(buchungsDatenzeileVorgabe, rowCount);
 
-            buchngsDatentabelle.addView(buchungsDatenzeileVorgabe, i);
+                i++;
+                rowCount++;
+            }
+            else {
+                i++;
+            }
 
-            i++;
+
+
         }
     }
 

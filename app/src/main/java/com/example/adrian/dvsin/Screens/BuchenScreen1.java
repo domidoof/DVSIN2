@@ -17,7 +17,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
     // -- INSTANZVARIABLEN festlegen -- //
 
-    // INT
+    // INT //
 
     int button_grosses_Schiff_gedrueckt;
     int button_kleines_Schiff_gedrueckt;
