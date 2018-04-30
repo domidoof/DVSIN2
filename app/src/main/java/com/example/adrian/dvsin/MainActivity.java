@@ -298,6 +298,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    // kleines gimmick
+
     public void textSaufenPlay(View view) {
         saufCount++;
 
