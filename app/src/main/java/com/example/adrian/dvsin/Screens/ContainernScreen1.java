@@ -440,7 +440,7 @@ public class ContainernScreen1 extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
+                            Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2_1.class);
                             intent.putExtra("ORDER_ID", orderID);
                             startActivity(intent);
                         }
