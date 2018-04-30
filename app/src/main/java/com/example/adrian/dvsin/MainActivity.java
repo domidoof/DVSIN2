@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // kleines gimmick
+    // kleines gimmick mit musik
 
     public void textSaufenPlay(View view) {
         saufCount++;
