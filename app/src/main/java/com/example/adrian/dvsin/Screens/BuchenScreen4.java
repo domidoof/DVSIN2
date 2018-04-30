@@ -321,7 +321,7 @@ public class BuchenScreen4 extends AppCompatActivity {
 
         private void setFonts () {
 
-            // Fonts einbeziehen
+            // Fonts einbeziehen BL
 
             font_roboto_thin = Typeface.createFromAsset(getAssets(), "fonts/roboto-thin.ttf");
             font_roboto_medium = Typeface.createFromAsset(getAssets(), "fonts/roboto-medium.ttf");

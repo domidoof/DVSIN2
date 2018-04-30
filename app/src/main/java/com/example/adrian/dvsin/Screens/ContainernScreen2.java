@@ -1,6 +1,7 @@
 package com.example.adrian.dvsin.Screens;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +9,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.adrian.dvsin.Schiffsklassen.Ebene;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ContainernScreen2 extends AppCompatActivity {
 
@@ -20,9 +29,25 @@ public class ContainernScreen2 extends AppCompatActivity {
     // TextView Menüstruktur
 
     TextView zurueck, text_ebene, ebenennummer, container_id_text, container_id_nummer;
+
+    ImageButton vorwaerts;
+
+    ImageView aktueller_container_icon;
+
+
     // String
 
-    String orderID;
+    String orderID, cellValue, contLargePath, contSmallPath;
+
+
+    //integer
+
+    //for the cell IDs
+    int cellCount = 1;
+    int arrayCount = 0;
+    int onClickCounter = 0;
+    int textViewID;
+
 
     // TextView Tabelle
 
@@ -31,7 +56,22 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     // TextView Containeranzeige
 
-    TextView aktueller_container_groesse, aktueller_container_wort, aktuelle_containerid_wort, aktuelle_containerid;
+    TextView aktueller_container_groesse, aktueller_container_wort, aktuelle_containerid_wort, aktuelle_containerid, tempCell;
+
+
+    //Database
+
+    FirebaseDatabase database;
+    DatabaseReference ref;
+    FirebaseDatabase database2;
+    DatabaseReference ref2;
+
+
+    //Arrays for containers
+
+    ArrayList<String> contLarge = new ArrayList<>();
+    ArrayList<String> contSmall = new ArrayList<>();
+
 
     // verwendete Fonts
 
@@ -54,6 +94,8 @@ public class ContainernScreen2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_containern_screen_2);
 
+
+        //get the order ID from the screen before
         Intent intent = getIntent();
         orderID = intent.getStringExtra("ORDER_ID");
         Log.d("WHERE_IS_THE_ORDER", orderID);
@@ -61,6 +103,13 @@ public class ContainernScreen2 extends AppCompatActivity {
         setActivityViews();
 
         setLevelButtons();
+
+        //set orderID in Screen
+        container_id_nummer.setText(orderID);
+
+        getLargeContainer();
+
+        getSmallContainer();
 
 
         //-- BUTTONS
@@ -168,8 +217,77 @@ public class ContainernScreen2 extends AppCompatActivity {
     }
 
     public void onClickNext(View view) {
-        Intent intent = new Intent(ContainernScreen2.this, ContainernScreen3.class);
-        startActivity(intent);
+
+        if (contLarge.size() != 0) {
+            if (onClickCounter <= (contLarge.size()-1)) {
+                vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                aktueller_container_groesse.setText(R.string.container_nummer_40);
+                aktueller_container_icon.setImageResource(R.drawable.icon_container_40_dunkelgrau);
+
+                setContainerLarge();
+            }
+            else if (onClickCounter > (contLarge.size())-1) {
+
+                //color the last Large containers green
+                cellCount--;
+                cellValue = "cell_" + cellCount;
+                textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+
+                cellCount--;
+
+                cellValue = "cell_" + cellCount;
+                textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+                cellCount = cellCount + 2;
+
+                vorwaerts.setImageResource(R.drawable.button_vorwaerts_weiss);
+                aktueller_container_groesse.setText(R.string.container_nummer_20);
+                aktueller_container_icon.setImageResource(R.drawable.icon_container_20_dunkelgrau);
+                aktuelle_containerid.setText("-");
+
+                arrayCount = 0;
+                contLarge.clear();
+                onClickCounter = 0;
+            }
+            else {
+
+            }
+        }
+        else if (contSmall.size() != 0){
+            if (onClickCounter <= (contSmall.size())-1) {
+                vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                aktueller_container_groesse.setText(R.string.container_nummer_20);
+                aktueller_container_icon.setImageResource(R.drawable.icon_container_20_dunkelgrau);
+
+                setContainerSmall();
+            }
+            else if (onClickCounter > (contSmall.size()-1)) {
+
+                //color the containers from before green
+                cellCount--;
+                cellValue = "cell_" + cellCount;
+                textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+
+                cellCount++;
+
+                vorwaerts.setImageResource(R.drawable.button_done);
+                aktuelle_containerid.setText("-");
+
+                arrayCount = 0;
+                contSmall.clear();
+                onClickCounter = 0;
+            }
+        }
+        else if (cellCount > 1) {
+            Intent intent = new Intent(ContainernScreen2.this, ContainernScreen3.class);
+            intent.putExtra("ORDER_ID", orderID);
+            startActivity(intent);
+        }
     }
 
     private void setActivityViews() {
@@ -182,6 +300,15 @@ public class ContainernScreen2 extends AppCompatActivity {
         container_id_nummer = (TextView) findViewById(R.id.container_id_nummer);
         // order_id_text = findViewById(R.id.order_id_text);
         // order_id_nummer = findViewById(R.id.order_id_nummer);
+
+        //ImageButton
+
+        vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
+
+
+        //ImageView
+
+        aktueller_container_icon = (ImageView) findViewById(R.id.aktueller_container_icon);
 
 
         //TextView Tabelle zuweisen
@@ -205,6 +332,7 @@ public class ContainernScreen2 extends AppCompatActivity {
         aktuelle_containerid_wort = (TextView) findViewById(R.id.aktuelle_containerid_wort);
         aktueller_container_groesse = (TextView) findViewById(R.id.aktueller_container_groesse);
         aktueller_container_wort = (TextView) findViewById(R.id.aktueller_container_wort);
+
 
         // Fonts einbeziehen
 
@@ -250,4 +378,153 @@ public class ContainernScreen2 extends AppCompatActivity {
         aktueller_container_groesse.setTypeface(font_roboto_medium);
         aktueller_container_wort.setTypeface(font_roboto_thin);
     }
+
+    private void getSmallContainer() {
+        contSmallPath = "orders/" + orderID + "/containerSmall";
+        database2 = FirebaseDatabase.getInstance();
+        ref2 = database2.getReference(contSmallPath);
+
+        ref2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snp : dataSnapshot.getChildren()) {
+                    contSmall.add(String.valueOf(snp.getKey()));
+                    Log.d("TAG", "Value is: " + snp);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Failed to read value.", databaseError.toException());
+
+            }
+        });
+    }
+
+    private void getLargeContainer() {
+        contLargePath = "orders/" + orderID + "/containerLarge";
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference(contLargePath);
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snp : dataSnapshot.getChildren()) {
+                    contLarge.add(String.valueOf(snp.getKey()));
+                    Log.d("TAG", "Value is: " + snp);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Failed to read value.", databaseError.toException());
+
+            }
+        });
+    }
+
+    private void setContainerSmall() {
+        if (arrayCount >= 1) {
+
+            //color the containers from before green
+            cellCount--;
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+
+            cellCount++;
+
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText(contSmall.get(arrayCount));
+            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+
+            aktuelle_containerid.setText(contSmall.get(arrayCount));
+
+            arrayCount++;
+            cellCount++;
+            onClickCounter++;
+        }
+        else {
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText(contSmall.get(arrayCount));
+            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+
+            aktuelle_containerid.setText(contSmall.get(arrayCount));
+
+            arrayCount++;
+            cellCount++;
+            onClickCounter++;
+        }
+    }
+
+    private void setContainerLarge() {
+        if (arrayCount >= 1) {
+
+            //color the containers from before green
+            cellCount--;
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+
+            cellCount--;
+
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+            cellCount = cellCount + 2;
+
+
+            //show next containers in red
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText(contLarge.get(arrayCount));
+            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+
+            cellCount++;
+
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText(contLarge.get(arrayCount));
+            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+
+            aktuelle_containerid.setText(contLarge.get(arrayCount));
+
+            arrayCount++;
+            cellCount++;
+            onClickCounter++;
+        }
+        else {
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText(contLarge.get(arrayCount));
+            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+
+            cellCount++;
+
+            cellValue = "cell_" + cellCount;
+            textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText(contLarge.get(arrayCount));
+            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+
+            aktuelle_containerid.setText(contLarge.get(arrayCount));
+
+            arrayCount++;
+            cellCount++;
+            onClickCounter++;
+        }
+    }
+
 }

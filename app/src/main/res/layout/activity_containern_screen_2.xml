@@ -195,22 +195,22 @@
                     style="@style/tabellenzellen_containern_aussen"/>
 
                 <TextView
-                    android:id="@+id/zelle_A1"
+                    android:id="@+id/cell_1"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_A2"
+                    android:id="@+id/cell_2"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_A3"
+                    android:id="@+id/cell_3"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_A4"
+                    android:id="@+id/cell_4"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
@@ -233,22 +233,22 @@
                     style="@style/tabellenzellen_containern_aussen"/>
 
                 <TextView
-                    android:id="@+id/zelle_B1"
+                    android:id="@+id/cell_9"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_B2"
+                    android:id="@+id/cell_10"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_B3"
+                    android:id="@+id/cell_11"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_B4"
+                    android:id="@+id/cell_12"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
@@ -271,22 +271,22 @@
                     style="@style/tabellenzellen_containern_aussen"/>
 
                 <TextView
-                    android:id="@+id/zelle_C1"
+                    android:id="@+id/cell_17"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_C2"
+                    android:id="@+id/cell_18"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_C3"
+                    android:id="@+id/cell_19"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_C4"
+                    android:id="@+id/cell_20"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
@@ -309,22 +309,22 @@
                     style="@style/tabellenzellen_containern_aussen"/>
 
                 <TextView
-                    android:id="@+id/zelle_D1"
+                    android:id="@+id/cell_13"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_D2"
+                    android:id="@+id/cell_14"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_D3"
+                    android:id="@+id/cell_15"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_D4"
+                    android:id="@+id/cell_16"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
@@ -347,22 +347,22 @@
                     style="@style/tabellenzellen_containern_aussen"/>
 
                 <TextView
-                    android:id="@+id/zelle_E1"
+                    android:id="@+id/cell_5"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_E2"
+                    android:id="@+id/cell_6"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_E3"
+                    android:id="@+id/cell_7"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
                 <TextView
-                    android:id="@+id/zelle_E4"
+                    android:id="@+id/cell_8"
                     style="@style/tabellenzellen_containern_innen"
                     />
 
@@ -437,6 +437,7 @@
                                     android:paddingTop="10dp">
 
                                     <ImageView
+                                        android:id="@+id/aktueller_container_icon"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"

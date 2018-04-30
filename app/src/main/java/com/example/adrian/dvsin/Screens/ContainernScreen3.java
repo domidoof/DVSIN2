@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -20,6 +21,8 @@ public class ContainernScreen3 extends AppCompatActivity {
 
 
     // String
+
+    String orderID;
 
 
     // -- Others -- //
@@ -86,6 +89,10 @@ public class ContainernScreen3 extends AppCompatActivity {
         // BUTTON "buchung_containern_done" drücken
 		
 			getBacktoMainActivity();
+
+        Intent intent = getIntent();
+        orderID = intent.getStringExtra("ORDER_ID");
+        buchungsnummer_aktuell.setText(orderID);
 
 
         // ########## //
