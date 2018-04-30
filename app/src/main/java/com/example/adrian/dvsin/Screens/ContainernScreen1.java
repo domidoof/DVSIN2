@@ -233,7 +233,7 @@ public class ContainernScreen1 extends AppCompatActivity {
                 //buttonBuchungVerladenStarten();
 
             }
-        }, 2000);
+        }, 3000);
     }
 
     private void lookForStatus() {
@@ -241,6 +241,7 @@ public class ContainernScreen1 extends AppCompatActivity {
         ref = database.getReference("orders");
 
         for (String str : orderList) {
+            Log.d("ORDER_LIST", str);
             refChildStatus = ref.child(str).child("status");
             refChildStatus.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -282,7 +283,7 @@ public class ContainernScreen1 extends AppCompatActivity {
 
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
                     orderList.add(String.valueOf(snp.getKey()));
-                    Log.d("TAG", "Value is: " + snp);
+                    //Log.d("TAG", "Value is: " + snp);
                 }
             }
 
@@ -425,7 +426,7 @@ public class ContainernScreen1 extends AppCompatActivity {
                 //id and orderid for inside method usage
                 final String orderID = str;
                 final int shipCount = i;
-                Log.d("TAG", orderID);
+                //Log.d("TAG", orderID);
 
 
                 // ------------------ muss noch geändert werden, sobald der screen für das kleine schiff ferztig ist! -----------------------------------
