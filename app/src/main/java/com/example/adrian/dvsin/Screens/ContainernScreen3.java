@@ -12,6 +12,11 @@ import android.widget.TextView;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ContainernScreen3 extends AppCompatActivity {
 
@@ -22,7 +27,7 @@ public class ContainernScreen3 extends AppCompatActivity {
 
     // String
 
-    String orderID;
+    String orderID, statusPath;
 
 
     // -- Others -- //
@@ -48,7 +53,13 @@ public class ContainernScreen3 extends AppCompatActivity {
 	
 	// IMAGEBUTTON 
 	
-	ImageButton buchung_containern_done;	
+	ImageButton buchung_containern_done;
+
+
+	// Database initialisation
+
+    DatabaseReference ref;
+    FirebaseDatabase database;
 	
 	
     // ########## //
@@ -62,6 +73,14 @@ public class ContainernScreen3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_containern_screen_3);
+
+        Intent intent = getIntent();
+        orderID = intent.getStringExtra("ORDER_ID");
+
+
+        // change the order status in the database to closed
+
+        orderClosed();
 
 
         // IDs zuordnen
@@ -91,8 +110,6 @@ public class ContainernScreen3 extends AppCompatActivity {
 			getBacktoMainActivity();
 
 		//buchungsnummer auf textview setzen
-        Intent intent = getIntent();
-        orderID = intent.getStringExtra("ORDER_ID");
         buchungsnummer_aktuell.setText(orderID);
 
 
@@ -102,6 +119,13 @@ public class ContainernScreen3 extends AppCompatActivity {
 
     // *** ENDE *** //
 
+    }
+
+    private void orderClosed() {
+        statusPath = "orders/" + orderID + "/status";
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference(statusPath);
+        ref.setValue("closed");
     }
 
     // --- WEITERE Methoden --- //

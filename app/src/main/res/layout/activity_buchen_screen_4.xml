@@ -49,13 +49,6 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/loadingBackground"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/weiss_hintergrund_screen" />
-      
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_view"
             android:layout_width="wrap_content"
@@ -63,6 +56,13 @@
             app:lottie_fileName="off_time_leap_frog_loader.json"
             app:lottie_loop="true"
             app:lottie_autoPlay="true" />
+
+
+        <TextView
+            android:id="@+id/loadingBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/weiss_hintergrund_screen" />
 
         <LinearLayout
             android:id="@+id/buchungsbestätigung_text_uebersicht"
