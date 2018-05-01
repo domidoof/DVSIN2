@@ -580,60 +580,37 @@
 
     </LinearLayout>
 
-    <LinearLayout
-    android:id="@+id/bottomSection"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@drawable/farbverlauf_appdesign_v3"
-    android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/bottomSection"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/farbverlauf_appdesign_v3"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/container_id_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0"
-            android:paddingLeft="20dp"
-            android:paddingRight="5dp"
-            android:text="ContainerID:"
-            android:textSize="15sp"
-            android:textColor="@color/weiß"
-            />
+            <TextView
+                android:id="@+id/container_id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:paddingLeft="20dp"
+                android:paddingRight="5dp"
+                android:text="Buchungsnummer:"
+                android:textSize="15sp"
+                android:textColor="@color/weiß"
+                />
 
-        <TextView
-            android:id="@+id/container_id_nummer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="12356789"
-            android:textColor="@color/weiß"
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/container_id_nummer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="12356789"
+                android:textColor="@color/weiß"
+                android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/order_id_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0"
-            android:paddingLeft="20dp"
-            android:paddingRight="5dp"
-            android:text="OrderID:"
-            android:textSize="15sp"
-            android:textColor="@color/weiß"
-            />
-
-        <TextView
-            android:id="@+id/order_id_nummer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="12356789"
-            android:textColor="@color/weiß"
-            android:textSize="15sp" />
-
-    </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>
 
