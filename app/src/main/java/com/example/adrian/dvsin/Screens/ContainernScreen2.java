@@ -233,14 +233,14 @@ public class ContainernScreen2 extends AppCompatActivity {
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
                 cellCount--;
 
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
                 cellCount = cellCount + 2;
 
                 vorwaerts.setImageResource(R.drawable.button_vorwaerts_weiss);
@@ -271,7 +271,7 @@ public class ContainernScreen2 extends AppCompatActivity {
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
                 cellCount++;
 
@@ -433,7 +433,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
-            tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+            tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
             cellCount++;
 
@@ -441,7 +441,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contSmall.get(arrayCount));
-            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             aktuelle_containerid.setText(contSmall.get(arrayCount));
 
@@ -454,7 +454,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contSmall.get(arrayCount));
-            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             aktuelle_containerid.setText(contSmall.get(arrayCount));
 
@@ -472,14 +472,14 @@ public class ContainernScreen2 extends AppCompatActivity {
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
-            tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+            tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
             cellCount--;
 
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
-            tempCell.setBackgroundColor(Color.rgb(0, 255, 0));
+            tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
             cellCount = cellCount + 2;
 
 
@@ -488,7 +488,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             cellCount++;
 
@@ -496,7 +496,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             aktuelle_containerid.setText(contLarge.get(arrayCount));
 
@@ -509,7 +509,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             cellCount++;
 
@@ -517,7 +517,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.rgb(255, 0, 0));
+            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             aktuelle_containerid.setText(contLarge.get(arrayCount));
 
