@@ -41,6 +41,13 @@
     <string name="fehlertext_erklaerung_v2_1_teil_1">Containeranzahl bitte eingeben</string>
 
 
+    <!-- Strings für das THEMA: Fehlermeldungen "Überladen"  -->
+
+    <string name="fehlertext_ueberschift_v3_1">Mann über BORD!</string>
+
+    <string name="fehlertext_erklaerung_v3_1_teil_1">Der Benutzername existoert nicht</string>
+
+
     <string name="fehlertext_ueberschift_v2">Etwas zu LEER!</string>
 
     <string name="fehlertext_erklaerung_v2_teil_1">Gib bitte eine Anzahl</string>
