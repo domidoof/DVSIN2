@@ -195,7 +195,6 @@ public class ContainernScreen1 extends AppCompatActivity {
         }, 2000);
     }
 
-
     // --- WEITERE Methoden --- //
 
     //Handler for wait until database query is finished
@@ -297,7 +296,6 @@ public class ContainernScreen1 extends AppCompatActivity {
     }
 
     private void setBuchungsDatentabelle() {
-
 
         // LAYOUT.PARAMS setzen
 
@@ -661,6 +659,14 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         zwischenBereich3_Layout = new TableRow.LayoutParams(buchungsDatenzeile_Layout.WRAP_CONTENT,  buchungsDatenzeile_Layout.MATCH_PARENT, 1);
 
+    }
+
+    public void onBackPressed() {
+
+        // Übergang von einer zur nächsten, passenden Activity
+
+        Intent intent = new Intent(ContainernScreen1.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

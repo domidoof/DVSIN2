@@ -121,14 +121,14 @@ public class ContainernScreen3 extends AppCompatActivity {
 
     }
 
+    // --- WEITERE Methoden --- //
+
     private void orderClosed() {
         statusPath = "orders/" + orderID + "/status";
         database = FirebaseDatabase.getInstance();
         ref = database.getReference(statusPath);
         ref.setValue("closed");
     }
-
-    // --- WEITERE Methoden --- //
 	
 	private void getBacktoMainActivity(){
 	
@@ -219,6 +219,15 @@ public class ContainernScreen3 extends AppCompatActivity {
 		// IMAGEBUTTON 
 		
         buchung_containern_done = (ImageButton) findViewById(R.id.containern_fertig);
+
+    }
+
+    public void onBackPressed() {
+
+        // Übergang von einer zur nächsten, passenden Activity
+
+        Intent intent = new Intent(ContainernScreen3.this, MainActivity.class);
+        startActivity(intent);
 
     }
 }

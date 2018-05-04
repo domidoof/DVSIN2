@@ -39,14 +39,12 @@ public class Buchung implements Parcelable {
 	// METHODEN
 	
     // Get-Methoden
-	
-	
-	// BuchungsID
 
-	public int getBuchungsID() {
+		// BuchungsID
+
+		public int getBuchungsID() {
 			return buchungsID;
 		}
-
 
 		// Schifftyp
 		
