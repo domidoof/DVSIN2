@@ -301,10 +301,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    // kleines gimmick mit musik saufen
-
     public void textSaufenPlay(View view) {
+
+        // kleines gimmick mit Musik "saufen"
+
         saufCount++;
 
         //a little sugarle
@@ -321,6 +321,13 @@ public class MainActivity extends AppCompatActivity {
             MediaPlayer mp = MediaPlayer.create(this, R.raw.saufen_morgens_immer);
             mp.start();
         }
+    }
+
+    public void onBackPressed() {
+
+        // App wird in den Hintergrund verlegt, keine Rückkehr in den Loginbereich mehr möglich.
+
+        moveTaskToBack(true);
     }
 
 }

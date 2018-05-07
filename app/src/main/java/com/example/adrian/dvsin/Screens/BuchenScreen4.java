@@ -27,11 +27,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class BuchenScreen4 extends AppCompatActivity {
 
     // int
+
     int lastElement;
     int newOrderID;
     int randomNum;
-
-    // TextView Menüstruktur
 
 
     // String
@@ -40,6 +39,8 @@ public class BuchenScreen4 extends AppCompatActivity {
 
 
     // -- Others -- //
+
+    // TEXTVIEW Menüstruktur
 
     TextView text_buchungsbestaetigung_teil_1, text_buchungsbestaetigung_teil_2, text_buchungsbestaetigung_teil_3, text_buchungsbestaetigung_teil_4, buchungsnummer_abkuerzung, loadingBackground;
 
@@ -54,13 +55,13 @@ public class BuchenScreen4 extends AppCompatActivity {
     Typeface font_roboto_thin, font_roboto_medium;
 
 
-    //Database Resources
+    // Database Resources
 
     FirebaseDatabase database;
     FirebaseDatabase database2;
 
 
-    //Reference to the database
+    // Reference to the database
 
     DatabaseReference newChildRef;
     DatabaseReference containerLargeRef;
@@ -68,25 +69,32 @@ public class BuchenScreen4 extends AppCompatActivity {
     DatabaseReference ref2;
 
 
-    //Array List to save the data from the database
+    // Array List to save the data from the database
+
+    // ANMERKUNG: Müssen die schon hier initialsiert werden???
 
     ArrayList<Integer> orderList = new ArrayList<>();
     ArrayList<Integer> containerGrossList = new ArrayList<>();
     ArrayList<Integer> containerKleinList = new ArrayList<>();
 
 
-    //set Lottie Animation
+    // LOTTIE ANIMATION
+
     LottieAnimationView loadingScreen;
 
 
-    //aktuelle Buchungsklasse aus vorheriger activity
+    // BUCHUNG, letze Activity
 
     Buchung aktuelleBuchung;
 
 
+<<<<<<< HEAD
     // ACTIVITY starten
 
     // BUTTON
+=======
+    // BUTTONS
+>>>>>>> e6bf253e08350b6d7265138a1339240eddabfd80
 
     Button zurueck;
 
@@ -113,16 +121,12 @@ public class BuchenScreen4 extends AppCompatActivity {
 
         // Inhalt: Aktuelle Buchungseigenschaften von letzter Aktivity holen
 
-        aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
-
-        Log.d("HERENOW", aktuelleBuchung.getSchifftyp());
-
-
+            getAllRequiredInformation();
 
 
         //IDs initialisieren
 
-        setIDs();
+            setIDs();
       
 
         // Fonts einbeziehen
@@ -134,61 +138,73 @@ public class BuchenScreen4 extends AppCompatActivity {
 
             setFontsToIDs();
 
-        //
 
         // letzte order ID aus der Datenbank abfragen
-        getLatestOrderID();
 
+            getLatestOrderID();
+
+        // -- BUTTONS  -- //
+
+        // BUTTON "zurueck" drücken
+
+            buttonGetBack();
+    }
+
+    // --- WEITERE Methoden --- //
+
+    private void getAllRequiredInformation() {
+
+        aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
+
+        Log.d("HERENOW", aktuelleBuchung.getSchifftyp());
 
     }
-//
-//    private void waitForDatabase() {
-//
-//
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                //Do something after 100ms
-//
-//
-//            }
-//        }, 5000);
-//    }
 
     private void writeToDatabase() {
 
-        //set the loading animation
+        // set the loading animation
+
+
+        // ANMERKUNG: Könnte/Sollte unter setIDS
         loadingScreen = findViewById(R.id.animation_view);
+        // --
         loadingScreen.setAnimation("off_time_leap_frog_loader.json");
         loadingScreen.playAnimation();
 
 
+
+        // ANMERKUNG: Kommentare ins deutsche übersetzen
         // the handler is waiting 5 seconds then executes the code inside it, to make sure, that the database writing action is over
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Do something after 100ms
+
+                // Do something after 100ms
+
                 loadingScreen.setVisibility(View.GONE);
                 loadingScreen.cancelAnimation();
                 loadingBackground.setVisibility(View.GONE);
 
 
                 // write the new data to the database
+
                 lastElement = orderList.size() - 1;
                 newOrderID = orderList.get(lastElement) + 1;
 
                 database = FirebaseDatabase.getInstance();
                 Log.d("ORDERIDIS", Integer.toString(newOrderID));
 
-                //set new orderID
+                // set new orderID
+
                 aktuelleBuchung.setBuchungsID(newOrderID);
 
-                //write to textView
+                // write to textView
+
                 buchungsnummer_aktuell.setText(Integer.toString((aktuelleBuchung.getBuchungsID())));
 
-                //make lists with random container IDs
+                // make lists with random container IDs
 
                 for (int i = 0; i < aktuelleBuchung.getContainerZahlGross(); i++) {
                     randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
@@ -204,30 +220,36 @@ public class BuchenScreen4 extends AppCompatActivity {
                 }
 
                 // convert the new orderID to a string
+
                 childOrderID = Integer.toString(newOrderID);
 
                 // add the new order ID as a child of orders to the database
+
                 newChildRef = database.getReference("orders").child(childOrderID);
 
-                //add the large containers to database order
+                // add the large containers to database order
+
                 for (Integer a : containerGrossList) {
                     newChildRef.child("containerLarge").child(Integer.toString(a)).setValue("40");
                 }
 
-                //add the small containers to database order
+                // add the small containers to database order
+
                 for (Integer a : containerKleinList) {
                     newChildRef.child("containerSmall").child(Integer.toString(a)).setValue("20");
                 }
 
-                //add the ship type to the database order
+                // add the ship type to the database order
+
                 newChildRef.child("shipType").setValue(aktuelleBuchung.getSchifftyp());
 
 
-                //add the order status to the database order
+                // add the order status to the database order
+
                 newChildRef.child("status").setValue("open");
 
 
-                //BUTTONS
+                // BUTTONS
 
                 // BUTTON zurück (links oben) aktivieren
 
@@ -258,17 +280,19 @@ public class BuchenScreen4 extends AppCompatActivity {
 
     }
 
+    private void buttonGetBack() {
 
+        zurueck.setOnClickListener(new View.OnClickListener() {
 
-    // BUTTON "zurueck" drücken
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
+                startActivity(intent);
 
-        private void buttonGetBack (View view){
+            }
+        });
 
-            // Ermöglicht den sofortigen Übergang von der Funktion "Buchen" zur Funktion "Containern"
-
-            Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
-}
-  
+    }
 
     private void getLatestOrderID() {
 
@@ -299,7 +323,7 @@ public class BuchenScreen4 extends AppCompatActivity {
 
     }
 
-        private void setFontsToIDs () {
+    private void setFontsToIDs () {
 
             // FONTS Buchungsbestätigungsbereich SETZEN
 
@@ -319,7 +343,7 @@ public class BuchenScreen4 extends AppCompatActivity {
 
         }
 
-        private void setFonts () {
+    private void setFonts () {
 
             // Fonts einbeziehen BL
 
@@ -328,7 +352,7 @@ public class BuchenScreen4 extends AppCompatActivity {
 
         }
 
-        private void setIDs () {
+    private void setIDs () {
 
             // IDs Buchungsbestätigungsbereich ZUORDNEN
 
@@ -356,6 +380,30 @@ public class BuchenScreen4 extends AppCompatActivity {
             containern_gleich_starten = (ImageButton) findViewById(R.id.buchung_containern);
 
         }
+
+    public void onBackPressed() {
+
+        // Übergang von einer zur nächsten, passenden Activity
+
+        Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
+        startActivity(intent);
+
+    }
+
+//    private void waitForDatabase() {
+//
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                //Do something after 100ms
+//
+//
+//            }
+//        }, 5000);
+//    }
+
     }
 
 

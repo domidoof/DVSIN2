@@ -34,18 +34,10 @@
 
             <Button
                 android:id="@+id/zurueck"
+                style="@style/button_zurueck_v2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:gravity="left"
-                android:onClick="onClickBack"
-                android:paddingBottom="8dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp"
-                android:text="@string/zurueckzeichen"
-                android:textColor="#ffffff"
-                android:textSize="25sp" />
+                android:layout_weight="1"/>
 
             <ImageButton
                 android:id="@+id/ebene_oben"
