@@ -88,13 +88,9 @@ public class BuchenScreen4 extends AppCompatActivity {
     Buchung aktuelleBuchung;
 
 
-<<<<<<< HEAD
     // ACTIVITY starten
 
     // BUTTON
-=======
-    // BUTTONS
->>>>>>> e6bf253e08350b6d7265138a1339240eddabfd80
 
     Button zurueck;
 
