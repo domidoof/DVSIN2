@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,9 +103,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String user = intent.getStringExtra("USER_NAME");
 
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("users");
-        myRef.setValue(user);
+        if (user != null) {
+            database = FirebaseDatabase.getInstance();
+            myRef = database.getReference("users");
+            myRef.setValue(user);
+        }
 
 
         // IDs zuordnen

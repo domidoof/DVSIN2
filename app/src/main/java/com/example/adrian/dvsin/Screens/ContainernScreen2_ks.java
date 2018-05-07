@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.adrian.dvsin.Schiffsklassen.Ebene;
-import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ContainernScreen2 extends AppCompatActivity {
+public class ContainernScreen2_ks extends AppCompatActivity {
 
 
     // TextView Menüstruktur
@@ -92,7 +90,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_containern_screen_2);
+        setContentView(R.layout.activity_containern_screen_2_ks);
 
 
         //get the order ID from the screen before
@@ -212,7 +210,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     }
 
     public void onClickBack(View view) {
-        Intent intent = new Intent(ContainernScreen2.this, ContainernScreen1.class);
+        Intent intent = new Intent(ContainernScreen2_ks.this, ContainernScreen1.class);
         startActivity(intent);
     }
 
@@ -284,7 +282,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             }
         }
         else if (cellCount > 1) {
-            Intent intent = new Intent(ContainernScreen2.this, ContainernScreen3.class);
+            Intent intent = new Intent(ContainernScreen2_ks.this, ContainernScreen3.class);
             intent.putExtra("ORDER_ID", orderID);
             startActivity(intent);
         }

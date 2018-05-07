@@ -86,7 +86,7 @@ public class BuchenScreen4 extends AppCompatActivity {
 
     // ACTIVITY starten
 
-    // BUTTONS
+    // BUTTON
 
     Button zurueck;
 
