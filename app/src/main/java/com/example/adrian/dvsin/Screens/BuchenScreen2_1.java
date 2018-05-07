@@ -22,6 +22,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.R;
+import com.example.adrian.dvsin.Schiffsklassen.Schifftyp;
 
 public class BuchenScreen2_1 extends AppCompatActivity {
 
@@ -96,7 +97,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 	
 	// BUNDLES
 
-	Bundle wertesammlung;
+	Bundle wertesammlungBS2_1;
 
 
 	// LAYOUTINFLATOR
@@ -112,6 +113,10 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 	// ANIMATION
 
 	Animation animPopUp;
+
+	// SCHIFFTYP
+
+	Schifftyp aktuellesSchiff;
 
 
     // ########## //
@@ -220,8 +225,9 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 				
                 // Neue bzw. alte Werte für Atrribute von BUCHUNG "aktuelleBuchung" zurück übergeben
-				
+
 				intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+				intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
 				
                 // ACTIVITY BuchenScreen2 starten
 
@@ -240,9 +246,10 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
                 Intent intent = new Intent(BuchenScreen2_1.this, BuchenScreen2.class);
 
-				// Alte Werte für Atrribute von BUCHUNG "aktuelleBuchung" zurück übergeben
+				// Alte Werte für Atrribute von BUCHUNG "aktuelleBuchung" & SCHIFFTYP "aktuellesSchiff" zurück übergeben
 
 				intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+				intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
 
 				// ACTIVITY BuchenScreen2 starten
 
@@ -370,15 +377,23 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 	}
 			
 	private void getIntentInhalt() {
-			
+
+		// SCHIFFSTYP "aktullesSChiff" holen
+
+			// aktuellesSchiff = getIntent().getParcelableExtra("aktuellesSchiffKEY");
+
 		// BUCHUNG "aktulleBuchung" holen
 			
 			aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
 
 		// INT "aktuelle_kapazitaet" holen
 
-		aktuelle_kapazitaet = getIntent().getExtras().getInt("aktuelle_kapazitaetKEY");
-		
+			aktuelle_kapazitaet = getIntent().getExtras().getInt("aktuelle_kapazitaetKEY");
+
+		// SCHIFF "aktuelles Schiff" holen
+
+			aktuellesSchiff = (Schifftyp) getIntent().getExtras().getParcelable("aktuellesSchiffKEY");
+
 		}
 
 	private void showOnScreen() {
@@ -612,7 +627,24 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 		
 	}
-	
+
+	public void onBackPressed() {
+
+		// Übergang von einer zur nächsten, passenden Activity
+
+		Intent intent = new Intent(BuchenScreen2_1.this, BuchenScreen2.class);
+
+		// Alte Werte für Atrribute von BUCHUNG "aktuelleBuchung" & SCHIFFTYP "aktuellesSchiff" zurück übergeben
+
+		intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+		intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
+
+		// ACTIVITY BuchenScreen2 starten
+
+		startActivity(intent);
+
+	}
+
 }
 
 

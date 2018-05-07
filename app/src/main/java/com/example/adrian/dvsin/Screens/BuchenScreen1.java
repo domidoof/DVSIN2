@@ -2,6 +2,7 @@ package com.example.adrian.dvsin.Screens;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
+import com.example.adrian.dvsin.Schiffsklassen.Schifftyp;
 
 public class BuchenScreen1 extends AppCompatActivity {
 
@@ -56,6 +58,15 @@ public class BuchenScreen1 extends AppCompatActivity {
     // BUCHUNG
 
     Buchung aktuelleBuchung;
+
+    // SCHIFFTYP
+
+    Schifftyp aktuellesSchiff;
+
+
+    // BUNDLE
+
+    Bundle wertesammlungBS1;
 
 
     // ########## //
@@ -196,9 +207,9 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                     if (button_grosses_Schiff_gedrueckt == 1) {
 
-                        // BUCHUNG "aktuelleBuchung" initialisieren
+                        // SCHIFFTYP "aktuellesSchiff" initalisieren
 
-                        aktuelleBuchung = new Buchung(987654321,"Großes Schiff", 0, 0, 0);
+                        aktuellesSchiff = new Schifftyp(54321,"Großes Schiff", getString(R.string.text_schiff_groß), 3, 20);
 
                     }
 
@@ -207,17 +218,21 @@ public class BuchenScreen1 extends AppCompatActivity {
                     {
                         if (button_kleines_Schiff_gedrueckt == 1) {
 
-                            // BUCHUNG "aktuelleBuchung" initialisieren
+                            // SCHIFFTYP "aktullesSchiff" initalisieren
 
-                            aktuelleBuchung = new Buchung(777777777,"Kleines Schiff", 0, 0, 0);
-
+                            aktuellesSchiff = new Schifftyp(12345,"Kleines Schiff", getString(R.string.text_schiff_klein), 2, 8);
                         }
 
                     }
 
-                    // BUCHUNG "aktuelleBuchung übergeben"
+                    // BUCHUNG erstellen
+
+                    aktuelleBuchung = new Buchung(000000000, aktuellesSchiff.getTypbezeichnung(), 0, 0, 0);
+
+                    // SCHIFFTYP "aktuellesSchiff" & BUCHUNG "aktuelleBuchung" übergeben
 
                     intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+                    intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
 
                     // ACTIVITY BuchenScreen2 starten
 
@@ -308,6 +323,15 @@ public class BuchenScreen1 extends AppCompatActivity {
         schiff_gross_onklick = (ImageButton) findViewById(R.id.grosses_schiff_auswahl);
 
     }
+
+    public void onBackPressed() {
+
+            // Übergang von einer zur nächsten, passenden Activity
+
+            Intent intent = new Intent(BuchenScreen1.this, MainActivity.class);
+            startActivity(intent);
+        }
+
 }
 
 

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.adrian.dvsin.Buchungsklasse.Buchung;
 import com.example.adrian.dvsin.R;
+import com.example.adrian.dvsin.Schiffsklassen.Schifftyp;
 
 public class BuchenScreen2 extends AppCompatActivity {
 
@@ -35,8 +36,8 @@ public class BuchenScreen2 extends AppCompatActivity {
 	
 	// INTEGER
 	
-		Integer übergebene_zahl_container_klein;
-		Integer übergebene_zahl_container_gross;
+		Integer uebergebene_zahl_container_klein;
+		Integer uebergebene_zahl_container_gross;
 	
 	
 	// TEXTVIEW
@@ -83,12 +84,18 @@ public class BuchenScreen2 extends AppCompatActivity {
 	
 	// BUNDLES
 
-		Bundle wertesammlung;
+		Bundle wertesammlungBS1_BS2_1;
+		Bundle wertesammlungBS2;
 
 
 	// ImageVIEW
 
 		ImageView grosser_container_icon, kleiner_container_icon;
+
+
+	// SCHIFFTYP
+
+		Schifftyp aktuellesSchiff;
 
 	
     // ########## //
@@ -235,10 +242,12 @@ public class BuchenScreen2 extends AppCompatActivity {
 					
 				// Übergabewerte an neue Activity bestimmen und übergeben
 
-                wertesammlung.putParcelable("aktuelleBuchungKEY", aktuelleBuchung);
-                wertesammlung.putInt("aktuelle_kapazitaetKEY",aktuelle_kapazitaet);
+				// wertesammlungBS1_BS2_1.putParcelable("aktuellesSchiffKEY", aktuellesSchiff);
+                wertesammlungBS2.putParcelable("aktuelleBuchungKEY", aktuelleBuchung);
+                wertesammlungBS2.putInt("aktuelle_kapazitaetKEY", aktuelle_kapazitaet);
+                wertesammlungBS2.putParcelable("aktuellesSchiffKEY", aktuellesSchiff);
 
-                intent.putExtras(wertesammlung);
+                intent.putExtras(wertesammlungBS2);
 				
 				// ACTIVITY BuchenScreen2_1 starten
 
@@ -265,10 +274,11 @@ public class BuchenScreen2 extends AppCompatActivity {
 					
 				// Übergabewerte an neue Activity bestimmen und übergeben
 
-                wertesammlung.putParcelable("aktuelleBuchungKEY", aktuelleBuchung);
-                wertesammlung.putInt("aktuelle_kapazitaetKEY",aktuelle_kapazitaet);
+                wertesammlungBS2.putParcelable("aktuelleBuchungKEY", aktuelleBuchung);
+                wertesammlungBS2.putInt("aktuelle_kapazitaetKEY",aktuelle_kapazitaet);
+				wertesammlungBS2.putParcelable("aktuellesSchiffKEY", aktuellesSchiff);
 
-                intent.putExtras(wertesammlung);
+                intent.putExtras(wertesammlungBS2);
 				
 				// ACTIVITY BuchenScreen2_1 starten
 
@@ -406,13 +416,13 @@ public class BuchenScreen2 extends AppCompatActivity {
 
 
     }
-	
+
     private void startInitialization() {
-			
+
 		// INTEGER initialisieren
 		
-			übergebene_zahl_container_klein = (Integer) aktuelleBuchung.getContainerZahlKlein();
-			übergebene_zahl_container_gross = (Integer) aktuelleBuchung.getContainerZahlGross();
+			uebergebene_zahl_container_klein = (Integer) aktuelleBuchung.getContainerZahlKlein();
+			uebergebene_zahl_container_gross = (Integer) aktuelleBuchung.getContainerZahlGross();
 			
 		// STRING initialisieren
 		
@@ -422,22 +432,44 @@ public class BuchenScreen2 extends AppCompatActivity {
 
 		// BUNDLE initalisieren
 
-			wertesammlung = new Bundle();
+			wertesammlungBS2 = new Bundle();
 
 		}
 
 	private void getIntentInhalt() {
-			
-		// BUCHUNG "aktulleBuchung" holen
-		
-			aktuelleBuchung = (Buchung) getIntent().getParcelableExtra("aktuelleBuchungKEY");
+
+    	// ALLGEMEIN
+
+			wertesammlungBS1_BS2_1 = getIntent().getExtras();
+
+		// SCHIFFTYP "aktuellesSchiff" holen
+
+			// aktuellesSchiff = new Schifftyp(12345,"Kleines Schiff", getString(R.string.text_schiff_klein), 2, 24);
+
+			aktuellesSchiff = (Schifftyp) wertesammlungBS1_BS2_1.getParcelable("aktuellesSchiffKEY");
+
+		// SCHIFFTYP "aktuelleBuchung" holen
+
+	    	aktuelleBuchung = (Buchung) wertesammlungBS1_BS2_1.getParcelable("aktuelleBuchungKEY");
+
+			// aktuelleBuchung = new Buchung(123456789, "Kleines Schiff", 0, 0 , 0);
 		
 		}
 
 	private void showOnScreen() {
 
-			// --- SHOW entweder Inhalt in Bezug auf ein kleines oder ein großes Schiff --- //
+		// --- SHOW entweder Inhalt in Bezug auf ein kleines oder ein großes Schiff --- //
+
+// +++++++++++++++++++++++++++++++++++++++++++++
+
+		schifftyp_k_o_g.setText(aktuellesSchiff.getTypbezeichnung());
+		schiff_beschreibung.setText(aktuellesSchiff.getTypbeschreibung());
+		ladekapazitaet_zahl.setText(Integer.toString(aktuellesSchiff.getStellplaetze()));
+
 			
+// #############################################
+
+		/*
 			// "Kleines Schiff" wurde ausgewählt
 
 			if (text_kleines_schiff.equals(uebergebener_schiffstyps)){
@@ -464,17 +496,18 @@ public class BuchenScreen2 extends AppCompatActivity {
 				            
 			}
 
+		*/
+// ----------------------------------------------------------------
+
 			// Für BUTTONS "icon_eingabe_grosser_container" & "icon_eingabe_kleiner_container" wird Text gesetzt.
 
 			icon_eingabe_grosser_container.setText(Integer.toString(aktuelleBuchung.getContainerZahlGross()));
 			icon_eingabe_kleiner_container.setText(Integer.toString(aktuelleBuchung.getContainerZahlKlein()));
-			
+
+
 			// TEXTVIEW "aktueller_kapazität" in Text umwandeln //
-			
 
-
-			//####################################################################################//
-			// FALLUNTERSCHEIDUNG HIER NOCH !!!
+//********* FALLUNTERSCHEIDUNG HIER NOCH WEITER AUSBAUEN! !!
 
 			if (aktuelle_kapazitaet == 1) {
 				formel_restwert.setText(R.string.wenn_eins);
@@ -484,13 +517,13 @@ public class BuchenScreen2 extends AppCompatActivity {
 				formel_restwert.setText(Integer.toString(aktuelle_kapazitaet));
 			}
 
-			//####################################################################################//
-
-
-			
 		}
 		
 	private void setContainerformel() {
+
+// #####################################
+
+/*
 			
 			// --- CONTAINERFORMEL entweder Inhalt in Bezug auf ein kleines oder ein großes Schiff --- //
 			
@@ -513,15 +546,18 @@ public class BuchenScreen2 extends AppCompatActivity {
 		
 			}
 
+*/
 			// Aktuelle Kapazität berechnen
+
+			kapazitaet_uebergeben = aktuellesSchiff.getStellplaetze();
 			
-			aktuelle_kapazitaet = kapazitaet_uebergeben - (aktuelleBuchung.getContainerZahlKlein() + 2*(aktuelleBuchung.getContainerZahlGross())); 
+			aktuelle_kapazitaet = kapazitaet_uebergeben - (aktuelleBuchung.getContainerZahlKlein() + 2*(aktuelleBuchung.getContainerZahlGross()));
 			
 		}
 		
 	private void showDifferentOnScreen(){
 			
-			// --- Wenn BUCHUNG/"containerZahlKlein" oder "containerZahlGross" wird ORANGE als Hauptfarbe gewählt --- //
+			// --- Wenn BUCHUNG "containerZahlKlein" oder "containerZahlGross" wird ORANGE als Hauptfarbe gewählt --- //
 			
 			// mindestens ein kleiner Container ist gesetzt
 			
@@ -644,6 +680,15 @@ public class BuchenScreen2 extends AppCompatActivity {
 			}
 			
 		}
+
+    public void onBackPressed() {
+
+        // Übergang von einer zur nächsten, passenden Activity
+
+        Intent intent = new Intent(BuchenScreen2.this, BuchenScreen1.class);
+        startActivity(intent);
+    }
+
 }
 
 
