@@ -440,23 +440,10 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 			
 	private void getAktuelleMaxKapazitaet() {
 			
-			// Kleines Schiff gewählt, maximaler Platz = 8
-			
-			if (text_kleines_schiff.equals(uebergebener_schiffstyps)){
+			// Je nach Schiffstyp wird die max. Kapazität gesetzt
 
-				kapazitaetMAX = 8;
+			kapazitaetMAX = aktuellesSchiff.getStellplaetze();
 
-			}
-			
-			
-			// Großes Schiff gewählt, maximaler Platz = 20
-
-			if (text_grosses_schiff.equals(uebergebener_schiffstyps)){
-
-				kapazitaetMAX = 20;
-
-			}
-			
 		}
 
 	private void setNewContainerAnzahl() {

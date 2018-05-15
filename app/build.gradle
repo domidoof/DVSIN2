@@ -29,6 +29,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+
+    // Möglichkeit diagonale Layouts zu erstellen !!!
+
+    compile 'com.github.florent37:diagonallayout:1.0.3'
+
+    // Libary für TapTarget
+
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'
+

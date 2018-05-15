@@ -6,7 +6,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +16,10 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.adrian.dvsin.Screens.ContainernScreen1;
 import com.example.adrian.dvsin.Screens.BuchenScreen1;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     // int
 
     int saufCount;
-
+    int touchedbuchen, touchedcontainern, toucheddoku, touchchedsuchen, touchedaendern;
 
     // String
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     // IMAGEBUTTON
 
-    ImageButton menuepunkt_buchen, menuepunkt_containern;
+    ImageButton menuepunkt_buchen, menuepunkt_containern, menuepunkt_doku;
     ImageButton button_benuter_informationen;
 
 
@@ -137,6 +137,11 @@ public class MainActivity extends AppCompatActivity {
             startMethodeContainern();
 
 
+        // BUTTON "menuepunkt_containern" drücken
+
+            startMethodeDoku();
+
+
         // BUTTON "button_benuter_informationen" drücken
 
             showUserDetails();
@@ -146,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
         // -- ACTIVITY Ende -- //
 
-        // *** ENDE *** //
+        // *** ENDE *** /
 
     }
 
@@ -165,6 +170,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // FUNKTION "Buchen" wird erklärt (lange gedrückt halten)
+
+        menuepunkt_buchen.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) {
+
+                touchedbuchen = 1;
+                touchedcontainern = 0;
+                toucheddoku = 0;
+
+                startDescribtionMethodes();
+                return true;
+            }
+        });
     }
 
     private void startMethodeContainern() {
@@ -177,6 +195,38 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ContainernScreen1.class);
                 startActivity(intent);
+            }
+        });
+
+        // FUNKTION "Containern" wird erklärt (lange gedrückt halten)
+
+        menuepunkt_containern.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) {
+
+                touchedbuchen = 0;
+                touchedcontainern = 1;
+                toucheddoku = 0;
+
+                startDescribtionMethodes();
+                return true;
+            }
+        });
+
+    }
+
+    private void startMethodeDoku() {
+
+        // FUNKTION "Doku" wird erklärt (lange gedrückt halten)
+
+        menuepunkt_doku.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) {
+
+                touchedbuchen = 0;
+                touchedcontainern = 0;
+                toucheddoku = 1;
+
+                startDescribtionMethodes();
+                return true;
             }
         });
 
@@ -226,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
 
         menuepunkt_buchen = (ImageButton) findViewById(R.id.buchen_button);
         menuepunkt_containern = (ImageButton) findViewById(R.id.containern_button);
+        menuepunkt_doku = (ImageButton) findViewById(R.id.doku_button);
         button_benuter_informationen = (ImageButton) findViewById(R.id.user_id);
 
         // LAYOUTINFLATER initialisieren
@@ -330,4 +381,117 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
+    private void startDescribtionMethodes() {
+
+        // FUNKTION "Buchen" wird länger gedrückt
+
+        if (touchedbuchen == 1) {
+
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.buchen_touchbereich), "Funktion 1:", "Wähle hier Schiff, Containerart und Menge, die Grundlagen zum verladen\n")
+
+                            // Darstellungseigenschaften werden festgelegt
+
+                            .outerCircleColor(R.color.standard_orange)      // Specify a color for the outer circle
+                            .outerCircleAlpha(.95f)                         // Specify the alpha amount for the outer circle
+
+                            .targetCircleColor(R.color.weiß)                // Specify a color for the target circle
+                            .titleTextSize(37)
+                            .descriptionTextSize(25)
+
+                            .textTypeface(font_roboto_thin)
+                            .descriptionTypeface(font_roboto_thin)          // Specify the size (in sp) of the description text
+                            .titleTextColor(R.color.weiß)                   // Specify the color of the title text
+                            .descriptionTextColor(R.color.weiß)         // Specify the color of the description text
+
+                            .dimColor(R.color.weiss_hintergrund_screen)            // If set, will dim behind the view with 30% opacity of the given color
+                            .drawShadow(true)                                      // Whether to draw a drop shadow or not
+                            .cancelable(true)                                      // Whether tapping outside the outer circle dismisses the view
+                            .tintTarget(true)                                      // Whether to tint the target view's color
+                            .transparentTarget(true)                               // Specify whether the target is transparent (displays the content underneath)
+
+                            .targetRadius(65),
+
+                    new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);      // This call is optional
+                        }
+                    });
+        }
+
+        // FUNKTION "Containern" wird länger gedrückt
+
+        if (touchedcontainern == 1) {
+
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.containern_touchbereich), "Funktion 2:", "Hier werden bestehende Buchungsnummern auf die jeweils passenden Schiffe verladen")
+
+                            // Darstellungseigenschaften werden festgelegt
+
+                            .outerCircleColor(R.color.standard_orange)      // Specify a color for the outer circle
+                            .outerCircleAlpha(.95f)                         // Specify the alpha amount for the outer circle
+
+                            .targetCircleColor(R.color.weiß)                // Specify a color for the target circle
+                            .titleTextSize(37)
+                            .descriptionTextSize(25)
+
+                            .textTypeface(font_roboto_thin)
+                            .descriptionTypeface(font_roboto_thin)          // Specify the size (in sp) of the description text
+                            .titleTextColor(R.color.weiß)                   // Specify the color of the title text
+                            .descriptionTextColor(R.color.weiß)         // Specify the color of the description text
+
+                            .dimColor(R.color.weiss_hintergrund_screen)            // If set, will dim behind the view with 30% opacity of the given color
+                            .drawShadow(true)                                      // Whether to draw a drop shadow or not
+                            .cancelable(true)                                      // Whether tapping outside the outer circle dismisses the view
+                            .tintTarget(true)                                      // Whether to tint the target view's color
+                            .transparentTarget(true)                               // Specify whether the target is transparent (displays the content underneath)
+
+                            .targetRadius(70),
+
+                    new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);      // This call is optional
+                        }
+                    });
+        }
+
+        // FUNKTION "Doku" wird länger gedrückt
+
+        if (toucheddoku == 1) {
+
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.doku_touchbereich), "Funktion 3:", "Zeigt alle in der Datenbank hinterlegten Buchungsnummern an")
+
+                            // Darstellungseigenschaften werden festgelegt
+
+                            .outerCircleColor(R.color.standard_orange)      // Specify a color for the outer circle
+                            .outerCircleAlpha(.95f)                         // Specify the alpha amount for the outer circle
+
+                            .targetCircleColor(R.color.weiß)                // Specify a color for the target circle
+                            .titleTextSize(37)
+                            .descriptionTextSize(25)
+
+                            .textTypeface(font_roboto_thin)
+                            .descriptionTypeface(font_roboto_thin)          // Specify the size (in sp) of the description text
+                            .titleTextColor(R.color.weiß)                   // Specify the color of the title text
+                            .descriptionTextColor(R.color.weiß)         // Specify the color of the description text
+
+                            .dimColor(R.color.weiss_hintergrund_screen)            // If set, will dim behind the view with 30% opacity of the given color
+                            .drawShadow(true)                                      // Whether to draw a drop shadow or not
+                            .cancelable(true)                                      // Whether tapping outside the outer circle dismisses the view
+                            .tintTarget(true)                                      // Whether to tint the target view's color
+                            .transparentTarget(true)                               // Specify whether the target is transparent (displays the content underneath)
+
+                            .targetRadius(60),
+
+                    new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);      // This call is optional
+                        }
+                    });
+        }
+    }
 }

@@ -42,7 +42,7 @@ public class BuchenScreen4 extends AppCompatActivity {
 
     // TEXTVIEW Menüstruktur
 
-    TextView text_buchungsbestaetigung_teil_1, text_buchungsbestaetigung_teil_2, text_buchungsbestaetigung_teil_3, text_buchungsbestaetigung_teil_4, buchungsnummer_abkuerzung, loadingBackground;
+    TextView text_buchungsbestaetigung_teil_1, text_buchungsbestaetigung_teil_2, text_buchungsbestaetigung_teil_3, text_buchungsbestaetigung_teil_4, buchungsnummer_abkuerzung, loadingBackground, schrittanzeige;
 
 
     // TEXTVIEW Buchungsnummer (dynamisch)
@@ -135,6 +135,11 @@ public class BuchenScreen4 extends AppCompatActivity {
             setFontsToIDs();
 
 
+        // SCREENINHALT festlegen
+
+            showOnScreen();
+
+
         // letzte order ID aus der Datenbank abfragen
 
             getLatestOrderID();
@@ -145,6 +150,7 @@ public class BuchenScreen4 extends AppCompatActivity {
 
             buttonGetBack();
     }
+
 
     // --- WEITERE Methoden --- //
 
@@ -164,10 +170,8 @@ public class BuchenScreen4 extends AppCompatActivity {
         // ANMERKUNG: Könnte/Sollte unter setIDS
         loadingScreen = findViewById(R.id.animation_view);
         // --
-        loadingScreen.setAnimation("off_time_leap_frog_loader.json");
+        loadingScreen.setAnimation("helicopter.json");
         loadingScreen.playAnimation();
-
-
 
         // ANMERKUNG: Kommentare ins deutsche übersetzen
         // the handler is waiting 5 seconds then executes the code inside it, to make sure, that the database writing action is over
@@ -183,6 +187,9 @@ public class BuchenScreen4 extends AppCompatActivity {
                 loadingScreen.cancelAnimation();
                 loadingBackground.setVisibility(View.GONE);
 
+                // BUTTON "zurueck" setzem
+
+                zurueck.setText(R.string.zurueckzeichen);
 
                 // write the new data to the database
 
@@ -328,6 +335,7 @@ public class BuchenScreen4 extends AppCompatActivity {
             text_buchungsbestaetigung_teil_3.setTypeface(font_roboto_medium);
             text_buchungsbestaetigung_teil_4.setTypeface(font_roboto_thin);
             buchungsnummer_abkuerzung.setTypeface(font_roboto_thin);
+            schrittanzeige.setTypeface(font_roboto_thin);
 
             // FONTS Buchungsnummer (dynamisch) SETZEN
 
@@ -348,20 +356,19 @@ public class BuchenScreen4 extends AppCompatActivity {
 
         }
 
-    private void setIDs () {
+    private void setIDs() {
 
             // IDs Buchungsbestätigungsbereich ZUORDNEN
 
             // TEXTVIEW Buchungsbestätigungsbereich
 
             loadingBackground = (TextView) findViewById(R.id.loadingBackground);
-
+            schrittanzeige = (TextView) findViewById(R.id.schrittanzeige);
             text_buchungsbestaetigung_teil_1 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_1);
             text_buchungsbestaetigung_teil_2 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_2);
             text_buchungsbestaetigung_teil_3 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_3);
             text_buchungsbestaetigung_teil_4 = (TextView) findViewById(R.id.text_buchungsbestaetigung_teil_4);
             buchungsnummer_abkuerzung = (TextView) findViewById(R.id.buchungsnummer_abkuerzung);
-            // loadingBackground = (TextView) findViewById(R.id.loadingBackground);
 
             // TEXTVIEW Buchungsnummer (dynamisch)
 
@@ -383,6 +390,14 @@ public class BuchenScreen4 extends AppCompatActivity {
 
         Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
         startActivity(intent);
+
+    }
+
+    private void showOnScreen() {
+
+        // "Schritt 3 von 3" wird angezeigt
+
+        schrittanzeige.setText(R.string.schritt_3);
 
     }
 

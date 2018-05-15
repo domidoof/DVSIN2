@@ -165,7 +165,7 @@ public class ContainernScreen1 extends AppCompatActivity {
     private void waitForData() {
 
         loadingScreen = findViewById(R.id.animation_view);
-        loadingScreen.setAnimation("off_time_leap_frog_loader.json");
+        loadingScreen.setAnimation("helicopter.json");
         loadingScreen.playAnimation();
 
 
@@ -193,6 +193,9 @@ public class ContainernScreen1 extends AppCompatActivity {
 
             }
         }, 2000);
+
+
+
     }
 
     // --- WEITERE Methoden --- //
@@ -209,6 +212,10 @@ public class ContainernScreen1 extends AppCompatActivity {
 
                 loadingScreen.setVisibility(View.GONE);
                 loadingScreen.cancelAnimation();
+
+                // +++++++ BUTTON "zurück" setzen
+
+                zurueck.setText(R.string.zurueckzeichen);
 
                 setBuchungsDatentabelle();
 
