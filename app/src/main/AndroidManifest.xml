@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Screens.LaunchScreen">
+        <activity android:name=".Screens.LaunchScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,19 +17,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Screens.LoginScreen"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Screens.BuchenScreen1"></activity>
-        <activity android:name=".Screens.BuchenScreen2"></activity>
-        <activity android:name=".Screens.BuchenScreen2_1"></activity>
-        <activity android:name=".Screens.BuchenScreen4"></activity>
-        <activity android:name=".Screens.ContainernScreen2"></activity>
-        <activity android:name=".Screens.ContainernScreen2_ks"></activity>
+        <activity android:name=".Screens.LoginScreen" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Screens.BuchenScreen1" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Screens.BuchenScreen2" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Screens.BuchenScreen2_1" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Screens.BuchenScreen4" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Screens.ContainernScreen2" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Screens.ContainernScreen2_ks" android:screenOrientation="portrait"></activity>
         <activity android:name=".Dialogs.PopUpUser"
-            android:theme="@style/AppTheme.PopUpTheme">
+            android:theme="@style/AppTheme.PopUpTheme"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Screens.ContainernScreen1"></activity>
-        <activity android:name=".Screens.ContainernScreen3"></activity>
+        <activity android:name=".Screens.ContainernScreen1" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Screens.ContainernScreen3" android:screenOrientation="portrait"></activity>
 
     </application>
 </manifest>
