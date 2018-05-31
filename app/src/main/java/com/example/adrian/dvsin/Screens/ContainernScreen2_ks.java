@@ -109,18 +109,11 @@ public class ContainernScreen2_ks extends AppCompatActivity {
 
         getSmallContainer();
 
+        // -- BUTTONS  -- //
 
-        //-- BUTTONS
+        // BUTTON "zurueck" drücken
 
-        // BUTTON zurück (links oben) aktivieren
-
-        //Button zurueck = (Button) findViewById(R.id.zurueck);
-
-
-        // BUTTON vorwärts zur Activity activity_containern_screen_3
-
-        //ImageButton vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
-
+        buttonGetBack();
     }
 
     private void setLevelButtons() {
@@ -209,9 +202,18 @@ public class ContainernScreen2_ks extends AppCompatActivity {
         });
     }
 
-    public void onClickBack(View view) {
-        Intent intent = new Intent(ContainernScreen2_ks.this, ContainernScreen1.class);
-        startActivity(intent);
+    private void buttonGetBack() {
+
+        zurueck.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ContainernScreen2_ks.this, ContainernScreen1.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     public void onClickNext(View view) {

@@ -37,5 +37,7 @@
 		<!-- Verwenung für Fehlermeldungen -->
 
 		<color name="standard_rot">#ff5614</color>
+
+	<color name="black">#ffffff</color>
 		
 </resources>

@@ -90,77 +90,112 @@
         <LinearLayout
             android:id="@+id/untermenue_2"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:paddingTop="5dp"
+            android:layout_height="120dp"
             android:background="@android:color/transparent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="11dp"
+            android:paddingTop="20dp">
 
-            <ImageButton
-                android:id="@+id/buchen_button"
+            <LinearLayout
+                android:id="@+id/buchen_touchbereich"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:backgroundTint="@android:color/transparent"
-                android:paddingBottom="5dp"
-                android:paddingTop="15dp"
-                android:paddingRight="3dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/icon_menue_buchen" />
+                android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/containern_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:paddingBottom="5dp"
-                android:paddingLeft="14dp"
-                android:paddingTop="19dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/icon_containern" />
-
-			<ImageButton
-                android:id="@+id/doku_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:paddingBottom="5dp"
-                android:paddingLeft="15dp"
-                android:paddingTop="18dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/icon_menue_doku" />
-				
-        </LinearLayout>
-
- 
-        <!-- letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!-->
-
-
-                <LinearLayout
-                    android:id="@+id/untermenue_2.2"
+                <ImageButton
+                    android:id="@+id/buchen_button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="14dp">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:paddingBottom="12dp"
+                    android:paddingRight="3dp"
+                    android:paddingTop="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_menue_buchen" />
 
-                    <TextView
-                        android:id="@+id/buchen_beschreibung"
-                        style="@style/menuetexte"
-                        android:text="@string/buchen_beschreibung"/>
+                <TextView
+                    android:id="@+id/buchen_beschreibung"
+                    style="@style/menuetexte"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/buchen_beschreibung" />
 
-                    <TextView
-                        android:id="@+id/containern_beschreibung"
-                        style="@style/menuetexte"
-                        android:text="@string/containern_beschreibung"/>
 
-                    <TextView
-                        android:id="@+id/doku_beschreibung"
-                        style="@style/menuetexte"
-                        android:text="@string/doku_beschreibung"/>
+            </LinearLayout>
 
-                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/containern_touchbereich"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/containern_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="15dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_containern" />
+
+                <TextView
+                    android:id="@+id/containern_beschreibung"
+                    style="@style/menuetexte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="3"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/containern_beschreibung" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/doku_touchbereich"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/doku_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="13dp"
+                    android:paddingTop="15dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_menue_doku" />
+
+                <TextView
+                    android:id="@+id/doku_beschreibung"
+                    style="@style/menuetexte"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/doku_beschreibung" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <LinearLayout
 

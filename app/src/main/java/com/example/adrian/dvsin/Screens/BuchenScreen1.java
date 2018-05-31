@@ -209,7 +209,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                         // SCHIFFTYP "aktuellesSchiff" initalisieren
 
-                        aktuellesSchiff = new Schifftyp(54321,"Großes Schiff", getString(R.string.text_schiff_groß), 3, 20);
+                        aktuellesSchiff = new Schifftyp(54321,"Großes Schiff", getString(R.string.text_schiff_groß), 3, 60);
 
                     }
 
@@ -220,7 +220,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                             // SCHIFFTYP "aktullesSchiff" initalisieren
 
-                            aktuellesSchiff = new Schifftyp(12345,"Kleines Schiff", getString(R.string.text_schiff_klein), 2, 8);
+                            aktuellesSchiff = new Schifftyp(12345,"Kleines Schiff", getString(R.string.text_schiff_klein), 2, 16);
                         }
 
                     }
