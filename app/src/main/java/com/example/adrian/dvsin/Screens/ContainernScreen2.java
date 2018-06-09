@@ -3,7 +3,10 @@ package com.example.adrian.dvsin.Screens;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ContainernScreen2 extends AppCompatActivity {
 
@@ -81,6 +87,12 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     Ebene schiffsebene = new Ebene(8);
 
+    // key: cellid value: container id
+    // e.g. key = cell_8 value=1302
+    List<Map<String, String>> guiDataText = new ArrayList<Map<String, String>>();
+    List<Map<String, Integer>> guiDataColor = new ArrayList<Map<String, Integer>>();
+    int containernEbene;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +121,25 @@ public class ContainernScreen2 extends AppCompatActivity {
 
         buttonGetBack();
 
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+
+        containernEbene = 1;
     }
 
     private void setLevelButtons() {
@@ -152,6 +183,16 @@ public class ContainernScreen2 extends AppCompatActivity {
                     }
                 }
 
+                if(containernEbene != schiffsebene.aktuelleEbene){
+                    vorwaerts.setEnabled(false);
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+                } else {
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                    vorwaerts.setEnabled(true);
+                }
+
+                clearGUI();
+                loadEbeneToGUI(schiffsebene.aktuelleEbene);
 
             }
 
@@ -190,6 +231,16 @@ public class ContainernScreen2 extends AppCompatActivity {
 
                 }
 
+                if(containernEbene != schiffsebene.aktuelleEbene){
+                    vorwaerts.setEnabled(false);
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+                } else {
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                    vorwaerts.setEnabled(true);
+                }
+
+                clearGUI();
+                loadEbeneToGUI(schiffsebene.aktuelleEbene);
 
             }
 
@@ -212,6 +263,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     }
 
     public void onClickNext(View view) {
+
 
         if (contLarge.size() != 0) {
             if (onClickCounter <= (contLarge.size()-1)) {
@@ -283,6 +335,8 @@ public class ContainernScreen2 extends AppCompatActivity {
             intent.putExtra("ORDER_ID", orderID);
             startActivity(intent);
         }
+
+        snapshotEbene();
     }
 
     private void setActivityViews() {
@@ -531,4 +585,40 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     }
 
+    private void loadEbeneToGUI(int e){
+        Map<String, String> ebene = guiDataText.get(e);
+        for(Map.Entry<String, String> entry : ebene.entrySet()){
+            textViewID = getResources().getIdentifier(entry.getKey(), "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText(entry.getValue());
+            tempCell.setBackgroundColor(guiDataColor.get(e).get(entry.getKey()));
+        }
+    }
+
+    private void clearGUI(){
+        for(int i=1; i<=20; i++){
+            textViewID = getResources().getIdentifier("cell_" + i, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setText("");
+            // transparent
+            tempCell.setBackground(ContextCompat.getDrawable(this,R.drawable.zellenrahmen_v0));
+
+        }
+    }
+
+    private void snapshotEbene(){
+        for(int i=1; i<=20; i++){
+            String cellString = "cell_" + i;
+            textViewID = getResources().getIdentifier(cellString, "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            String cellText = tempCell.getText().toString();
+            Drawable background = tempCell.getBackground();
+            if(background instanceof  ColorDrawable){
+                int cellColor = ((ColorDrawable) background).getColor();
+                guiDataText.get(schiffsebene.aktuelleEbene).put(cellString, cellText);
+                guiDataColor.get(schiffsebene.aktuelleEbene).put(cellString, cellColor);
+            }
+
+        }
+    }
 }
