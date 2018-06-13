@@ -85,7 +85,7 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     TextView aktuelleEbeneAnzeige;
 
-    Ebene schiffsebene = new Ebene(8);
+    Ebene schiffsebene = new Ebene(10);
 
     // key: cellid value: container id
     // e.g. key = cell_8 value=1302
@@ -129,7 +129,15 @@ public class ContainernScreen2 extends AppCompatActivity {
         guiDataText.add(new HashMap<String, String>());
         guiDataText.add(new HashMap<String, String>());
         guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
 
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
         guiDataColor.add(new HashMap<String, Integer>());
         guiDataColor.add(new HashMap<String, Integer>());
         guiDataColor.add(new HashMap<String, Integer>());
@@ -477,6 +485,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     private void setContainerSmall() {
         if (arrayCount >= 1) {
 
+
             //color the containers from before green
             cellCount--;
             cellValue = "cell_" + cellCount;
@@ -485,6 +494,61 @@ public class ContainernScreen2 extends AppCompatActivity {
             tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
             cellCount++;
+
+            if(cellCount > 20){
+                containernEbene++;
+
+                textViewID = getResources().getIdentifier("cell_20", "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                snapshotEbene();
+
+                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
+                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
+
+                schiffsebene.getAktuelleEbene();
+
+
+
+                {
+                    if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
+                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
+
+                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+
+                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                    }
+                    if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                    }
+                    else {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+
+                    }
+                }
+
+                if(containernEbene != schiffsebene.aktuelleEbene){
+                    vorwaerts.setEnabled(false);
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+                } else {
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                    vorwaerts.setEnabled(true);
+                }
+
+
+
+
+                clearGUI();
+                loadEbeneToGUI(schiffsebene.aktuelleEbene);
+
+                cellCount = 1;
+
+            }
 
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
@@ -497,8 +561,64 @@ public class ContainernScreen2 extends AppCompatActivity {
             arrayCount++;
             cellCount++;
             onClickCounter++;
+
+
         }
         else {
+            if(cellCount > 20){
+                containernEbene++;
+
+                textViewID = getResources().getIdentifier("cell_20", "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                snapshotEbene();
+
+                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
+                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
+
+                schiffsebene.getAktuelleEbene();
+
+
+
+                {
+                    if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
+                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
+
+                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+
+                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                    }
+                    if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                    }
+                    else {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+
+                    }
+                }
+
+                if(containernEbene != schiffsebene.aktuelleEbene){
+                    vorwaerts.setEnabled(false);
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+                } else {
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                    vorwaerts.setEnabled(true);
+                }
+
+
+
+
+                clearGUI();
+                loadEbeneToGUI(schiffsebene.aktuelleEbene);
+
+                cellCount = 1;
+
+            }
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
@@ -530,6 +650,64 @@ public class ContainernScreen2 extends AppCompatActivity {
             tempCell = findViewById(textViewID);
             tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
             cellCount = cellCount + 2;
+
+            if(cellCount > 19){
+                containernEbene++;
+
+                textViewID = getResources().getIdentifier("cell_19", "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+                textViewID = getResources().getIdentifier("cell_20", "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                snapshotEbene();
+
+                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
+                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
+
+                schiffsebene.getAktuelleEbene();
+
+
+
+                {
+                    if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
+                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
+
+                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+
+                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                    }
+                    if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                    }
+                    else {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+
+                    }
+                }
+
+                if(containernEbene != schiffsebene.aktuelleEbene){
+                    vorwaerts.setEnabled(false);
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+                } else {
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                    vorwaerts.setEnabled(true);
+                }
+
+
+
+
+                clearGUI();
+                loadEbeneToGUI(schiffsebene.aktuelleEbene);
+
+                cellCount = 1;
+
+            }
 
 
             //show next containers in red

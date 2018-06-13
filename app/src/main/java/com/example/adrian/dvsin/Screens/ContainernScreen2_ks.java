@@ -92,7 +92,7 @@ public class ContainernScreen2_ks extends AppCompatActivity {
 
     TextView aktuelleEbeneAnzeige;
 
-    Ebene schiffsebene = new Ebene(2);
+    Ebene schiffsebene = new Ebene(4);
 
 
     // Ebenentest ENDE
@@ -133,11 +133,17 @@ public class ContainernScreen2_ks extends AppCompatActivity {
 
         guiDataText.add(new HashMap<String, String>());
         guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+        guiDataText.add(new HashMap<String, String>());
+
 
 
         guiDataColor.add(new HashMap<String, Integer>());
         guiDataColor.add(new HashMap<String, Integer>());
-
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
 
         containernEbene = 1;
     }
@@ -405,123 +411,7 @@ public class ContainernScreen2_ks extends AppCompatActivity {
 
     public void onClickNext(View view) {
 
-        if (layerCount > 1) {
-
-            if (layerCount == 10) {
-                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
-                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
-
-                schiffsebene.setAktuelleEbene(2);
-                aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
-                ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
-                ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
-
-                for (int i = 1; i < 9; i++) {
-                    cellValue = "cell_" + i;
-                    textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
-                    tempCell = findViewById(textViewID);
-                    tempCell.setBackgroundColor(Color.rgb(220, 220, 220));
-                    tempCell.setText("");
-                }
-
-                cellCount = 1;
-                layerCount++;
-            }
-
-            else if (layerCount < 10) {
-                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
-                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
-
-                schiffsebene.setAktuelleEbene(1);
-                aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
-                ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
-                ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_orange);
-
-                for (int i = 1; i < 9; i++) {
-                    cellValue = "cell_" + i;
-                    textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
-                    tempCell = findViewById(textViewID);
-                    tempCell.setBackgroundColor(Color.rgb(220, 220, 220));
-                    tempCell.setText("");
-                }
-
-                if (schiffsebene.aktuelleEbene == 1 && schiffsebene.getEbeneG1().size() > 0) {
-                    for (String str : schiffsebene.getEbeneG1()) {
-
-                        cellValue = "cell_" + ebeneCellCount;
-                        textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
-                        tempCell = findViewById(textViewID);
-                        tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
-                        tempCell.setText(str);
-
-                        ebeneCellCount++;
-                    }
-
-                    for (String str : schiffsebene.getEbeneK1()) {
-
-                        cellValue = "cell_" + ebeneCellCount;
-                        textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
-                        tempCell = findViewById(textViewID);
-                        tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
-                        tempCell.setText(str);
-
-                        ebeneCellCount++;
-                    }
-
-                    ebeneCellCount = 1;
-                }
-            }
-
-            else if (layerCount > 10) {
-                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
-                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
-
-                schiffsebene.setAktuelleEbene(2);
-                aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
-                ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
-                ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
-
-                for (int i = 1; i < 9; i++) {
-                    cellValue = "cell_" + i;
-                    textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
-                    tempCell = findViewById(textViewID);
-                    tempCell.setBackgroundColor(Color.rgb(220, 220, 220));
-                    tempCell.setText("");
-                }
-
-                if (schiffsebene.getEbeneG2().size() != 0 | schiffsebene.getEbeneK2().size() != 0) {
-                    for (String str : schiffsebene.getEbeneG2()) {
-
-                        cellValue = "cell_" + ebeneCellCount;
-                        textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
-                        tempCell = findViewById(textViewID);
-                        tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
-                        tempCell.setText(str);
-
-                        ebeneCellCount++;
-                    }
-
-                    for (String str : schiffsebene.getEbeneK2()) {
-
-                        cellValue = "cell_" + ebeneCellCount;
-                        textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
-                        tempCell = findViewById(textViewID);
-                        tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
-                        tempCell.setText(str);
-
-                        ebeneCellCount++;
-                    }
-
-                    Log.d("EBENECELLCOUNT", Integer.toString(ebeneCellCount));
-
-                    ebeneCellCount = 1;
-                }
-            }
-        }
-
-
-        if (button_done != 2) {
-
+        if (contLarge.size() != 0) {
             if (onClickCounter <= (contLarge.size()-1)) {
                 vorwaerts.setImageResource(R.drawable.button_vorwaerts);
                 aktueller_container_groesse.setText(R.string.container_nummer_40);
@@ -532,13 +422,11 @@ public class ContainernScreen2_ks extends AppCompatActivity {
             else if (onClickCounter > (contLarge.size())-1) {
 
                 //color the last Large containers green
-
                 cellCount--;
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
                 tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
-                tempCell.setText(contLarge.get(arrayCount-1));
 
                 cellCount--;
 
@@ -546,22 +434,22 @@ public class ContainernScreen2_ks extends AppCompatActivity {
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
                 tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
-                tempCell.setText(contLarge.get(arrayCount-1));
                 cellCount = cellCount + 2;
 
                 vorwaerts.setImageResource(R.drawable.button_vorwaerts_weiss);
-                button_done = 2;
                 aktueller_container_groesse.setText(R.string.container_nummer_20);
                 aktueller_container_icon.setImageResource(R.drawable.icon_container_20_dunkelgrau);
                 aktuelle_containerid.setText("-");
 
                 arrayCount = 0;
-                //contLarge.clear();
+                contLarge.clear();
                 onClickCounter = 0;
             }
-        }
+            else {
 
-        else if (button_small != 2){
+            }
+        }
+        else if (contSmall.size() != 0){
             if (onClickCounter <= (contSmall.size())-1) {
                 vorwaerts.setImageResource(R.drawable.button_vorwaerts);
                 aktueller_container_groesse.setText(R.string.container_nummer_20);
@@ -577,28 +465,18 @@ public class ContainernScreen2_ks extends AppCompatActivity {
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
                 tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
-                tempCell.setText(contSmall.get(arrayCount-1));
 
                 cellCount++;
 
-                button_small = 2;
                 vorwaerts.setImageResource(R.drawable.button_done);
                 aktuelle_containerid.setText("-");
 
                 arrayCount = 0;
-                //contSmall.clear();
+                contSmall.clear();
                 onClickCounter = 0;
             }
         }
-
-        else if (button_small == 2 && button_done == 2) {
-            button_done = 0;
-            button_small = 0;
-            next = 1;
-            layerCount++;
-        }
-
-        else if (next == 1) {
+        else if (cellCount > 1) {
             Intent intent = new Intent(ContainernScreen2_ks.this, ContainernScreen3.class);
             intent.putExtra("ORDER_ID", orderID);
             startActivity(intent);
@@ -667,6 +545,61 @@ public class ContainernScreen2_ks extends AppCompatActivity {
 
             cellCount++;
 
+            if(cellCount > 8){
+                containernEbene++;
+
+                textViewID = getResources().getIdentifier("cell_8", "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                snapshotEbene();
+
+                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
+                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
+
+                schiffsebene.getAktuelleEbene();
+
+
+
+                {
+                    if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
+                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
+
+                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+
+                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                    }
+                    if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                    }
+                    else {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+
+                    }
+                }
+
+                if(containernEbene != schiffsebene.aktuelleEbene){
+                    vorwaerts.setEnabled(false);
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+                } else {
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                    vorwaerts.setEnabled(true);
+                }
+
+
+
+
+                clearGUI();
+                loadEbeneToGUI(schiffsebene.aktuelleEbene);
+
+                cellCount = 1;
+
+            }
+
             if (cellCount < 9) {
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
@@ -721,6 +654,64 @@ public class ContainernScreen2_ks extends AppCompatActivity {
             tempCell.setText(contLarge.get(arrayCount-1));
             cellCount = cellCount + 2;
 
+
+            if(cellCount > 7){
+                containernEbene++;
+
+                textViewID = getResources().getIdentifier("cell_7", "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+                textViewID = getResources().getIdentifier("cell_8", "id", getPackageName());
+                tempCell = findViewById(textViewID);
+                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                snapshotEbene();
+
+                final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
+                final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
+
+                schiffsebene.getAktuelleEbene();
+
+
+
+                {
+                    if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
+                        schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
+
+                        aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+
+                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                    }
+                    if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                    }
+                    else {
+                        ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                        ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+
+                    }
+                }
+
+                if(containernEbene != schiffsebene.aktuelleEbene){
+                    vorwaerts.setEnabled(false);
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+                } else {
+                    vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                    vorwaerts.setEnabled(true);
+                }
+
+
+
+
+                clearGUI();
+                loadEbeneToGUI(schiffsebene.aktuelleEbene);
+
+                cellCount = 1;
+
+            }
 
             if (cellCount < 9) {
                 //show next containers in red
@@ -809,6 +800,62 @@ public class ContainernScreen2_ks extends AppCompatActivity {
     }
 
     private void contSmallFirst() {
+        if(cellCount > 8){
+            containernEbene++;
+
+            textViewID = getResources().getIdentifier("cell_8", "id", getPackageName());
+            tempCell = findViewById(textViewID);
+            tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+            snapshotEbene();
+
+            final ImageButton ebene_oben = (ImageButton) findViewById(R.id.ebene_oben);
+            final ImageButton ebene_unten = (ImageButton) findViewById(R.id.ebene_unten);
+
+            schiffsebene.getAktuelleEbene();
+
+
+
+            {
+                if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
+                    schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
+
+                    aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
+
+
+                    // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+
+                }
+                if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
+                    ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_orange);
+                    ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+                }
+                else {
+                    ebene_oben.setImageResource(R.drawable.button_ebene_nach_oben_weiss);
+                    ebene_unten.setImageResource(R.drawable.button_ebene_nach_unten_weiss);
+
+                }
+            }
+
+            if(containernEbene != schiffsebene.aktuelleEbene){
+                vorwaerts.setEnabled(false);
+                vorwaerts.setImageResource(R.drawable.button_vorwaerts_transparent);
+            } else {
+                vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+                vorwaerts.setEnabled(true);
+            }
+
+
+
+
+            clearGUI();
+            loadEbeneToGUI(schiffsebene.aktuelleEbene);
+
+            cellCount = 1;
+
+        }
+
+
         cellValue = "cell_" + cellCount;
         textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
         tempCell = findViewById(textViewID);
