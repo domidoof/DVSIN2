@@ -29,6 +29,7 @@
             android:theme="@style/AppTheme.PopUpTheme"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".Screens.Doku" android:screenOrientation="portrait"></activity>
         <activity android:name=".Screens.ContainernScreen1" android:screenOrientation="portrait"></activity>
         <activity android:name=".Screens.ContainernScreen3" android:screenOrientation="portrait"></activity>
 

@@ -22,6 +22,7 @@
             android:layout_weight="1">
 
             <TextView
+                android:id="@id/zurueck"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -193,11 +194,11 @@
 
 
             </LinearLayout>
-
-
         </LinearLayout>
 
-        <LinearLayout
+<!--  Zusätzliche Menüpunkte ausgeblendet, die nicht benötigt werden -->
+
+<!--        <LinearLayout
 
             android:id="@+id/untermenue_3"
             android:layout_width="match_parent"
@@ -244,7 +245,7 @@
         </LinearLayout>
 
 
-        <!-- letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!-->
+        &lt;!&ndash; letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!&ndash;&gt;
 
 
         <LinearLayout
@@ -320,7 +321,7 @@
         </LinearLayout>
 
 
-        <!-- letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!-->
+        &lt;!&ndash; letzter Menüteil im Mitttelsektor muss immer auf android:layout_height="matchparent" anstatt auf android:layout_height="wrap_content" so entsteht die Menüstruktur!&ndash;&gt;
 
 
         <LinearLayout
@@ -346,8 +347,7 @@
                 style="@style/menuetexte"
                 />
 
-        </LinearLayout>
-
+        </LinearLayout>-->
 
         </LinearLayout>
 
