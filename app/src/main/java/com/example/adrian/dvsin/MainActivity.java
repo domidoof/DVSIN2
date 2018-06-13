@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.adrian.dvsin.Screens.ContainernScreen1;
 import com.example.adrian.dvsin.Screens.BuchenScreen1;
+import com.example.adrian.dvsin.Screens.Doku;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.firebase.database.DatabaseReference;
@@ -45,15 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
     TextView benutzername_aktuell, benutzer_status;
 
+    TextView zurueck;
+
 
     // FONTS
 
     Typeface font_roboto_thin, font_roboto_medium;
-
-
-    // BUTTONS
-
-    Button zurueck;
 
 
     // IMAGEBUTTON
@@ -216,6 +214,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void startMethodeDoku() {
 
+        //	FUNKTION "Containern" wird gestartet
+
+        menuepunkt_doku.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Doku.class);
+                startActivity(intent);
+            }
+        });
+
         // FUNKTION "Doku" wird erklärt (lange gedrückt halten)
 
         menuepunkt_doku.setOnLongClickListener(new View.OnLongClickListener() {
@@ -241,8 +250,8 @@ public class MainActivity extends AppCompatActivity {
         buchen_beschreibung.setTypeface(font_roboto_thin);
         containern_buchen.setTypeface(font_roboto_thin);
         doku_beschreibung.setTypeface(font_roboto_thin);
-        suchen_bescheibung.setTypeface(font_roboto_thin);
-        aendern_bescheibung.setTypeface(font_roboto_thin);
+        // suchen_bescheibung.setTypeface(font_roboto_thin);
+        // aendern_bescheibung.setTypeface(font_roboto_thin);
 
         benutzername_aktuell.setTypeface(font_roboto_medium);
         benutzer_status.setTypeface(font_roboto_thin);
@@ -269,8 +278,10 @@ public class MainActivity extends AppCompatActivity {
         buchen_beschreibung = (TextView) findViewById(R.id.buchen_beschreibung);
         containern_buchen = (TextView) findViewById(R.id.containern_beschreibung);
         doku_beschreibung = (TextView) findViewById(R.id.doku_beschreibung);
-        suchen_bescheibung = (TextView) findViewById(R.id.suchen_beschreibung);
-        aendern_bescheibung = (TextView) findViewById(R.id.aendern_beschreibung);
+        // suchen_bescheibung = (TextView) findViewById(R.id.suchen_beschreibung);
+        // aendern_bescheibung = (TextView) findViewById(R.id.aendern_beschreibung);
+
+        zurueck =(TextView) findViewById(R.id.zurueck);
 
         // IMAGEBUTTON
 
@@ -299,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
 
         // ANIMATION
 
-        animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slideup_v2);
+        animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slideup);
 
     }
 
@@ -344,7 +355,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Position ausgehend con BUTTON "vorwaerts"
 
-        popupWindow.showAtLocation(button_benuter_informationen,BOTTOM,0,84);
+        // old
+
+        // popupWindow.showAtLocation(button_benuter_informationen,BOTTOM,0,84);
+
+        // new
+
+        popupWindow.showAtLocation(zurueck,0,0, 50);
 
         //Int
 
