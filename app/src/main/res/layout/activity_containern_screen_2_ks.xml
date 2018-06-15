@@ -233,13 +233,11 @@
 
                 <TextView
                     android:id="@+id/cell_1"
-                    style="@style/tabellenzellen_containern_innen"
-                    android:background="@drawable/zellenrahmen_v4_next_cont_part_1_grosser_cont"/>
+                    style="@style/tabellenzellen_containern_innen"/>
 
                 <TextView
                     android:id="@+id/cell_2"
                     style="@style/tabellenzellen_containern_innen"
-                    android:background="@drawable/zellenrahmen_v4_next_cont_part_2_grosser_cont"
                     />
 
                 <TextView
@@ -273,13 +271,11 @@
                 <TextView
                     android:id="@+id/cell_5"
                     style="@style/tabellenzellen_containern_innen"
-                    android:background="@drawable/zellenrahmen_v4_next_cont_part_1_grosser_cont"
                     />
 
                 <TextView
                     android:id="@+id/cell_6"
                     style="@style/tabellenzellen_containern_innen"
-                    android:background="@drawable/zellenrahmen_v4_next_cont_part_2_grosser_cont"
                     />
 
                 <TextView
@@ -313,7 +309,6 @@
                 <TextView
                     android:id="@+id/cell_7"
                     style="@style/tabellenzellen_containern_innen"
-                    android:background="@drawable/zellenrahmen_v5_booked_cont_klein"
                     />
 
                 <TextView
@@ -395,156 +390,145 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/shadow_userpopup"
-                    android:baselineAligned="false"
-                    android:layout_margin="1dp"
-                    android:elevation="8dp"
+                    android:background="#d9d9d9"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:id="@+id/designschatten_popup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:layout_weight="1">
+                        android:layout_weight="1">-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+
 
                         <LinearLayout
+                            android:id="@+id/inhalt_popup"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+
                             android:orientation="horizontal"
+
                             >
 
-
                             <LinearLayout
-                                android:id="@+id/inhalt_popup"
+
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="10dp">
 
-                                android:orientation="horizontal"
-
-                                >
-
-                                <LinearLayout
-
+                                <ImageView
+                                    android:id="@+id/aktueller_container_icon"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:paddingLeft="10dp"
-                                    android:paddingBottom="5dp"
-                                    android:paddingTop="10dp">
 
-                                    <ImageView
-                                        android:id="@+id/aktueller_container_icon"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
+                                    android:background="@android:color/transparent"
 
-                                        android:background="@android:color/transparent"
-
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/icon_container_20_dunkelgrau" />
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="2.5"
-                                        android:paddingTop="2.5dp">
-
-                                        <TextView
-                                            android:id="@+id/aktueller_container_groesse"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="2"
-                                            android:gravity="right"
-
-                                            android:paddingLeft="2dp"
-                                            android:textColor="@color/standard_grau"
-                                            android:text="@string/container_nummer_20"
-                                            android:textSize="12sp" />
-
-                                        <TextView
-                                            android:id="@+id/aktueller_container_wort"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-
-                                            android:paddingLeft="2dp"
-                                            android:layout_weight="1"
-                                            android:textColor="@color/standard_grau"
-                                            android:text="@string/container_name"
-
-                                            android:textSize="12sp" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
+                                    android:scaleType="fitCenter"/>
 
                                 <LinearLayout
-
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1.1"
-                                    android:orientation="vertical"
-                                    android:paddingBottom="5dp"
-                                    android:paddingTop="10dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="0.75"
-
-                                        android:background="@android:color/transparent"
-
-                                        android:scaleType="fitStart"
-
-                                        android:paddingTop="10dp"
-                                        android:paddingLeft="10dp"
-                                        android:paddingBottom="7dp"
-
-                                        android:src="@drawable/icon_container20_tabelle" />
-
-
+                                    android:layout_weight="2.5"
+                                    android:paddingTop="2.5dp">
 
                                     <TextView
-                                        android:id="@+id/aktuelle_containerid_wort"
+                                        android:id="@+id/aktueller_container_groesse"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:paddingLeft="10dp"
-                                        android:layout_weight="1.5"
+                                        android:layout_weight="2"
+                                        android:gravity="right"
+
+                                        android:paddingLeft="2dp"
                                         android:textColor="@color/standard_grau"
-                                        android:text="ContainerID"
-                                        android:gravity="bottom"
-                                        android:textSize="10sp" />
+                                        android:textSize="12sp" />
 
                                     <TextView
-                                        android:id="@+id/aktuelle_containerid"
+                                        android:id="@+id/aktueller_container_wort"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="1.25"
-                                        android:gravity="left"
 
-
-                                        android:paddingLeft="10dp"
+                                        android:paddingLeft="2dp"
+                                        android:layout_weight="1"
                                         android:textColor="@color/standard_grau"
-                                        android:text="4331"
-                                        android:textSize="15sp" />
+                                        android:textSize="12sp" />
 
                                 </LinearLayout>
 
                             </LinearLayout>
 
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.1"
+                                android:orientation="vertical"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="10dp">
+
+                                <ImageView
+                                    android:id="@+id/container_umriss"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.75"
+
+                                    android:background="@android:color/transparent"
+
+                                    android:scaleType="fitStart"
+
+                                    android:paddingTop="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="7dp"
+                                    />
+
+
+
+                                <TextView
+                                    android:id="@+id/aktuelle_containerid_wort"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:paddingLeft="10dp"
+                                    android:layout_weight="1.5"
+                                    android:textColor="@color/standard_grau"
+                                    android:gravity="bottom"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/aktuelle_containerid"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.25"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/standard_grau"
+                                    android:textSize="15sp" />
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.1"
-                            >
-
-                        </LinearLayout>
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        >
+
+                    </LinearLayout>
+
+                    <!-- </LinearLayout> -->
 
                     <!--<LinearLayout-->
                     <!--android:layout_width="match_parent"-->
@@ -555,6 +539,7 @@
                     <!--</LinearLayout>-->
 
                 </LinearLayout>
+
                 <!-- PopUp-Bereich ENDE -->
 
                 <ImageButton
@@ -567,7 +552,6 @@
                     android:layout_marginRight="8dp"
                     android:layout_weight="1.5"
                     android:background="@color/weiss_hintergrund_screen"
-
                     android:onClick="onClickNext"
                     android:scaleType="fitCenter"
                     android:src="@drawable/button_go" />
