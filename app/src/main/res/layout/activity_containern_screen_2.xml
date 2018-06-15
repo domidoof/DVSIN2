@@ -142,35 +142,41 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
+
+                    android:textColor="@color/weiss_hintergrund_screen"
+                    android:text="       "
                     />
 
                 <TextView
                     android:id="@+id/zelle_01"
-                    android:text="1"
+                    android:text="   1   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_02"
-                    android:text="2"
+                    android:text="   2   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_03"
-                    android:text="3"
+                    android:text="   3   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_04"
-                    android:text="4"
+                    android:text="   4   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_05"
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    android:text="       "
+
+                    android:textColor="@color/weiss_hintergrund_screen"
                     />
 
             </TableRow>
@@ -194,7 +200,8 @@
                 <TextView
                     android:id="@+id/cell_2"
                     style="@style/tabellenzellen_containern_innen"
-                    />
+
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/cell_3"
@@ -389,18 +396,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/shadow_userpopup"
-                    android:baselineAligned="false"
-                    android:layout_margin="1dp"
-                    android:elevation="8dp"
+                    android:background="#d9d9d9"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:id="@+id/designschatten_popup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:layout_weight="1">
+                        android:layout_weight="1">-->
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -436,8 +440,7 @@
 
                                         android:background="@android:color/transparent"
 
-                                        android:scaleType="fitCenter"
-                                        android:src="@drawable/icon_container_20_dunkelgrau" />
+                                        android:scaleType="fitCenter"/>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -454,7 +457,6 @@
 
                                             android:paddingLeft="2dp"
                                             android:textColor="@color/standard_grau"
-                                            android:text="@string/container_nummer_20"
                                             android:textSize="12sp" />
 
                                         <TextView
@@ -465,8 +467,6 @@
                                             android:paddingLeft="2dp"
                                             android:layout_weight="1"
                                             android:textColor="@color/standard_grau"
-                                            android:text="@string/container_name"
-
                                             android:textSize="12sp" />
 
                                     </LinearLayout>
@@ -483,6 +483,7 @@
                                     android:paddingTop="10dp">
 
                                     <ImageView
+                                        android:id="@+id/container_umriss"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="0.75"
@@ -494,8 +495,7 @@
                                         android:paddingTop="10dp"
                                         android:paddingLeft="10dp"
                                         android:paddingBottom="7dp"
-
-                                        android:src="@drawable/icon_container20_tabelle" />
+                                        />
 
 
 
@@ -506,7 +506,6 @@
                                         android:paddingLeft="10dp"
                                         android:layout_weight="1.5"
                                         android:textColor="@color/standard_grau"
-                                        android:text="ContainerID"
                                         android:gravity="bottom"
                                         android:textSize="10sp" />
 
@@ -516,11 +515,8 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1.25"
                                         android:gravity="left"
-
-
                                         android:paddingLeft="10dp"
                                         android:textColor="@color/standard_grau"
-                                        android:text="4331"
                                         android:textSize="15sp" />
 
                                 </LinearLayout>
@@ -533,14 +529,14 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.1"
+                            android:layout_weight="5"
                             >
 
                         </LinearLayout>
 
-                    </LinearLayout>
+                        <!-- </LinearLayout> -->
 
-                    <!--<LinearLayout-->
+                        <!--<LinearLayout-->
                         <!--android:layout_width="match_parent"-->
                         <!--android:layout_height="match_parent"-->
                         <!--android:layout_weight="15"-->

@@ -142,35 +142,37 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    android:text="       "
                     />
 
                 <TextView
                     android:id="@+id/zelle_01"
-                    android:text="1"
+                    android:text="   1   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_02"
-                    android:text="2"
+                    android:text="   2   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_03"
-                    android:text="3"
+                    android:text="   3   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_04"
-                    android:text="4"
+                    android:text="   4   "
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
                     />
 
                 <TextView
                     android:id="@+id/zelle_05"
                     style="@style/tabellenzeile_0_containern_ueberschrifft"
+                    android:text="       "
                     />
 
             </TableRow>
@@ -232,11 +234,12 @@
                 <TextView
                     android:id="@+id/cell_1"
                     style="@style/tabellenzellen_containern_innen"
-                    />
+                    android:background="@drawable/zellenrahmen_v4_next_cont_part_1_grosser_cont"/>
 
                 <TextView
                     android:id="@+id/cell_2"
                     style="@style/tabellenzellen_containern_innen"
+                    android:background="@drawable/zellenrahmen_v4_next_cont_part_2_grosser_cont"
                     />
 
                 <TextView
@@ -270,11 +273,13 @@
                 <TextView
                     android:id="@+id/cell_5"
                     style="@style/tabellenzellen_containern_innen"
+                    android:background="@drawable/zellenrahmen_v4_next_cont_part_1_grosser_cont"
                     />
 
                 <TextView
                     android:id="@+id/cell_6"
                     style="@style/tabellenzellen_containern_innen"
+                    android:background="@drawable/zellenrahmen_v4_next_cont_part_2_grosser_cont"
                     />
 
                 <TextView
@@ -308,6 +313,7 @@
                 <TextView
                     android:id="@+id/cell_7"
                     style="@style/tabellenzellen_containern_innen"
+                    android:background="@drawable/zellenrahmen_v5_booked_cont_klein"
                     />
 
                 <TextView

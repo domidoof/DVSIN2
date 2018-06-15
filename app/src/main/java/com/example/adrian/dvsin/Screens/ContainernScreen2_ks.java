@@ -1,6 +1,7 @@
 package com.example.adrian.dvsin.Screens;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -101,6 +102,8 @@ public class ContainernScreen2_ks extends AppCompatActivity {
     // e.g. key = cell_8 value=1302
     List<Map<String, String>> guiDataText = new ArrayList<Map<String, String>>();
     List<Map<String, Integer>> guiDataColor = new ArrayList<Map<String, Integer>>();
+    List<Map<String, ColorStateList>> guiDataTextColor = new ArrayList<Map<String, ColorStateList>>();
+
     int containernEbene;
 
     @Override
@@ -137,18 +140,23 @@ public class ContainernScreen2_ks extends AppCompatActivity {
         guiDataText.add(new HashMap<String, String>());
         guiDataText.add(new HashMap<String, String>());
 
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataColor.add(new HashMap<String, Integer>());
 
-
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
 
         containernEbene = 1;
     }
 
     private void setLevelButtons() {
+
         // EBENE Allgemein
 
         aktuelleEbeneAnzeige = (TextView) findViewById(R.id.ebenen_nummer);
