@@ -185,9 +185,8 @@ public class LoginScreen extends AppCompatActivity {
 
         // TEXTVIEW PopUpWindow setzen
 
-        fehlertext_ueberschift.setText(R.string.fehlertext_ueberschift_v1);
-        fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v1_1_teil_1);
-        // fehlertext_erklaerung_v1_teil_2.setText(R.string.fehlertext_erklaerung_v1_teil_2);
+        fehlertext_ueberschift.setText(R.string.fehlertext_ueberschift_v3);
+        fehlertext_erklaerung_v1_teil_1.setText(R.string.fehlertext_erklaerung_v3_teil_1);
     }
 
     private void init() {
@@ -198,7 +197,7 @@ public class LoginScreen extends AppCompatActivity {
 
         // VIEW initialisieren
 
-        popupView = layoutInflater.inflate(R.layout.activity_popup_error_02, null);
+        popupView = layoutInflater.inflate(R.layout.activity_popup_error_03, null);
 
         // POPUPWINDOW initialisieren
 
@@ -209,7 +208,6 @@ public class LoginScreen extends AppCompatActivity {
 
         fehlertext_ueberschift = (TextView) popupView.findViewById(R.id.fehlertext_ueberschift_v1);
         fehlertext_erklaerung_v1_teil_1 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_1_teil_1);
-        // fehlertext_erklaerung_v1_teil_2 = (TextView) popupView.findViewById(R.id.fehlertext_erklaerung_v1_teil_2);
     }
 
     // --- WEITERE Methoden --- //
@@ -318,7 +316,7 @@ public class LoginScreen extends AppCompatActivity {
                 }
 
                 if (!userState) {
-
+                    showDialogError();
                 }
 
                 if(eingabe_login.length()!= 0 & userState){

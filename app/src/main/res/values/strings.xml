@@ -55,6 +55,11 @@
     <string name="fehlertext_erklaerung_v2_teil_2">an Containern ein!</string>
 
 
+    <string name="fehlertext_ueberschift_v3">Username leider FALSCH!</string>
+
+    <string name="fehlertext_erklaerung_v3_teil_1">Bitte geben Sie den korrekten Usernamen ein.</string>
+
+
     <!-- Strings für das THEMA: Login -->
 
     <string name="loginbefehl_teil_1">Es ist Zeit die </string>
