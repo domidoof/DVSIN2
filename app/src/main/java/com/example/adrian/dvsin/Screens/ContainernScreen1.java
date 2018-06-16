@@ -171,9 +171,9 @@ public class ContainernScreen1 extends AppCompatActivity {
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //Do something after 2000ms
+                @Override
+                public void run() {
+                //Do something after 1000ms
 
                 lookForStatus();
 
@@ -192,7 +192,7 @@ public class ContainernScreen1 extends AppCompatActivity {
                 //buttonBuchungVerladenStarten();
 
             }
-        }, 2000);
+        }, 1000);
 
 
 

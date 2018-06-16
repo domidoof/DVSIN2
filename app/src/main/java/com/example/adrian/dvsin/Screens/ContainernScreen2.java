@@ -1,22 +1,21 @@
 package com.example.adrian.dvsin.Screens;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.adrian.dvsin.Schiffsklassen.Ebene;
-import com.example.adrian.dvsin.MainActivity;
 import com.example.adrian.dvsin.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +30,10 @@ import java.util.Map;
 
 public class ContainernScreen2 extends AppCompatActivity {
 
+    // VIEW
+
+    View popup_gesamt_standort;
+
 
     // TextView Menüstruktur
 
@@ -38,17 +41,17 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     ImageButton vorwaerts;
 
-    ImageView aktueller_container_icon;
+    ImageView aktueller_container_icon, container_umriss;
 
 
     // String
 
     String orderID, cellValue, contLargePath, contSmallPath;
 
-
     //integer
 
     //for the cell IDs
+
     int cellCount = 1;
     int arrayCount = 0;
     int onClickCounter = 0;
@@ -63,7 +66,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     // TextView Containeranzeige
 
     TextView aktueller_container_groesse, aktueller_container_wort, aktuelle_containerid_wort, aktuelle_containerid, tempCell;
-
+    TextView aktuelleEbeneAnzeige;
 
     //Database
 
@@ -83,14 +86,20 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     Typeface font_roboto_thin, font_roboto_medium;
 
-    TextView aktuelleEbeneAnzeige;
+    // EBENE
 
-    Ebene schiffsebene = new Ebene(10);
+    Ebene schiffsebene = new Ebene(3);
+
+    // LIST
+
+    // TypedArray possibleDrawables = getResources().obtainTypedArray(R.array.drawables_ebenwechsel);
 
     // key: cellid value: container id
     // e.g. key = cell_8 value=1302
     List<Map<String, String>> guiDataText = new ArrayList<Map<String, String>>();
-    List<Map<String, Integer>> guiDataColor = new ArrayList<Map<String, Integer>>();
+    List<Map<String, Drawable>> guiDataDrawable = new ArrayList<Map<String, Drawable>>();
+    List<Map<String, ColorStateList>> guiDataTextColor = new ArrayList<Map<String, ColorStateList>>();
+
     int containernEbene;
 
     @Override
@@ -100,6 +109,7 @@ public class ContainernScreen2 extends AppCompatActivity {
 
 
         //get the order ID from the screen before
+
         Intent intent = getIntent();
         orderID = intent.getStringExtra("ORDER_ID");
         Log.d("WHERE_IS_THE_ORDER", orderID);
@@ -134,23 +144,38 @@ public class ContainernScreen2 extends AppCompatActivity {
         guiDataText.add(new HashMap<String, String>());
         guiDataText.add(new HashMap<String, String>());
 
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
-        guiDataColor.add(new HashMap<String, Integer>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+        guiDataDrawable.add(new HashMap<String, Drawable>());
+
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
+        guiDataTextColor.add(new HashMap<String, ColorStateList>());
 
         containernEbene = 1;
+
     }
 
     private void setLevelButtons() {
+
         // EBENE Allgemein
 
         aktuelleEbeneAnzeige = (TextView) findViewById(R.id.ebenen_nummer);
@@ -272,15 +297,22 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     public void onClickNext(View view) {
 
+        // DEFINITION jeweils erster Container
 
         if (contLarge.size() != 0) {
             if (onClickCounter <= (contLarge.size()-1)) {
                 vorwaerts.setImageResource(R.drawable.button_vorwaerts);
+
+                aktuelle_containerid_wort.setText("ContainerID");
+                aktueller_container_wort.setText("Container");
+
+                container_umriss.setImageResource(R.drawable.icon_container40_tabelle);
                 aktueller_container_groesse.setText(R.string.container_nummer_40);
                 aktueller_container_icon.setImageResource(R.drawable.icon_container_40_dunkelgrau);
 
                 setContainerLarge();
             }
+
             else if (onClickCounter > (contLarge.size())-1) {
 
                 //color the last Large containers green
@@ -288,17 +320,45 @@ public class ContainernScreen2 extends AppCompatActivity {
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                //1
+
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_gross_part_1));
+
+                tempCell.setTypeface(font_roboto_thin);
+                tempCell.setTextSize(13);
+                tempCell.setGravity(Gravity.CENTER);
+                tempCell.setTextColor(Color.rgb(180,235,167));
+
+                // tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
                 cellCount--;
 
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                //2
+
+                // Formatierungen
+
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_gross_part_2));
+
+                tempCell.setTypeface(font_roboto_thin);
+                tempCell.setTextSize(13);
+                tempCell.setGravity(Gravity.CENTER);
+                tempCell.setTextColor(Color.rgb(87,84,87));
+
+                //tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
                 cellCount = cellCount + 2;
 
                 vorwaerts.setImageResource(R.drawable.button_vorwaerts_weiss);
+
+                aktuelle_containerid_wort.setText("ContainerID");
+                aktueller_container_wort.setText("Container");
+
+                container_umriss.setImageResource(R.drawable.icon_container20_tabelle);
                 aktueller_container_groesse.setText(R.string.container_nummer_20);
                 aktueller_container_icon.setImageResource(R.drawable.icon_container_20_dunkelgrau);
                 aktuelle_containerid.setText("-");
@@ -313,22 +373,44 @@ public class ContainernScreen2 extends AppCompatActivity {
         }
         else if (contSmall.size() != 0){
             if (onClickCounter <= (contSmall.size())-1) {
+
                 vorwaerts.setImageResource(R.drawable.button_vorwaerts);
                 aktueller_container_groesse.setText(R.string.container_nummer_20);
                 aktueller_container_icon.setImageResource(R.drawable.icon_container_20_dunkelgrau);
+
+                //
+
+                aktuelle_containerid_wort.setText("ContainerID");
+                aktueller_container_wort.setText("Container");
+
+                container_umriss.setImageResource(R.drawable.icon_container20_tabelle);
 
                 setContainerSmall();
             }
             else if (onClickCounter > (contSmall.size()-1)) {
 
-                //color the containers from before green
+                // color the containers from before green
+
                 cellCount--;
                 cellValue = "cell_" + cellCount;
                 textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                //1
+
+                // FORMATIERUNG
+
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_klein));
+
+                tempCell.setTypeface(font_roboto_thin);
+                tempCell.setTextSize(13);
+                tempCell.setGravity(Gravity.CENTER);
+                tempCell.setTextColor(Color.rgb(87,84,87));
+
+                //tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
                 cellCount++;
+
 
                 vorwaerts.setImageResource(R.drawable.button_done);
                 aktuelle_containerid.setText("-");
@@ -348,6 +430,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     }
 
     private void setActivityViews() {
+
         // TextView Menüstruktur zuweisen
 
         zurueck = (TextView) findViewById(R.id.zurueck);
@@ -355,18 +438,19 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer = (TextView) findViewById(R.id.ebenen_nummer);
         container_id_text = (TextView) findViewById(R.id.container_id_text);
         container_id_nummer = (TextView) findViewById(R.id.container_id_nummer);
-        // order_id_text = findViewById(R.id.order_id_text);
-        // order_id_nummer = findViewById(R.id.order_id_nummer);
 
         //ImageButton
 
         vorwaerts = (ImageButton) findViewById(R.id.vorwaerts);
 
-
         //ImageView
 
         aktueller_container_icon = (ImageView) findViewById(R.id.aktueller_container_icon);
+        container_umriss = (ImageView) findViewById(R.id.container_umriss);
 
+        // View
+
+        popup_gesamt_standort = (View) findViewById(R.id.popup_gesamt_standort);
 
         //TextView Tabelle zuweisen
 
@@ -406,6 +490,9 @@ public class ContainernScreen2 extends AppCompatActivity {
         ebenennummer.setTypeface(font_roboto_thin);
         container_id_text.setTypeface(font_roboto_thin);
         container_id_nummer.setTypeface(font_roboto_medium);
+
+        // FONT für tempcell setzen
+
         // order_id_text.setTypeface(font_roboto_thin);
         // order_id_nummer.setTypeface(font_roboto_medium);
 
@@ -434,6 +521,12 @@ public class ContainernScreen2 extends AppCompatActivity {
         aktuelle_containerid_wort.setTypeface(font_roboto_thin);
         aktueller_container_groesse.setTypeface(font_roboto_medium);
         aktueller_container_wort.setTypeface(font_roboto_thin);
+
+        // Elevation setzen
+
+        // popup_gesamt_standort.setElevation(10);
+        // popup_gesamt_standort.setTranslationY(2);
+        // popup_gesamt_standort.setTranslationZ(2);
     }
 
     private void getSmallContainer() {
@@ -483,6 +576,7 @@ public class ContainernScreen2 extends AppCompatActivity {
     }
 
     private void setContainerSmall() {
+
         if (arrayCount >= 1) {
 
 
@@ -491,7 +585,19 @@ public class ContainernScreen2 extends AppCompatActivity {
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
-            tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_klein));
+            tempCell.setTypeface(font_roboto_thin);
+
+            // FORMATIERUNG
+
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(Color.rgb(87,84,87));
+
+            //
+
+            // tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
             cellCount++;
 
@@ -500,7 +606,17 @@ public class ContainernScreen2 extends AppCompatActivity {
 
                 textViewID = getResources().getIdentifier("cell_20", "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_klein));
+                tempCell.setTypeface(font_roboto_thin);
+
+                // FORMATIERUNG
+
+                tempCell.setTextSize(13);
+                tempCell.setGravity(Gravity.CENTER);
+                tempCell.setTextColor(Color.rgb(87,84,87));
+
+                // tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
                 snapshotEbene();
 
@@ -554,7 +670,20 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contSmall.get(arrayCount));
-            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
+
+            // Farbe für nächsten Container
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont));
+
+            tempCell.setTypeface(font_roboto_thin);
+
+            // FORMATIERUNG
+
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
+
+            // tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             aktuelle_containerid.setText(contSmall.get(arrayCount));
 
@@ -570,7 +699,20 @@ public class ContainernScreen2 extends AppCompatActivity {
 
                 textViewID = getResources().getIdentifier("cell_20", "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                // Farbe für gebuchten Container
+
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont));
+
+                tempCell.setTypeface(font_roboto_thin);
+
+                // FORMATIERUNG
+
+                tempCell.setTextSize(13);
+                tempCell.setGravity(Gravity.CENTER);
+                tempCell.setTextColor(Color.rgb(87,84,87));
+
+                // tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
 
                 snapshotEbene();
 
@@ -610,20 +752,27 @@ public class ContainernScreen2 extends AppCompatActivity {
                     vorwaerts.setEnabled(true);
                 }
 
-
-
-
                 clearGUI();
                 loadEbeneToGUI(schiffsebene.aktuelleEbene);
 
                 cellCount = 1;
 
             }
+
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contSmall.get(arrayCount));
-            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont));
+
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+
+            tempCell.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
+            // tempCell.setTextColor(Color.rgb(87,84,87));
+
+
+            tempCell.setTypeface(font_roboto_thin);
 
             aktuelle_containerid.setText(contSmall.get(arrayCount));
 
@@ -634,21 +783,40 @@ public class ContainernScreen2 extends AppCompatActivity {
     }
 
     private void setContainerLarge() {
+
         if (arrayCount >= 1) {
 
             //color the containers from before green
+
             cellCount--;
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
-            tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+            // Formatierungen
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_gross_part_1));
+
+            tempCell.setTypeface(font_roboto_thin);
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(Color.rgb(180,235,167));
 
             cellCount--;
 
             cellValue = "cell_" + cellCount;
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
-            tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+            // Formatierungen
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_gross_part_2));
+
+            tempCell.setTypeface(font_roboto_thin);
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(Color.rgb(87,84,87));
+
             cellCount = cellCount + 2;
 
             if(cellCount > 19){
@@ -656,10 +824,31 @@ public class ContainernScreen2 extends AppCompatActivity {
 
                 textViewID = getResources().getIdentifier("cell_19", "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                // tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_gross_part_2));
+
+                tempCell.setTypeface(font_roboto_thin);
+                tempCell.setTextSize(13);
+                tempCell.setGravity(Gravity.CENTER);
+                tempCell.setTextColor(Color.rgb(87,84,87));
+
+
                 textViewID = getResources().getIdentifier("cell_20", "id", getPackageName());
                 tempCell = findViewById(textViewID);
-                tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+
+                // tempCell.setBackgroundColor(Color.rgb(54, 227, 45));
+
+                // FORMATIERUNG
+
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_gross_part_1));
+
+                tempCell.setTypeface(font_roboto_thin);
+                tempCell.setTextSize(13);
+                tempCell.setGravity(Gravity.CENTER);
+                tempCell.setTextColor(Color.rgb(180,235,167));
 
                 snapshotEbene();
 
@@ -668,8 +857,6 @@ public class ContainernScreen2 extends AppCompatActivity {
 
                 schiffsebene.getAktuelleEbene();
 
-
-
                 {
                     if (schiffsebene.aktuelleEbene >= 1 && schiffsebene.aktuelleEbene < schiffsebene.ebenenanzahl) {
                         schiffsebene.setAktuelleEbene(schiffsebene.aktuelleEbene +1);
@@ -677,7 +864,7 @@ public class ContainernScreen2 extends AppCompatActivity {
                         aktuelleEbeneAnzeige.setText(Integer.toString(schiffsebene.getAktuelleEbene()));
 
 
-                        // Buttondarstellung von weiss nach ornage ändern, je nach schiffsebene
+                        // Buttondarstellung von weiss nach orange ändern, je nach schiffsebene
 
                     }
                     if (schiffsebene.aktuelleEbene == schiffsebene.ebenenanzahl) {
@@ -715,7 +902,17 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
+
+            // FORMATIERUNG
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont_part_1_grosser_cont));
+
+            tempCell.setTypeface(font_roboto_thin);
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
+
+            // tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             cellCount++;
 
@@ -723,7 +920,17 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
+
+            // FORMATIERUNG
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont_part_2_grosser_cont));
+
+            tempCell.setTypeface(font_roboto_thin);
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(Color.parseColor("#f65050"));
+
+            // tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             aktuelle_containerid.setText(contLarge.get(arrayCount));
 
@@ -736,7 +943,17 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
+
+            // FORMATIERUNG
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont_part_1_grosser_cont));
+
+            tempCell.setTypeface(font_roboto_thin);
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
+
+            //tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             cellCount++;
 
@@ -744,7 +961,17 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(cellValue, "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(contLarge.get(arrayCount));
-            tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
+
+            // FORMATIERUNG
+
+            tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont_part_2_grosser_cont));
+
+            tempCell.setTypeface(font_roboto_thin);
+            tempCell.setTextSize(13);
+            tempCell.setGravity(Gravity.CENTER);
+            tempCell.setTextColor(Color.parseColor("#f65050"));
+
+            // tempCell.setBackgroundColor(Color.parseColor("#ff8337"));
 
             aktuelle_containerid.setText(contLarge.get(arrayCount));
 
@@ -769,7 +996,11 @@ public class ContainernScreen2 extends AppCompatActivity {
             textViewID = getResources().getIdentifier(entry.getKey(), "id", getPackageName());
             tempCell = findViewById(textViewID);
             tempCell.setText(entry.getValue());
-            tempCell.setBackgroundColor(guiDataColor.get(e).get(entry.getKey()));
+
+            // ''''''' TEST '''''''
+            tempCell.setBackground(guiDataDrawable.get(e).get(entry.getKey()));
+           // tempCell.setTextColor(guiDataTextColor.get(e).get(entry.getKey()));
+            tempCell.setTextColor(guiDataTextColor.get(e).get(entry.getKey()));
         }
     }
 
@@ -785,18 +1016,20 @@ public class ContainernScreen2 extends AppCompatActivity {
     }
 
     private void snapshotEbene(){
+
         for(int i=1; i<=20; i++){
+
             String cellString = "cell_" + i;
             textViewID = getResources().getIdentifier(cellString, "id", getPackageName());
             tempCell = findViewById(textViewID);
             String cellText = tempCell.getText().toString();
             Drawable background = tempCell.getBackground();
-            if(background instanceof  ColorDrawable){
-                int cellColor = ((ColorDrawable) background).getColor();
-                guiDataText.get(schiffsebene.aktuelleEbene).put(cellString, cellText);
-                guiDataColor.get(schiffsebene.aktuelleEbene).put(cellString, cellColor);
-            }
+            ColorStateList textcolor = tempCell.getTextColors();
+            guiDataText.get(schiffsebene.aktuelleEbene).put(cellString, cellText);
+            guiDataDrawable.get(schiffsebene.aktuelleEbene).put(cellString, background);
+            guiDataTextColor.get(schiffsebene.aktuelleEbene).put(cellString, textcolor);
 
         }
+
     }
 }

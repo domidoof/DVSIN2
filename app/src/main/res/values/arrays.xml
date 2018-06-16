@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<array name="drawables_ebenwechsel">
+
+		<item>@drawable/zellenrahmen_v4_next_cont</item>
+		<item>@drawable/zellenrahmen_v4_next_cont_part_1_grosser_cont</item>
+		<item>@drawable/zellenrahmen_v4_next_cont_part_2_grosser_cont</item>
+		<item>@drawable/zellenrahmen_v5_booked_cont_klein</item>
+		<item>@drawable/zellenrahmen_v5_booked_cont_gross_part_1</item>
+		<item>@drawable/zellenrahmen_v5_booked_cont_gross_part_2</item>
+
+	</array>
+
+</resources>
