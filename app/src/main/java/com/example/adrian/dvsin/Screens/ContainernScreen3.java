@@ -27,7 +27,7 @@ public class ContainernScreen3 extends AppCompatActivity {
 
     // String
 
-    String orderID, statusPath;
+    String orderID, statusPath, user;
 
 
     // -- Others -- //
@@ -139,6 +139,7 @@ public class ContainernScreen3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContainernScreen3.this, MainActivity.class);
+                intent.putExtra("USER_NAME", user);
 				
 				// ACTIVITY MainActivity starten
 				
@@ -157,6 +158,7 @@ public class ContainernScreen3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContainernScreen3.this, MainActivity.class);
+                intent.putExtra("USER_NAME", user);
 
                 // ACTIVITY MainActivity starten
 
@@ -227,6 +229,7 @@ public class ContainernScreen3 extends AppCompatActivity {
         // Übergang von einer zur nächsten, passenden Activity
 
         Intent intent = new Intent(ContainernScreen3.this, MainActivity.class);
+        intent.putExtra("USER_NAME", user);
         startActivity(intent);
 
     }

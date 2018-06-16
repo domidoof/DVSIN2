@@ -27,6 +27,8 @@ public class BuchenScreen1 extends AppCompatActivity {
 
     // STRING
 
+    String user;
+
 
 
     // -- Others -- //
@@ -80,6 +82,9 @@ public class BuchenScreen1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_1);
+
+        Intent intent = getIntent();
+        user = intent.getStringExtra("USER_NAME");
 
         // IDs zuordnen
 
@@ -233,6 +238,7 @@ public class BuchenScreen1 extends AppCompatActivity {
 
                     intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
                     intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
+                    intent.putExtra("USER_NAME", user);
 
                     // ACTIVITY BuchenScreen2 starten
 
@@ -250,6 +256,7 @@ public class BuchenScreen1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BuchenScreen1.this, MainActivity.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
 
 
@@ -329,6 +336,7 @@ public class BuchenScreen1 extends AppCompatActivity {
             // Übergang von einer zur nächsten, passenden Activity
 
             Intent intent = new Intent(BuchenScreen1.this, MainActivity.class);
+            intent.putExtra("USER_NAME", user);
             startActivity(intent);
         }
 

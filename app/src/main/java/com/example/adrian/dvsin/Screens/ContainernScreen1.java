@@ -37,6 +37,8 @@ public class ContainernScreen1 extends AppCompatActivity {
 
     // String
 
+    String user;
+
 
     // -- Others -- //
 
@@ -129,6 +131,9 @@ public class ContainernScreen1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_containern_screen_1);
+
+        Intent intent = getIntent();
+        user = intent.getStringExtra("USER_NAME");
 
 
         // IDs zuordnen
@@ -442,11 +447,13 @@ public class ContainernScreen1 extends AppCompatActivity {
                         if (orderShip.get(shipCount).equals("Großes Schiff")) {
                             Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2.class);
                             intent.putExtra("ORDER_ID", orderID);
+                            intent.putExtra("USER_NAME", user);
                             startActivity(intent);
                         }
                         else {
                             Intent intent = new Intent(ContainernScreen1.this, ContainernScreen2_ks.class);
                             intent.putExtra("ORDER_ID", orderID);
+                            intent.putExtra("USER_NAME", user);
                             startActivity(intent);
                         }
 
@@ -568,6 +575,7 @@ public class ContainernScreen1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContainernScreen1.this, MainActivity.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
 
             }
@@ -673,6 +681,7 @@ public class ContainernScreen1 extends AppCompatActivity {
         // Übergang von einer zur nächsten, passenden Activity
 
         Intent intent = new Intent(ContainernScreen1.this, MainActivity.class);
+        intent.putExtra("USER_NAME", user);
         startActivity(intent);
     }
 

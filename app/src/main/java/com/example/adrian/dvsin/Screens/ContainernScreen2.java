@@ -46,7 +46,7 @@ public class ContainernScreen2 extends AppCompatActivity {
 
     // String
 
-    String orderID, cellValue, contLargePath, contSmallPath;
+    String orderID, cellValue, contLargePath, contSmallPath, user;
 
     //integer
 
@@ -113,6 +113,9 @@ public class ContainernScreen2 extends AppCompatActivity {
         Intent intent = getIntent();
         orderID = intent.getStringExtra("ORDER_ID");
         Log.d("WHERE_IS_THE_ORDER", orderID);
+
+        Intent intent2 = getIntent();
+        user = intent2.getStringExtra("USER_NAME");
 
         setActivityViews();
 
@@ -288,6 +291,7 @@ public class ContainernScreen2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContainernScreen2.this, ContainernScreen1.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
 
             }
@@ -423,6 +427,7 @@ public class ContainernScreen2 extends AppCompatActivity {
         else if (cellCount > 1) {
             Intent intent = new Intent(ContainernScreen2.this, ContainernScreen3.class);
             intent.putExtra("ORDER_ID", orderID);
+            intent.putExtra("USER_NAME", user);
             startActivity(intent);
         }
 
@@ -986,6 +991,7 @@ public class ContainernScreen2 extends AppCompatActivity {
         // Übergang von einer zur nächsten, passenden Activity
 
         Intent intent = new Intent(ContainernScreen2.this, ContainernScreen1.class);
+        intent.putExtra("USER_NAME", user);
         startActivity(intent);
 
     }

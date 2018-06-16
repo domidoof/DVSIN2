@@ -30,6 +30,7 @@ public class BuchenScreen2 extends AppCompatActivity {
 		String text_kleines_schiff;
 		String text_grosses_schiff;
 		String uebergebener_schiffstyps;
+		String user;
 
 		
     // -- Others -- //
@@ -109,6 +110,9 @@ public class BuchenScreen2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_2);
+
+		Intent intent = getIntent();
+		user = intent.getStringExtra("USER_NAME");
 
         // IDs zuordnen
 
@@ -213,6 +217,7 @@ public class BuchenScreen2 extends AppCompatActivity {
 					// Übergabewerte an neue Activity bestimmen und übergeben	
 	
 					intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
+					intent.putExtra("USER_NAME", user);
 				
 					// ACTIVITY BuchenScreen4 starten
 
@@ -248,6 +253,7 @@ public class BuchenScreen2 extends AppCompatActivity {
                 wertesammlungBS2.putParcelable("aktuellesSchiffKEY", aktuellesSchiff);
 
                 intent.putExtras(wertesammlungBS2);
+				intent.putExtra("USER_NAME", user);
 				
 				// ACTIVITY BuchenScreen2_1 starten
 
@@ -277,6 +283,7 @@ public class BuchenScreen2 extends AppCompatActivity {
                 wertesammlungBS2.putParcelable("aktuelleBuchungKEY", aktuelleBuchung);
                 wertesammlungBS2.putInt("aktuelle_kapazitaetKEY",aktuelle_kapazitaet);
 				wertesammlungBS2.putParcelable("aktuellesSchiffKEY", aktuellesSchiff);
+				intent.putExtra("USER_NAME", user);
 
                 intent.putExtras(wertesammlungBS2);
 				
@@ -297,6 +304,7 @@ public class BuchenScreen2 extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(BuchenScreen2.this, BuchenScreen1.class);
+				intent.putExtra("USER_NAME", user);
 
 				// ACTIVITY BuchenScreen1 starten
 
@@ -686,6 +694,7 @@ public class BuchenScreen2 extends AppCompatActivity {
         // Übergang von einer zur nächsten, passenden Activity
 
         Intent intent = new Intent(BuchenScreen2.this, BuchenScreen1.class);
+		intent.putExtra("USER_NAME", user);
         startActivity(intent);
     }
 

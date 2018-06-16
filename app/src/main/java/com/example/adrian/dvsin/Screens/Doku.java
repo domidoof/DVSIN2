@@ -41,6 +41,7 @@ public class Doku extends AppCompatActivity {
 
     // String
 
+    String user;
 
     // -- Others -- //
 
@@ -128,6 +129,9 @@ public class Doku extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doku_screen_1);
+
+        Intent intent = getIntent();
+        user = intent.getStringExtra("USER_NAME");
 
 
         // IDs zuordnen
@@ -884,6 +888,7 @@ public class Doku extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Doku.this, MainActivity.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
 
             }
@@ -968,6 +973,7 @@ public class Doku extends AppCompatActivity {
         // Übergang von einer zur nächsten, passenden Activity
 
         Intent intent = new Intent(Doku.this, MainActivity.class);
+        intent.putExtra("USER_NAME", user);
         startActivity(intent);
     }
 

@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.adrian.dvsin.Screens.ContainernScreen1;
 import com.example.adrian.dvsin.Screens.BuchenScreen1;
 import com.example.adrian.dvsin.Screens.Doku;
+import com.example.adrian.dvsin.Screens.LoginScreen;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.firebase.database.DataSnapshot;
@@ -215,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, BuchenScreen1.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
             }
         });
@@ -243,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ContainernScreen1.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
             }
         });
@@ -272,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Doku.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
             }
         });

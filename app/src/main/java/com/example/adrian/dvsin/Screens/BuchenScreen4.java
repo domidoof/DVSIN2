@@ -36,6 +36,7 @@ public class BuchenScreen4 extends AppCompatActivity {
     // String
 
     String childOrderID;
+    String user;
 
 
     // -- Others -- //
@@ -112,6 +113,9 @@ public class BuchenScreen4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_4);
+
+        Intent intent = getIntent();
+        user = intent.getStringExtra("USER_NAME");
 
         // INHALT Activity wählen --- //
 
@@ -262,6 +266,7 @@ public class BuchenScreen4 extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
+                        intent.putExtra("USER_NAME", user);
                         startActivity(intent);
                     }
                 });
@@ -274,6 +279,7 @@ public class BuchenScreen4 extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(BuchenScreen4.this, ContainernScreen1.class);
+                        intent.putExtra("USER_NAME", user);
                         startActivity(intent);
                     }
                 });
@@ -290,6 +296,7 @@ public class BuchenScreen4 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
+                intent.putExtra("USER_NAME", user);
                 startActivity(intent);
 
             }
@@ -389,6 +396,7 @@ public class BuchenScreen4 extends AppCompatActivity {
         // Übergang von einer zur nächsten, passenden Activity
 
         Intent intent = new Intent(BuchenScreen4.this, MainActivity.class);
+        intent.putExtra("USER_NAME", user);
         startActivity(intent);
 
     }

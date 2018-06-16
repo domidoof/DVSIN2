@@ -43,6 +43,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 		String text_kleines_schiff;
 		String text_grosses_schiff;
 		String uebergebener_schiffstyps;
+		String user;
 
 		
     // -- Others -- //
@@ -131,6 +132,9 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buchen_screen_2_1);
+
+		Intent intent = getIntent();
+		user = intent.getStringExtra("USER_NAME");
 
         // IDs zuordnen
 
@@ -228,6 +232,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 				intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
 				intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
+				intent.putExtra("USER_NAME", user);
 				
                 // ACTIVITY BuchenScreen2 starten
 
@@ -250,6 +255,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 				intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
 				intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
+				intent.putExtra("USER_NAME", user);
 
 				// ACTIVITY BuchenScreen2 starten
 
@@ -625,6 +631,7 @@ public class BuchenScreen2_1 extends AppCompatActivity {
 
 		intent.putExtra("aktuelleBuchungKEY", aktuelleBuchung);
 		intent.putExtra("aktuellesSchiffKEY", aktuellesSchiff);
+		intent.putExtra("USER_NAME", user);
 
 		// ACTIVITY BuchenScreen2 starten
 
