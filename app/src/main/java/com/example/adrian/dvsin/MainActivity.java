@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,11 @@ import com.example.adrian.dvsin.Screens.BuchenScreen1;
 import com.example.adrian.dvsin.Screens.Doku;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static android.view.Gravity.BOTTOM;
 
@@ -32,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     // int
 
-    int saufCount;
+    int saufCount, textViewID, textViewID2;
     int touchedbuchen, touchedcontainern, toucheddoku, touchchedsuchen, touchedaendern;
 
     // String
 
+    String user, name, userNamePath, userAgePath, age;
 
     // -- Others -- //
 
@@ -83,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
     // DATABASE
     FirebaseDatabase database;
     DatabaseReference myRef;
+    FirebaseDatabase database2;
+    DatabaseReference myRef2;
+    FirebaseDatabase database3;
+    DatabaseReference myRef3;
 
 
     // ########## //
@@ -99,13 +108,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homescreen);
 
         Intent intent = getIntent();
-        String user = intent.getStringExtra("USER_NAME");
+        user = intent.getStringExtra("USER_NAME");
 
         if (user != null) {
             database = FirebaseDatabase.getInstance();
             myRef = database.getReference("users");
             myRef.setValue(user);
         }
+
+        databaseQuery();
 
 
         // IDs zuordnen
@@ -151,6 +162,46 @@ public class MainActivity extends AppCompatActivity {
 
         // *** ENDE *** /
 
+    }
+
+    private void databaseQuery() {
+        userNamePath = "user/" + user + "/Name";
+        database2 = FirebaseDatabase.getInstance();
+        myRef2 = database.getReference(userNamePath);
+
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                name = dataSnapshot.getValue(String.class);
+                Log.d("TAG", "Value is: " + name);
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Failed to read value.", databaseError.toException());
+
+            }
+        });
+
+        userAgePath = "user/" + user + "/age";
+        database3 = FirebaseDatabase.getInstance();
+        myRef3 = database.getReference(userAgePath);
+
+        myRef3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                age = dataSnapshot.getValue(String.class);
+                Log.d("TAG", "Value is: " + age);
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Failed to read value.", databaseError.toException());
+
+            }
+        });
     }
 
     // --- WEITERE Methoden --- //
@@ -342,6 +393,12 @@ public class MainActivity extends AppCompatActivity {
 
         benutzername_aktuell.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
         benutzer_status.setTextColor(getResources().getColor(R.color.weiss_hintergrund_screen));
+
+        // Text anpassen
+
+        benutzername_aktuell.setText(name);
+
+        benutzer_status.setText("User " + user + " is " + age + " years old.");
 
         //
 

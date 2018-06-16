@@ -72,6 +72,11 @@
     <string name="textvorgabe_login">Bitte gib Deinen Benutzernamen ein</string>
 
 
+    <string name="user_1">%1$s</string>
+
+    <string name="user_2"> User %1$s is %2$s years old.</string>
+
+
     <!-- Strings für das THEMA: Funktion: Buchen -->
 
     <string name="buchen_schritt_1_einleitung_1">Legen Sie eine neue</string>
