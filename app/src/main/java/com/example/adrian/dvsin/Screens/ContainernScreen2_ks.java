@@ -589,7 +589,7 @@ public class ContainernScreen2_ks extends AppCompatActivity {
 
                 // Farbe für gebuchten Container
 
-                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v4_next_cont));
+                tempCell.setBackground(getDrawable(R.drawable.zellenrahmen_v5_booked_cont_klein));
 
                 tempCell.setTypeface(font_roboto_thin);
 

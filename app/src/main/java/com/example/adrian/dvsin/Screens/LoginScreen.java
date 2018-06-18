@@ -296,7 +296,7 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        // !!! Kommenteiren wenn verstanden !!! //
+        // !!! Kommentieren wenn verstanden !!! //
 
         vorwaerts.setOnClickListener(new View.OnClickListener() {
 

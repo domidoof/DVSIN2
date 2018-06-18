@@ -55,9 +55,9 @@
     <string name="fehlertext_erklaerung_v2_teil_2">an Containern ein!</string>
 
 
-    <string name="fehlertext_ueberschift_v3">Username leider FALSCH!</string>
+    <string name="fehlertext_ueberschift_v3">Mann über BORD!</string>
 
-    <string name="fehlertext_erklaerung_v3_teil_1">Bitte geben Sie den korrekten Usernamen ein.</string>
+    <string name="fehlertext_erklaerung_v3_teil_1">Der Benutzername existiert nicht</string>
 
 
     <!-- Strings für das THEMA: Login -->

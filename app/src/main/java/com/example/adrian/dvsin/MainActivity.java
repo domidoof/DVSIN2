@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
 
         benutzername_aktuell.setText(name);
 
-        benutzer_status.setText("User " + user + " is " + age + " years old.");
+        benutzer_status.setText("User " + user + " is " + age + " years old");
 
         //
 
