@@ -77,6 +77,9 @@ public class ContainernScreen3 extends AppCompatActivity {
         Intent intent = getIntent();
         orderID = intent.getStringExtra("ORDER_ID");
 
+        Intent intent2 = getIntent();
+        user = intent2.getStringExtra("USER_NAME");
+
 
         // change the order status in the database to "closed"
 
