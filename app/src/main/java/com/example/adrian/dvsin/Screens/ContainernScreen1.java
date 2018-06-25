@@ -170,7 +170,7 @@ public class ContainernScreen1 extends AppCompatActivity {
     private void waitForData() {
 
         loadingScreen = findViewById(R.id.animation_view);
-        loadingScreen.setAnimation("drop_loader.json");
+        loadingScreen.setAnimation("loading.json");
         loadingScreen.playAnimation();
 
 

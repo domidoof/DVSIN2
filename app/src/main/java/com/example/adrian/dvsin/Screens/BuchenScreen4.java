@@ -174,7 +174,7 @@ public class BuchenScreen4 extends AppCompatActivity {
         // ANMERKUNG: Könnte/Sollte unter setIDS
         loadingScreen = findViewById(R.id.animation_view);
         // --
-        loadingScreen.setAnimation("drop_loader.json");
+        loadingScreen.setAnimation("loading.json");
         loadingScreen.playAnimation();
 
         // ANMERKUNG: Kommentare ins deutsche übersetzen
