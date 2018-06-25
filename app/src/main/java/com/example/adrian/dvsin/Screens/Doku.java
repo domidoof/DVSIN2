@@ -570,7 +570,7 @@ public class Doku extends AppCompatActivity {
     private void waitForData() {
 
         loadingScreen = findViewById(R.id.animation_view);
-        loadingScreen.setAnimation("helicopter.json");
+        loadingScreen.setAnimation("drop_loader.json");
         loadingScreen.playAnimation();
 
 
